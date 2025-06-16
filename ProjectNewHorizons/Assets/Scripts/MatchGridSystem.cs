@@ -19,6 +19,9 @@ public class MatchGridSystem : MonoBehaviour
     {
         EditorApplication.delayCall += () => _onValidate();
     }
+    /// <summary>
+    /// this feels like a crappy solution but i cant call destroy in onvalidate
+    /// </summary>
     void _onValidate()
     {
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
@@ -62,9 +65,14 @@ public class MatchGridSystem : MonoBehaviour
             {
                 List<Ingredient> possibleIngredients = new(ingredientTypes);
 
-                if (y > 2 && currentGrid[y-1, x].Equals(currentGrid[y-2, x]))
+                // Do not spawn type if this would create 3 in a row
+                if (y >= 2 && currentGrid[y-1, x].Equals(currentGrid[y-2, x]))
                 {
                     possibleIngredients.Remove(currentGrid[y-1, x]);
+                }
+                if (x >= 2 && currentGrid[y, x-1].Equals(currentGrid[y, x-2]))
+                {
+                    possibleIngredients.Remove(currentGrid[y, x-1]);
                 }
 
                 currentGrid[y, x] = possibleIngredients[rand.Next(0, possibleIngredients.Count)];
