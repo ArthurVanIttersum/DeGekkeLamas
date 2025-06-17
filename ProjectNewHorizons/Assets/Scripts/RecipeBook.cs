@@ -1,13 +1,30 @@
-using NUnit.Framework;
+
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 
+
+
 [CreateAssetMenu(fileName = "RecipeBook", menuName = "Scriptable Objects/RecipeBook")]
 public class RecipeBook : ScriptableObject
 {
-    public List<Recipe> Allrecipes;
+    public int randomDishCountRangeMin;
+    public int randomDishCountRangeMax;
+    public List<Recipe> allrecipes;
+    public Order GenerateRandomOrder()
+    {
+        Order newOrder = new();
+        int randomDishCount = UnityEngine.Random.Range(randomDishCountRangeMin, randomDishCountRangeMax);
+        for (int i = 0; i < randomDishCount; i++)
+        {
+            int randomDish = UnityEngine.Random.Range(0, allrecipes.Count);
+            Dish newDish = new Dish();
+            newDish.dishType = allrecipes[randomDish];
+            newOrder.dishes.Add(newDish);
+        }
+        return newOrder;
+    }
 }
 [Serializable]
 public class Recipe

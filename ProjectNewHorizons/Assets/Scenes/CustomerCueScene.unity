@@ -269,6 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b666d679d968f5459ac34ca33ba7b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  book: {fileID: 11400000, guid: 5c75c8d3725d29b409ca6f9621c53fbe, type: 2}
   customerPrefabs:
   - {fileID: 112387704145986494, guid: 59eac48059ef2934aa1c99cc4799a741, type: 3}
   - {fileID: 112387704145986494, guid: 0cf00a54577ee9b42b13947523f4e7b2, type: 3}
@@ -280,7 +281,7 @@ MonoBehaviour:
   - {fileID: 112387704145986494, guid: 383b29d2d29a07f4ca7749e939713939, type: 3}
   customerQue: []
   customerAntiQue: []
-  availableCustomers: 0
+  availableCustomerCount: 0
   spawnPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &896311494
 Transform:

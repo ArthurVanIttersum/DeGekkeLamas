@@ -2,25 +2,35 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class CustomerGenerator : MonoBehaviour
 {
+    public RecipeBook book;
     public List<GameObject> customerPrefabs = new();
     [HideInInspector]public List <GameObject> customerQue = new();
     [HideInInspector]public List <GameObject> customerAntiQue = new();
     //when a customer is not in the que it's in the anti que.
     //this way i can pick a random customer from the anti que.
-    public int availableCustomers;
-
+    [HideInInspector] public int availableCustomerCount;
     public Vector3 spawnPosition;
+    
+    private GameObject newCustomer;
     public void SpawnNewCustomer()
     {
-        availableCustomers = customerPrefabs.Count - customerQue.Count;
-        int randomCustomer = Random.Range(0, availableCustomers);
-        GameObject newCustomer = Instantiate(customerAntiQue[randomCustomer], spawnPosition, Quaternion.identity);
+        availableCustomerCount = customerPrefabs.Count - customerQue.Count;
+        int randomCustomer = Random.Range(0, availableCustomerCount);
+        newCustomer = Instantiate(customerAntiQue[randomCustomer], spawnPosition, Quaternion.identity);
         customerQue.Add(newCustomer);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
-        print(randomCustomer);
+    }
+
+    public void GiveCustomerOrder()
+    {
+        print(newCustomer);
+        Order newlyGeneratedOrder = book.GenerateRandomOrder();
+        print(newlyGeneratedOrder);
+        newCustomer.GetOrAddComponent<Customer>().thisCustomersOrder = newlyGeneratedOrder;
     }
 
     public bool CustomerInQue(GameObject teacher)
@@ -45,12 +55,13 @@ public class CustomerGenerator : MonoBehaviour
     private IEnumerator TestSpawning()
     {
         int count = customerPrefabs.Count;
-        print(count);
+        
         for (int i = 0; i < count; i++)
         {
             SpawnNewCustomer();
+            GiveCustomerOrder();
             yield return new WaitForSeconds(1);
-            print("dshoahdfo");
+            
         }
     }
 

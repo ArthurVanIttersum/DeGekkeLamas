@@ -1,17 +1,22 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
+using System;
 
-public class Order : MonoBehaviour
+[System.Serializable]
+public class Order
 {
-    public Dish[] dishes;
+    public List<Dish> dishes = new();
+    
     [HideInInspector] public int points = 0;
     [HideInInspector] public int amountOfCorrectIngredients = 0;
     [HideInInspector] public int amountOfInCorrectIngredients = 0;
     [HideInInspector] public int amountOfMissingIngredients = 0;
-
+    
 
     public void EvaluateOrder()
     {
-        for (int i = 0; i < dishes.Length; i++)
+        for (int i = 0; i < dishes.Count; i++)
         {
             points += dishes[i].points;
             amountOfCorrectIngredients += dishes[i].amountOfCorrectIngredients;
@@ -19,4 +24,5 @@ public class Order : MonoBehaviour
             amountOfMissingIngredients += dishes[i].amountOfMissingIngredients;
         }
     }
+    
 }

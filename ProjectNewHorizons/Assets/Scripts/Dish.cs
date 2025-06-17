@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Dish
 {
     
@@ -25,7 +26,7 @@ public class Dish
     }
     public void EvaluateDish()
     {
-        for (int i = 0; i < currentIngredients.Count; i++)//looking at the pan
+        for (int i = 0; i < currentIngredients.Count; i++)//looking at the plate
         {
             if (dishType.IngredientInRecipe(currentIngredients[i]))
             {

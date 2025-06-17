@@ -12,12 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebeec9fd47469f948aa6fcb244702ef2, type: 3}
   m_Name: RecipeBook
   m_EditorClassIdentifier: 
-  Allrecipes:
-  - Name: cookies and milk
+  randomDishCountRangeMin: 1
+  randomDishCountRangeMax: 3
+  allrecipes:
+  - Name: xedxqw
     recipeIngredientsList:
-    - Name: cookies
+    - Name: aljsdo
       material: {fileID: 0}
       index: 0
-    - Name: Milk
+    - Name: askluvyouihr
+      material: {fileID: 0}
+      index: 0
+  - Name: iuiyvdyiyive
+    recipeIngredientsList:
+    - Name: isdtbe
+      material: {fileID: 0}
+      index: 0
+    - Name: 'bbtbrb '
+      material: {fileID: 0}
+      index: 0
+  - Name: ihbrfe
+    recipeIngredientsList:
+    - Name: caeas
+      material: {fileID: 0}
+      index: 0
+    - Name: uigjyujmgy
+      material: {fileID: 0}
+      index: 0
+  - Name: xxctgvcrzzctvy
+    recipeIngredientsList:
+    - Name: fdrjhg
+      material: {fileID: 0}
+      index: 0
+    - Name: haajsdxdhddj
       material: {fileID: 0}
       index: 0
