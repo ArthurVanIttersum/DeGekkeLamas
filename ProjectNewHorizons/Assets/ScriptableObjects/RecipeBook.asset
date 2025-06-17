@@ -12,3 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebeec9fd47469f948aa6fcb244702ef2, type: 3}
   m_Name: RecipeBook
   m_EditorClassIdentifier: 
+  Allrecipes:
+  - Name: cookies and milk
+    recipeIngredientsList:
+    - Name: cookies
+      material: {fileID: 0}
+      index: 0
+    - Name: Milk
+      material: {fileID: 0}
+      index: 0

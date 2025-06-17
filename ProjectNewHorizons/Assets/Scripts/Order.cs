@@ -3,10 +3,10 @@ using UnityEngine;
 public class Order : MonoBehaviour
 {
     public Dish[] dishes;
-    public int points = 0;
-    public int amountOfCorrectIngredients = 0;
-    public int amountOfInCorrectIngredients = 0;
-    public int amountOfMissingIngredients = 0;
+    [HideInInspector] public int points = 0;
+    [HideInInspector] public int amountOfCorrectIngredients = 0;
+    [HideInInspector] public int amountOfInCorrectIngredients = 0;
+    [HideInInspector] public int amountOfMissingIngredients = 0;
 
 
     public void EvaluateOrder()
