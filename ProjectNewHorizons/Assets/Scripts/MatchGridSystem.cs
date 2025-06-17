@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 
 public class MatchGridSystem : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class MatchGridSystem : MonoBehaviour
     Ingredient[,] currentGrid;
     public int seed;
 
+    public bool autoGenerate;
+
     private System.Random rand;
     [SerializeField, HideInInspector] Transform gridContainer;
 
@@ -17,14 +18,47 @@ public class MatchGridSystem : MonoBehaviour
     public MeshRenderer debugCube;
     private void OnValidate()
     {
-        EditorApplication.delayCall += () => _onValidate();
+        for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
+
+        // Grid must always be big enough for connections to be possible
+        gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
+
+        if (autoGenerate)
+            UnityEditor.EditorApplication.delayCall += () => _onValidate();
     }
     /// <summary>
     /// this feels like a crappy solution but i cant call destroy in onvalidate
     /// </summary>
     void _onValidate()
     {
-        for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
+        Generate();
+    }
+    void Start()
+    {
+        Generate();
+    }
+
+    [NaughtyAttributes.Button]
+    void Generate()
+    {
+        Initialize();
+        DestroyOldGrid();
+        // Generate grid, regenerate if no possible connections
+        GenerateGrid();
+        GenerateDisplay();
+        while (!SolubilityCheck())
+        {
+            Debug.Log("Invalid grid, regenerated with random seed");
+            seed = Random.Range(int.MinValue, int.MaxValue);
+            rand = new System.Random(seed);
+            DestroyOldGrid();
+            GenerateGrid();
+            GenerateDisplay();
+        }
+    }
+
+    void DestroyOldGrid()
+    {
         if (gridContainer != null)
         {
             if (!UnityEditor.EditorApplication.isPlaying)
@@ -36,22 +70,15 @@ public class MatchGridSystem : MonoBehaviour
                 Destroy(gridContainer.gameObject);
             }
         }
-
-        Initialize();
-        GenerateGrid();
-        GenerateDisplay();
-        SolubilityCheck();
-    }
-    private void Start()
-    {
-        Initialize();
-        GenerateGrid();
-        GenerateDisplay();
     }
 
+    /// <summary>
+    /// Initialize values
+    /// </summary>
     void Initialize()
     {
         currentGrid = new Ingredient[gridDimensions.y, gridDimensions.x];
+        if (seed == 0) seed = Random.Range(int.MinValue, int.MaxValue);
         rand = new System.Random(seed);
     }
 
@@ -81,55 +108,74 @@ public class MatchGridSystem : MonoBehaviour
         }
         Debug.Log("Generated grid!");
     }
+
     /// <summary>
-    /// Checks if there are possible memes
+    /// Checks if there are possible matches
     /// </summary>
     bool SolubilityCheck()
     {
         int height = currentGrid.GetLength(0);
         int length = currentGrid.GetLength(1);
-        int possibleMoves = 0;
+        //int possibleMoves = 0;
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < length; x++)
             {
+                // Possible connections in middle
+                int[] valueQTYs = new int[ingredientTypes.Length];
+
+                if (y > 0) valueQTYs[currentGrid[y - 1, x].index]++;
+                if (y < height-1) valueQTYs[currentGrid[y+1, x].index]++;
+                if (x > 0) valueQTYs[currentGrid[y, x-1].index]++;
+                if (x < length-1) valueQTYs[currentGrid[y, x+1].index]++;
+                
+                if (Mathf.Max(valueQTYs) >= 3)
+                {
+                    DebugExtension.DebugWireSphere(new(x, y, -1), Color.magenta, .25f, 10);
+                    return true;
+                    //possibleMoves++;
+                    //continue;
+                }
+
                 // Possible connections from side
                 if (Neighbours2InARow(x, y, out int axis, out int value))
                 {
                     if (axis != 0 && x > 0 && currentGrid[y, x-1].index == value) // xMin
                     {
-                        possibleMoves++;
-                        Debug.DrawRay(new(x, y, -1), new(-1, 0), Color.blue, 10);
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        continue;
+                        return true;
+                        //possibleMoves++;
+                        //continue;
                     }
                     if (axis != 1 && x < length-2 && currentGrid[y, x+1].index == value) // xPlus
                     {
-                        possibleMoves++;
-                        Debug.DrawRay(new(x, y, -1), new(1, 0), Color.blue, 10);
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        continue;
+                        return true;
+                        //possibleMoves++;
+                        //continue;
                     }
                     if (axis != 2 && y > 0 && currentGrid[y-1, x].index == value) // yMin
                     {
-                        possibleMoves++;
-                        Debug.DrawRay(new(x, y, -1), new(0, -1), Color.blue, 10);
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        continue;
+                        return true;
+                        //possibleMoves++;
+                        //continue;
                     }
                     if (axis != 3 && y < height-2 && currentGrid[y+1, x].index == value) // yPlus
                     {
-                        possibleMoves++;
-                        Debug.DrawRay(new(x, y, -1), new(0, 1), Color.blue, 10);
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        continue;
+                        return true;
+                        //possibleMoves++;
+                        //continue;
                     }
                 }
             }
         }
-        Debug.Log(possibleMoves);
-        return possibleMoves > 0;
+        //Debug.Log(possibleMoves);
+        //return possibleMoves > 0;
+        return false;
     }
+
     /// <summary>
     /// Checks if there is a connection of 2 in a row at this nodes neighbours
     /// Axis 0 means x-, 1 means x+, 2 means y-, 3 means y+
@@ -139,30 +185,26 @@ public class MatchGridSystem : MonoBehaviour
         axis = 0;
         ingredientValue = 0;
 
-        if (x >= 2 && currentGrid[y, x - 1].Equals(currentGrid[y, x - 2]))
+        if (x >= 2 && currentGrid[y, x - 1].Equals(currentGrid[y, x - 2])) // xMin
         {
-            Debug.DrawRay(new(x-1,y,-1), Vector2.left, Color.red, 10);
             axis = 0;
             ingredientValue = currentGrid[y, x-1].index;
             return true;
         }
-        if (x <= currentGrid.GetLength(1)-3 && currentGrid[y, x + 1].Equals(currentGrid[y, x + 2]))
+        if (x <= currentGrid.GetLength(1)-3 && currentGrid[y, x + 1].Equals(currentGrid[y, x + 2])) // xPlus
         {
-            Debug.DrawRay(new(x+1, y, -1), Vector2.right, Color.red, 10);
             axis = 1;
             ingredientValue = currentGrid[y, x+1].index;
             return true;
         }
-        if (y >= 2 && currentGrid[y - 1, x].Equals(currentGrid[y - 2, x]))
+        if (y >= 2 && currentGrid[y - 1, x].Equals(currentGrid[y - 2, x])) // yMin
         {
-            Debug.DrawRay(new(x, y-1, -1), Vector2.down, Color.red, 10);
             axis = 2;
             ingredientValue = currentGrid[y-1, x].index;
             return true;
         }
-        if (y <= currentGrid.GetLength(0)-3 && currentGrid[y + 1, x].Equals(currentGrid[y + 2, x]))
+        if (y <= currentGrid.GetLength(0)-3 && currentGrid[y + 1, x].Equals(currentGrid[y + 2, x])) // yMax
         {
-            Debug.DrawRay(new(x, y+1, -1), Vector2.up, Color.red, 10);
             axis = 3;
             ingredientValue = currentGrid[y+1, x].index;
             return true;
