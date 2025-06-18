@@ -23,12 +23,15 @@ public class PlayerController : MonoBehaviour
                 // Interact instead of setting destination if interactions
                 if (info.collider.gameObject.CompareTag("Interactible"))
                 {
+                    // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
                         List<Dish> dishes = customer.thisCustomersOrder.dishes;
                         if (matchGridSystem != null) matchGridSystem.SetDish(dishes[0], dishes.Count+2);
                         Debug.Log("Received order from customer");
                     }
+
+
                 }
                 else agent.SetDestination(info.point);
             }
