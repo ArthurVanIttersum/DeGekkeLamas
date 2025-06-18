@@ -12,6 +12,10 @@ public class RecipeBook : ScriptableObject
     public int randomDishCountRangeMin;
     public int randomDishCountRangeMax;
     public List<Recipe> allrecipes;
+
+    /// <summary>
+    /// Returns a random order with a random amount of dishes
+    /// </summary>
     public Order GenerateRandomOrder()
     {
         Order newOrder = new();
@@ -33,6 +37,9 @@ public class Recipe
     public string name;
     public Ingredient[] recipeIngredientsList;
 
+    /// <summary>
+    /// Checks if name of ingredient exists in list of ingredients for recipe
+    /// </summary>
     public bool IngredientInRecipe(Ingredient ingredientToCompare)
     {
         for (int i = 0; i < recipeIngredientsList.Length; i++)

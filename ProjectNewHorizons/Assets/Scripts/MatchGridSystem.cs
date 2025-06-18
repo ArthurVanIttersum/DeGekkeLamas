@@ -52,6 +52,27 @@ public class MatchGridSystem : MonoBehaviour
         Generate();
     }
 
+    /// <summary>
+    /// Set grid requirements from a dish, giving it the ingredients of that dish as required. 
+    /// total means the total amount of combinations to spawn
+    /// </summary>
+    public void SetDish(Dish dish, int total)
+    {
+        Ingredient[] ingredients = dish.dishType.recipeIngredientsList;
+        requiredIngredients = ingredients;
+        totalIngredientQTY = Mathf.Max(ingredients.Length, total);
+
+        // Set index of required to be correct to avoid problems
+        for (int i = 0; i < requiredIngredients.Length; i++)
+        {
+            requiredIngredients[i].index = ingredientTypes[
+                Ingredient.FindByName(ingredientTypes, requiredIngredients[i].name)
+                ].index;
+        }
+
+        Generate();
+    }
+
     [NaughtyAttributes.Button]
     void Generate()
     {
