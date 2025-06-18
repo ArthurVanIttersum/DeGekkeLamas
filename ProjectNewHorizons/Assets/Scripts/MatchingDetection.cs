@@ -12,7 +12,7 @@ public class MatchingDetection : MonoBehaviour
     private Vector3 endWorldPos;
     private bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right};
-
+    private RaycastHit hit;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -46,18 +46,14 @@ public class MatchingDetection : MonoBehaviour
 
         if (direction.magnitude > 0.05f) // Threshold to ensure it’s a valid swipe
         {
-            print("------");
-            print("swipe is greater than magnitude");
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
                 if (direction.x > 0)
                 {
-                    print("right");
                     directionVector = Vector2Int.right;
                 }
                 else
                 {
-                    print("left");
                     directionVector = Vector2Int.left;
                 }
                 
@@ -66,22 +62,65 @@ public class MatchingDetection : MonoBehaviour
             {
                 if (direction.y > 0)
                 {
-                    print("up");
                     directionVector = Vector2Int.up;
                 }
                 else
                 {
-                    print("down");
                     directionVector = Vector2Int.down;
                 }
             }
             
             Vector2Int startingPos = new Vector2Int((int)Mathf.Round(startWorldPos.x), (int)Mathf.Round(startWorldPos.y));
 
-            Debug.Log($"startingPosition: {startingPos}");
-            Debug.Log($"destination: {startingPos + directionVector}");
+            bool foundAMatch = false;
 
-            TestMatch3(startingPos, directionVector);
+            if (TestMatch3(startingPos, directionVector))
+            {
+                foundAMatch = true;
+                print("foundAMatch");
+            }
+            if (TestMatch3(startingPos - directionVector, Vector2Int.zero - directionVector))
+            {
+                foundAMatch= true;
+                print("foundAMatch");
+            }
+            if (foundAMatch)
+            {//switching
+                print("switching");
+                Vector2Int selectedPos = startingPos;
+                Vector2Int sideEffectPos = startingPos + directionVector;
+
+                print(selectedPos);
+                print(sideEffectPos);
+
+                Ingredient selected = grid.currentGrid[startingPos.y,startingPos.x];
+                Ingredient sideEffect = grid.currentGrid[sideEffectPos.y, sideEffectPos.x];
+                grid.currentGrid[startingPos.y, startingPos.x] = sideEffect;
+                grid.currentGrid[sideEffectPos.y, sideEffectPos.x] = selected;
+
+                GameObject selectedObject;
+                GameObject sideEffectObject;
+
+                Vector3 selectedPos3;
+                Vector3 sideEffectPos3;
+
+                Physics.Raycast(new Vector3(selectedPos.x, selectedPos.y, -1), Vector3.forward, out hit, 1);
+                
+                selectedObject = hit.transform.gameObject;
+                selectedPos3 = selectedObject.transform.position;
+
+                Physics.Raycast(new Vector3(sideEffectPos.x, sideEffectPos.y, -1), Vector3.forward, out hit, 1);
+                
+                sideEffectObject = hit.transform.gameObject;
+                sideEffectPos3 = sideEffectObject.transform.position;
+                
+                selectedObject.transform.position = sideEffectPos3;
+                sideEffectObject.transform.position = selectedPos3;
+
+
+            }
+
+
         }
     }
 
@@ -95,6 +134,7 @@ public class MatchingDetection : MonoBehaviour
         List<Vector2Int> directionsToTest = alldirections.ToList();
         directionsToTest.Remove(opositeDirection);
         Vector2Int testpos;
+        bool foundAMatch = false;
         for (int i = 0; i < 3; i++)
         {
             testpos = newPosition + directionsToTest[i];
@@ -104,8 +144,11 @@ public class MatchingDetection : MonoBehaviour
             if (found1 && found2)
             {
                 print("found a match, type1");
+                
                 cookingEquipment.CurrentDish.points += TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch);//match
                 cookingEquipment.CurrentDish.AddIngredient(ingredientToMatch);
+                foundAMatch = true;
+                
             }
         }
         directionsToTest.Remove(direction);
@@ -124,10 +167,11 @@ public class MatchingDetection : MonoBehaviour
                     found = false;
                     print("found a match, type2");
                     cookingEquipment.CurrentDish.AddIngredient(ingredientToMatch);//match
+                    foundAMatch = true;
                 }
             }
         }
-        return false;
+        return foundAMatch;
     }
 
     private int TestOverkill(Vector2Int fromGridPos, Vector2Int direction, Ingredient ingredientToMatch)
@@ -164,10 +208,7 @@ public class MatchingDetection : MonoBehaviour
         {
             return false;
         }
-        //Debug.Log($"sampleing: {position}");
-        //Debug.Log($"result: {grid.currentGrid[position.x, position.y].IndexEquals(typeToTest)}");
-        //Debug.Log($"comparing this: {typeToTest.index}");
-        //Debug.Log($"to this: {grid.currentGrid[position.x, position.y].index}");
+        
 
         return grid.currentGrid[position.y, position.x].IndexEquals(typeToTest);
     }
