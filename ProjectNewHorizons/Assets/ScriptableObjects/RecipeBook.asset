@@ -15,35 +15,38 @@ MonoBehaviour:
   randomDishCountRangeMin: 1
   randomDishCountRangeMax: 3
   allrecipes:
-  - Name: xedxqw
+  - name: Guitar salad
     recipeIngredientsList:
-    - Name: aljsdo
+    - name: Red
       material: {fileID: 0}
       index: 0
-    - Name: askluvyouihr
+    - name: Blue
       material: {fileID: 0}
       index: 0
-  - Name: iuiyvdyiyive
+  - name: SCP 682
     recipeIngredientsList:
-    - Name: isdtbe
+    - name: Red
       material: {fileID: 0}
       index: 0
-    - Name: 'bbtbrb '
+    - name: Jordy
       material: {fileID: 0}
       index: 0
-  - Name: ihbrfe
+  - name: Just all of it
     recipeIngredientsList:
-    - Name: caeas
+    - name: Yellow
       material: {fileID: 0}
       index: 0
-    - Name: uigjyujmgy
+    - name: Red
       material: {fileID: 0}
       index: 0
-  - Name: xxctgvcrzzctvy
+    - name: Green
+      material: {fileID: 0}
+      index: 0
+  - name: Cheese
     recipeIngredientsList:
-    - Name: fdrjhg
+    - name: Green
       material: {fileID: 0}
       index: 0
-    - Name: haajsdxdhddj
+    - name: Magenta
       material: {fileID: 0}
       index: 0

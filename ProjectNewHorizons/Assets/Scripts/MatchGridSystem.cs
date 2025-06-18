@@ -18,10 +18,10 @@ public class MatchGridSystem : MonoBehaviour
     public bool autoResize;
 
     private System.Random rand;
-    [SerializeField, HideInInspector] Transform gridContainer;
 
     [Header("Debug stuff")]
     public MeshRenderer debugCube;
+    [SerializeField, HideInInspector] Transform gridContainer;
     private void OnValidate()
     {
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
@@ -54,10 +54,18 @@ public class MatchGridSystem : MonoBehaviour
 
     /// <summary>
     /// Set grid requirements from a dish, giving it the ingredients of that dish as required. 
-    /// total means the total amount of combinations to spawn
+    /// total means the total amount of combinations to spawn.
+    /// Leave seed as default / 0 to use a random seed
     /// </summary>
-    public void SetDish(Dish dish, int total)
+    public void SetDish(Dish dish, int total, int seed = 0)
     {
+        if (seed == 0)
+        {
+            seed = Random.Range(int.MinValue, int.MaxValue);
+            this.seed = seed;
+            rand = new System.Random(seed);
+        }
+
         Ingredient[] ingredients = dish.dishType.recipeIngredientsList;
         requiredIngredients = ingredients;
         totalIngredientQTY = Mathf.Max(ingredients.Length, total);
@@ -73,6 +81,9 @@ public class MatchGridSystem : MonoBehaviour
         Generate();
     }
 
+    /// <summary>
+    /// Generates the grid and if needed display cubes
+    /// </summary>
     [NaughtyAttributes.Button]
     void Generate()
     {
@@ -108,10 +119,7 @@ public class MatchGridSystem : MonoBehaviour
             {
                 DestroyImmediate(gridContainer.gameObject);
             }
-            else
-            {
-                Destroy(gridContainer.gameObject);
-            }
+            else Destroy(gridContainer.gameObject);
         }
     }
 
@@ -157,7 +165,9 @@ public class MatchGridSystem : MonoBehaviour
                 }
                 if (x >= 2 && currentGrid[y, x-1].IndexEquals(currentGrid[y, x-2]))
                 {
-                    indexesToRemove.Add(currentGrid[y, x - 1].index);
+                    int toAdd = currentGrid[y, x - 1].index;
+                    if (!indexesToRemove.Contains(toAdd))
+                        indexesToRemove.Add(toAdd);
                 }
                 // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
                 List<float> localWeights = new(weights);
