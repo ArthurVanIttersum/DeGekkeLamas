@@ -16,6 +16,10 @@ public class CustomerGenerator : MonoBehaviour
     public Vector3 spawnPosition;
     
     private GameObject newCustomer;
+
+    /// <summary>
+    /// Spawns next customer from the antiqueue a random, removing it fromm antiqueue and adding it to queue
+    /// </summary>
     public void SpawnNewCustomer()
     {
         availableCustomerCount = customerPrefabs.Count - customerQue.Count;
@@ -25,6 +29,9 @@ public class CustomerGenerator : MonoBehaviour
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
     }
 
+    /// <summary>
+    /// Assign generated customer an order
+    /// </summary>
     public void GiveCustomerOrder()
     {
         print(newCustomer);
@@ -33,6 +40,9 @@ public class CustomerGenerator : MonoBehaviour
         newCustomer.GetOrAddComponent<Customer>().thisCustomersOrder = newlyGeneratedOrder;
     }
 
+    /// <summary>
+    /// customerQue.Contains(teacher);
+    /// </summary>
     public bool CustomerInQue(GameObject teacher)
     {
         for (int i = 0; i < customerQue.Count; i++)
@@ -52,6 +62,9 @@ public class CustomerGenerator : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Spawns until every customer is spawned, to test
+    /// </summary>
     private IEnumerator TestSpawning()
     {
         int count = customerPrefabs.Count;
