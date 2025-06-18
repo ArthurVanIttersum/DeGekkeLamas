@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using System.Linq;
 
 public class MatchGridSystem : MonoBehaviour
@@ -42,7 +41,7 @@ public class MatchGridSystem : MonoBehaviour
             UnityEditor.EditorApplication.delayCall += () => _onValidate();
     }
     /// <summary>
-    /// this feels like a crappy solution but i cant call destroy in onvalidate
+    /// this feels like a crappy solution but i cant call destroy in OnValidate
     /// </summary>
     void _onValidate()
     {
@@ -66,7 +65,6 @@ public class MatchGridSystem : MonoBehaviour
         DestroyOldGrid();
         // Generate grid, regenerate if no possible connections
         GenerateGrid();
-        GenerateDisplay();
         while (!SolubilityCheck(out int[] ingredientsGenerated) || !EnoughIngredientsPresent(requiredIngredients, ingredientsGenerated))
         {
             Debug.Log("Invalid grid, regenerated with random seed");
@@ -75,9 +73,12 @@ public class MatchGridSystem : MonoBehaviour
             GenerateGrid();
         }
         DestroyOldGrid();
-        GenerateDisplay();
+        if (debugCube != null) GenerateDisplay();
     }
 
+    /// <summary>
+    /// Destroys old grid display
+    /// </summary>
     void DestroyOldGrid()
     {
         if (gridContainer != null)
@@ -113,7 +114,7 @@ public class MatchGridSystem : MonoBehaviour
         {
             quantities[ingredient.index]++;
         }
-        List<float> weights = new();
+        List<float> weights = new(); // Weights is used for making ingredients in the required list have a higher ratio in the generated grid
         int total = MathTools.ArrayTotal(quantities);
         for(int i = 0; i < ingredientTypes.Length; i++)
         {
@@ -137,7 +138,7 @@ public class MatchGridSystem : MonoBehaviour
                 {
                     indexesToRemove.Add(currentGrid[y, x - 1].index);
                 }
-
+                // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
                 List<float> localWeights = new(weights);
                 indexesToRemove.Sort();
                 indexesToRemove.Reverse();
@@ -193,7 +194,7 @@ public class MatchGridSystem : MonoBehaviour
                 if (x > 0) valueQTYs[currentGrid[y, x-1].index]++;
                 if (x < length-1) valueQTYs[currentGrid[y, x+1].index]++;
                 
-                if (Mathf.Max(valueQTYs) >= 3)
+                if (Mathf.Max(valueQTYs) >= 3) // 3 neighbours means possible connection
                 {
                     DebugExtension.DebugWireSphere(new(x, y, -1), Color.magenta, .25f, 10);
                     //return true;
@@ -243,6 +244,7 @@ public class MatchGridSystem : MonoBehaviour
         return possibleMoves > 0;
         //return false;
     }
+
     /// <summary>
     /// Checks if all required ingredients are present in the int[], using the ingredients invisible index
     /// </summary>
@@ -251,9 +253,7 @@ public class MatchGridSystem : MonoBehaviour
         foreach (Ingredient ingredient in required)
         {
             if (quantities[ingredient.index] > 0)
-            {
                 quantities[ingredient.index]--;
-            }
             else return false;
         }
         return true;
@@ -297,7 +297,7 @@ public class MatchGridSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Very basic display for the grid
+    /// Very basic display for the grid, using materials on cubes
     /// </summary>
     void GenerateDisplay()
     {
@@ -315,6 +315,9 @@ public class MatchGridSystem : MonoBehaviour
         Debug.Log("Generated grid display!");
     }
 
+    /// <summary>
+    /// Readjust weights to have a different total, while keeping their ratio
+    /// </summary>
     static float[] ReadjustWeights(float[] original, float newTotal)
     {
         float oldTotal = MathTools.ArrayTotal(original);
