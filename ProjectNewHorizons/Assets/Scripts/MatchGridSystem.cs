@@ -8,7 +8,7 @@ public class MatchGridSystem : MonoBehaviour
 {
     public Ingredient[] ingredientTypes;
     public Vector2Int gridDimensions;
-    Ingredient[,] currentGrid;
+    public Ingredient[,] currentGrid;
     public int seed;
 
     public bool autoGenerate;

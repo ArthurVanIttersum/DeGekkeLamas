@@ -33,11 +33,11 @@ public class CustomerGenerator : MonoBehaviour
         newCustomer.GetOrAddComponent<Customer>().thisCustomersOrder = newlyGeneratedOrder;
     }
 
-    public bool CustomerInQue(GameObject teacher)
+    public bool CustomerInQue(GameObject customer)
     {
         for (int i = 0; i < customerQue.Count; i++)
         {
-            if (customerQue[i] == teacher)
+            if (customerQue[i] == customer)
             {
                 return true;
             }
