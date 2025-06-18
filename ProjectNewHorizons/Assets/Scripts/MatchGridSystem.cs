@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using System.Linq;
 
 public class MatchGridSystem : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class MatchGridSystem : MonoBehaviour
 
     public bool autoGenerate;
 
+    [Header("Requirements")]
+    public Ingredient[] requiredIngredients;
+    public int totalIngredientQTY;
+    public bool autoResize;
+
     private System.Random rand;
     [SerializeField, HideInInspector] Transform gridContainer;
 
@@ -19,6 +26,14 @@ public class MatchGridSystem : MonoBehaviour
     private void OnValidate()
     {
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
+        for(int i = 0;i < requiredIngredients.Length; i++)
+        {
+            requiredIngredients[i].index = ingredientTypes[ 
+                Ingredient.FindByName(ingredientTypes, requiredIngredients[i].name) 
+                ].index;
+        }
+
+        totalIngredientQTY = Mathf.Max(totalIngredientQTY, requiredIngredients.Length);
 
         // Grid must always be big enough for connections to be possible
         gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
@@ -41,20 +56,26 @@ public class MatchGridSystem : MonoBehaviour
     [NaughtyAttributes.Button]
     void Generate()
     {
+        if (autoResize)
+        {
+            gridDimensions = new(totalIngredientQTY+1, totalIngredientQTY + 1);
+            gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
+        }
+
         Initialize();
         DestroyOldGrid();
         // Generate grid, regenerate if no possible connections
         GenerateGrid();
         GenerateDisplay();
-        while (!SolubilityCheck())
+        while (!SolubilityCheck(out int[] ingredientsGenerated) || !EnoughIngredientsPresent(requiredIngredients, ingredientsGenerated))
         {
             Debug.Log("Invalid grid, regenerated with random seed");
             seed = Random.Range(int.MinValue, int.MaxValue);
             rand = new System.Random(seed);
-            DestroyOldGrid();
             GenerateGrid();
-            GenerateDisplay();
         }
+        DestroyOldGrid();
+        GenerateDisplay();
     }
 
     void DestroyOldGrid()
@@ -87,6 +108,19 @@ public class MatchGridSystem : MonoBehaviour
     /// </summary>
     void GenerateGrid()
     {
+        int[] quantities = new int[ingredientTypes.Length];
+        foreach(var ingredient in requiredIngredients)
+        {
+            quantities[ingredient.index]++;
+        }
+        List<float> weights = new();
+        int total = MathTools.ArrayTotal(quantities);
+        for(int i = 0; i < ingredientTypes.Length; i++)
+        {
+            weights.Add((quantities[i]+1) / (float)total * 100);
+        }
+        Debug.Log(weights.Count);
+
         for (int y = 0; y < currentGrid.GetLength(0); y++)
         {
             for(int x = 0; x < currentGrid.GetLength(1); x++)
@@ -94,29 +128,59 @@ public class MatchGridSystem : MonoBehaviour
                 List<Ingredient> possibleIngredients = new(ingredientTypes);
 
                 // Do not spawn type if this would create 3 in a row
-                if (y >= 2 && currentGrid[y-1, x].Equals(currentGrid[y-2, x]))
+                List<int> indexesToRemove = new();
+                if (y >= 2 && currentGrid[y-1, x].IndexEquals(currentGrid[y-2, x]))
                 {
-                    possibleIngredients.Remove(currentGrid[y-1, x]);
+                    indexesToRemove.Add(currentGrid[y - 1, x].index);
                 }
-                if (x >= 2 && currentGrid[y, x-1].Equals(currentGrid[y, x-2]))
+                if (x >= 2 && currentGrid[y, x-1].IndexEquals(currentGrid[y, x-2]))
                 {
-                    possibleIngredients.Remove(currentGrid[y, x-1]);
+                    indexesToRemove.Add(currentGrid[y, x - 1].index);
                 }
 
-                currentGrid[y, x] = possibleIngredients[rand.Next(0, possibleIngredients.Count)];
+                List<float> localWeights = new(weights);
+                indexesToRemove.Sort();
+                indexesToRemove.Reverse();
+                for(int i = 0; i < indexesToRemove.Count; i++)
+                {
+                    int index = indexesToRemove[i];
+                    possibleIngredients.RemoveAt(index);
+                    localWeights.RemoveAt(index);
+                }
+                //currentGrid[y, x] = possibleIngredients[rand.Next(0, possibleIngredients.Count)];
+                localWeights = ReadjustWeights(localWeights.ToArray(), 100).ToList();
+                currentGrid[y, x] = WeightedRandomOption(possibleIngredients.ToArray(), localWeights.ToArray());
             }
         }
         Debug.Log("Generated grid!");
+    }
+    /// <summary>
+    /// Gets a random from a list, the values of all weights in the weight list should add up to 100
+    /// </summary>
+    T WeightedRandomOption<T>(T[] possibilities, float[] weights)
+    {
+        if (possibilities.Length != weights.Length) Debug.LogWarning("arrays are different lengths");
+
+        int value = rand.Next(0, 100);
+        float currentweight = 0;
+        for ( int i = 0; i < possibilities.Length; i++)
+        {
+            currentweight += weights[i];
+            if (currentweight > value) return possibilities[i];
+        }
+        Debug.Log("It failed for mysterious reasons");
+        return default;
     }
 
     /// <summary>
     /// Checks if there are possible matches
     /// </summary>
-    bool SolubilityCheck()
+    bool SolubilityCheck(out int[] ingredientsGenerated)
     {
         int height = currentGrid.GetLength(0);
         int length = currentGrid.GetLength(1);
-        //int possibleMoves = 0;
+        ingredientsGenerated = new int[ingredientTypes.Length];
+        int possibleMoves = 0;
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < length; x++)
@@ -132,9 +196,9 @@ public class MatchGridSystem : MonoBehaviour
                 if (Mathf.Max(valueQTYs) >= 3)
                 {
                     DebugExtension.DebugWireSphere(new(x, y, -1), Color.magenta, .25f, 10);
-                    return true;
-                    //possibleMoves++;
-                    //continue;
+                    //return true;
+                    possibleMoves++;
+                    continue;
                 }
 
                 // Possible connections from side
@@ -143,37 +207,56 @@ public class MatchGridSystem : MonoBehaviour
                     if (axis != 0 && x > 0 && currentGrid[y, x-1].index == value) // xMin
                     {
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        return true;
-                        //possibleMoves++;
-                        //continue;
+                        //return true;
+                        ingredientsGenerated[value]++;
+                        possibleMoves++;
+                        continue;
                     }
                     if (axis != 1 && x < length-2 && currentGrid[y, x+1].index == value) // xPlus
                     {
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        return true;
-                        //possibleMoves++;
-                        //continue;
+                        //return true;
+                        ingredientsGenerated[value]++;
+                        possibleMoves++;
+                        continue;
                     }
                     if (axis != 2 && y > 0 && currentGrid[y-1, x].index == value) // yMin
                     {
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        return true;
-                        //possibleMoves++;
-                        //continue;
+                        //return true;
+                        ingredientsGenerated[value]++;
+                        possibleMoves++;
+                        continue;
                     }
                     if (axis != 3 && y < height-2 && currentGrid[y+1, x].index == value) // yPlus
                     {
                         DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
-                        return true;
-                        //possibleMoves++;
-                        //continue;
+                        //return true;
+                        ingredientsGenerated[value]++;
+                        possibleMoves++;
+                        continue;
                     }
                 }
             }
         }
-        //Debug.Log(possibleMoves);
-        //return possibleMoves > 0;
-        return false;
+        Debug.Log(possibleMoves);
+        return possibleMoves > 0;
+        //return false;
+    }
+    /// <summary>
+    /// Checks if all required ingredients are present in the int[], using the ingredients invisible index
+    /// </summary>
+    bool EnoughIngredientsPresent(Ingredient[] required, int[] quantities)
+    {
+        foreach (Ingredient ingredient in required)
+        {
+            if (quantities[ingredient.index] > 0)
+            {
+                quantities[ingredient.index]--;
+            }
+            else return false;
+        }
+        return true;
     }
 
     /// <summary>
@@ -185,25 +268,25 @@ public class MatchGridSystem : MonoBehaviour
         axis = 0;
         ingredientValue = 0;
 
-        if (x >= 2 && currentGrid[y, x - 1].Equals(currentGrid[y, x - 2])) // xMin
+        if (x >= 2 && currentGrid[y, x - 1].IndexEquals(currentGrid[y, x - 2])) // xMin
         {
             axis = 0;
             ingredientValue = currentGrid[y, x-1].index;
             return true;
         }
-        if (x <= currentGrid.GetLength(1)-3 && currentGrid[y, x + 1].Equals(currentGrid[y, x + 2])) // xPlus
+        if (x <= currentGrid.GetLength(1)-3 && currentGrid[y, x + 1].IndexEquals(currentGrid[y, x + 2])) // xPlus
         {
             axis = 1;
             ingredientValue = currentGrid[y, x+1].index;
             return true;
         }
-        if (y >= 2 && currentGrid[y - 1, x].Equals(currentGrid[y - 2, x])) // yMin
+        if (y >= 2 && currentGrid[y - 1, x].IndexEquals(currentGrid[y - 2, x])) // yMin
         {
             axis = 2;
             ingredientValue = currentGrid[y-1, x].index;
             return true;
         }
-        if (y <= currentGrid.GetLength(0)-3 && currentGrid[y + 1, x].Equals(currentGrid[y + 2, x])) // yMax
+        if (y <= currentGrid.GetLength(0)-3 && currentGrid[y + 1, x].IndexEquals(currentGrid[y + 2, x])) // yMax
         {
             axis = 3;
             ingredientValue = currentGrid[y+1, x].index;
@@ -226,9 +309,21 @@ public class MatchGridSystem : MonoBehaviour
             {
                 var spawned = Instantiate(debugCube, new(x, y), Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
-                spawned.gameObject.name = $"{x}, {y}";
+                spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
             }
         }
         Debug.Log("Generated grid display!");
+    }
+
+    static float[] ReadjustWeights(float[] original, float newTotal)
+    {
+        float oldTotal = MathTools.ArrayTotal(original);
+        float[] result = original.ToArray();
+        for (int i = 0; i < original.Length; i++)
+        {
+            result[i] = result[i] / oldTotal * newTotal;
+        }
+
+        return result;
     }
 }

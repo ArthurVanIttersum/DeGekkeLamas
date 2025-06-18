@@ -13,14 +13,14 @@ public class RecipeBook : ScriptableObject
 public class Recipe
 {
     [SerializeField]
-    public string Name;
+    public string name;
     public Ingredient[] recipeIngredientsList;
 
     public bool IngredientInRecipe(Ingredient ingredientToCompare)
     {
         for (int i = 0; i < recipeIngredientsList.Length; i++)
         {
-            if (Ingredient.Equals(ingredientToCompare, recipeIngredientsList[i]))
+            if (ingredientToCompare.name == recipeIngredientsList[i].name)
             {
                 return true;
             }
