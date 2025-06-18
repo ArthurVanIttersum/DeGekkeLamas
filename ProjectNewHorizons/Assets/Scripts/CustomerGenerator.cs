@@ -13,7 +13,10 @@ public class CustomerGenerator : MonoBehaviour
     //when a customer is not in the que it's in the anti que.
     //this way i can pick a random customer from the anti que.
     [HideInInspector] public int availableCustomerCount;
-    public Vector3 spawnPosition;
+    [Header("Spawn position")]
+    public Vector2 spawnRangeX;
+    public Vector2 spawnRangeY;
+    public Vector2 spawnRangeZ;
     
     private GameObject newCustomer;
 
@@ -24,7 +27,13 @@ public class CustomerGenerator : MonoBehaviour
     {
         availableCustomerCount = customerPrefabs.Count - customerQue.Count;
         int randomCustomer = Random.Range(0, availableCustomerCount);
-        newCustomer = Instantiate(customerAntiQue[randomCustomer], spawnPosition, Quaternion.identity);
+        Vector3 spawnPosition = new(
+            Random.Range(spawnRangeX.x, spawnRangeX.y),
+            Random.Range(spawnRangeY.x, spawnRangeY.y),
+            Random.Range(spawnRangeZ.x, spawnRangeZ.y)
+            );
+        GameObject toSpawn = customerAntiQue[randomCustomer];
+        newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation);
         customerQue.Add(newCustomer);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
     }
