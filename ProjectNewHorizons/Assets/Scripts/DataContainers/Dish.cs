@@ -8,7 +8,6 @@ public class Dish
     
     public Recipe dishType;
     private List<Ingredient> currentIngredients = new();
-    public int points;
     public int amountOfCorrectIngredients;
     public int amountOfInCorrectIngredients;
     public int amountOfMissingIngredients;
@@ -54,7 +53,7 @@ public class Dish
     {
         if (IngredientInDish(IngredientToAdd))
         {
-            points += 1000;
+            ScoreManager.instance.IncreaseScore(1000);
         }
         else
         {

@@ -18,6 +18,7 @@ public class GridUIRenderer : MonoBehaviour
     public void GenerateUI()
     {
         DestroyOldDisplay();
+        gridParent.gameObject.SetActive(true);
 
         float percent = 1f / matchGridSystem.gridDimensions.x;
         Vector2 size = gridParent.sizeDelta;
@@ -51,5 +52,10 @@ public class GridUIRenderer : MonoBehaviour
         }
         generated.Clear();
         print("Cleared old display");
+    }
+
+    void ExitScreen()
+    {
+        gridParent.gameObject.SetActive(false);
     }
 }

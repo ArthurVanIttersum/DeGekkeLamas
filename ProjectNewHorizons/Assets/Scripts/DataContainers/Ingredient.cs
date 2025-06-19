@@ -1,8 +1,10 @@
 using UnityEngine;
 
-
+/// <summary>
+/// Contains ingredient data
+/// </summary>
 [System.Serializable]
-public struct Ingredient // Contains ingredient data
+public struct Ingredient 
 {
     public string name;
     public Texture texture;

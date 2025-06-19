@@ -8,7 +8,7 @@ public class Order
 {
     public List<Dish> dishes = new();
     
-    [HideInInspector] public int points = 0;
+    //[HideInInspector] public int points = 0;
     [HideInInspector] public int amountOfCorrectIngredients = 0;
     [HideInInspector] public int amountOfInCorrectIngredients = 0;
     [HideInInspector] public int amountOfMissingIngredients = 0;
@@ -18,7 +18,7 @@ public class Order
     {
         for (int i = 0; i < dishes.Count; i++)
         {
-            points += dishes[i].points;
+            //points += dishes[i].points;
             amountOfCorrectIngredients += dishes[i].amountOfCorrectIngredients;
             amountOfInCorrectIngredients += dishes[i].amountOfInCorrectIngredients;
             amountOfMissingIngredients += dishes[i].amountOfMissingIngredients;

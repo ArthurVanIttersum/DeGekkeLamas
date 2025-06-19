@@ -8,8 +8,12 @@ public class MatchGridSystem : MonoBehaviour
 {
     public Ingredient[] ingredientTypes;
     public Vector2Int gridDimensions;
+    /// <summary>
+    /// The first digit in the array represents Y value, the 2nd digit X value, so currentGrid[y, x]
+    /// </summary>
     public Ingredient[,] currentGrid;
     public int seed;
+    public Vector3 spawnPosition;
 
     public bool autoGenerate;
 
@@ -39,14 +43,7 @@ public class MatchGridSystem : MonoBehaviour
         gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
 
         if (autoGenerate)
-            UnityEditor.EditorApplication.delayCall += () => _onValidate();
-    }
-    /// <summary>
-    /// this feels like a crappy solution but i cant call destroy in OnValidate
-    /// </summary>
-    void _onValidate()
-    {
-        Generate();
+            UnityEditor.EditorApplication.delayCall += () => Generate();
     }
     void Start()
     {
@@ -227,7 +224,7 @@ public class MatchGridSystem : MonoBehaviour
                 
                 if (Mathf.Max(valueQTYs) >= 3) // 3 neighbours means possible connection
                 {
-                    DebugExtension.DebugWireSphere(new(x, y, -1), Color.magenta, .25f, 10);
+                    DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, Color.magenta, .25f, 10);
                     //return true;
                     possibleMoves++;
                     continue;
@@ -238,7 +235,7 @@ public class MatchGridSystem : MonoBehaviour
                 {
                     if (axis != 0 && x > 0 && currentGrid[y, x-1].index == value) // xMin
                     {
-                        DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
                         //return true;
                         ingredientsGenerated[value]++;
                         possibleMoves++;
@@ -246,7 +243,7 @@ public class MatchGridSystem : MonoBehaviour
                     }
                     if (axis != 1 && x < length-2 && currentGrid[y, x+1].index == value) // xPlus
                     {
-                        DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
                         //return true;
                         ingredientsGenerated[value]++;
                         possibleMoves++;
@@ -254,7 +251,7 @@ public class MatchGridSystem : MonoBehaviour
                     }
                     if (axis != 2 && y > 0 && currentGrid[y-1, x].index == value) // yMin
                     {
-                        DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
                         //return true;
                         ingredientsGenerated[value]++;
                         possibleMoves++;
@@ -262,7 +259,7 @@ public class MatchGridSystem : MonoBehaviour
                     }
                     if (axis != 3 && y < height-2 && currentGrid[y+1, x].index == value) // yPlus
                     {
-                        DebugExtension.DebugWireSphere(new(x, y, -1), ingredientTypes[value].material.color, .25f, 10);
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
                         //return true;
                         ingredientsGenerated[value]++;
                         possibleMoves++;
@@ -338,7 +335,7 @@ public class MatchGridSystem : MonoBehaviour
         {
             for (int x = 0; x < currentGrid.GetLength(1); x++)
             {
-                var spawned = Instantiate(debugCube, new(x, y), Quaternion.identity, gridContainer.transform);
+                var spawned = Instantiate(debugCube, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
                 spawned.GetOrAddComponent<GridPosition>().index = new(x, y);

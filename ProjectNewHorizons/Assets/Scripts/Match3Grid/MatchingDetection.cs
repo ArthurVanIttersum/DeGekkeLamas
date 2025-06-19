@@ -147,7 +147,7 @@ public class MatchingDetection : MonoBehaviour
             {
                 print("found a match, type1");
                 
-                cookingEquipment.CurrentDish.points += TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch);//match
+                ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
                 cookingEquipment.CurrentDish.AddIngredient(ingredientToMatch);
                 foundAMatch = true;
                 
