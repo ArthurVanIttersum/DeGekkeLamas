@@ -14,7 +14,7 @@ public class MatchingDetection : MonoBehaviour
     private bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right};
     
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
