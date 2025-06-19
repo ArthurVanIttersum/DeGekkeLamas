@@ -8,6 +8,7 @@ public struct Ingredient // Contains ingredient data
     public Texture texture;
     public Material material;
     [HideInInspector] public int index;
+    public GameObject cubeForDisplay;
 
     /// <summary>
     /// Checks if 2 ingredients are the same by using their hidden index

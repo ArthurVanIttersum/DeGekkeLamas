@@ -342,6 +342,7 @@ public class MatchGridSystem : MonoBehaviour
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
                 spawned.GetOrAddComponent<GridPosition>().index = new(x, y);
+                currentGrid[y, x].cubeForDisplay = spawned.gameObject;
             }
         }
         Debug.Log("Generated grid display!");

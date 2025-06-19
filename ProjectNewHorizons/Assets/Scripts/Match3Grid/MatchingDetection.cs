@@ -8,8 +8,9 @@ public class MatchingDetection : MonoBehaviour
     public CookingEquipment cookingEquipment;
     public Camera mainCamera; // Assign the main camera
     public MatchGridSystem grid;
-    private Vector3 startWorldPos;
-    private Vector3 endWorldPos;
+    private Vector2Int GridStartPos;
+    private Vector3 startScreenPos;
+    private Vector3 endScreenPos;
     private bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right};
     private RaycastHit hit;
@@ -21,7 +22,11 @@ public class MatchingDetection : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
-                startWorldPos = info.point;
+                Vector2 gridData = info.transform.GetComponent<GridPosition>().index;
+
+                GridStartPos.x = (int)gridData.x;
+                GridStartPos.y = (int)gridData.y;
+                startScreenPos = Input.mousePosition;
             }
             swiping = true;
         }
@@ -31,7 +36,7 @@ public class MatchingDetection : MonoBehaviour
             Debug.DrawRay(ray.origin, ray.direction);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
-                endWorldPos = info.point;
+                endScreenPos = Input.mousePosition;
             }
             swiping = false;
             SwipeDetected();
@@ -40,7 +45,7 @@ public class MatchingDetection : MonoBehaviour
 
     void SwipeDetected()
     {
-        Vector2 direction = endWorldPos - startWorldPos;
+        Vector2 direction = endScreenPos - startScreenPos;
         Vector2Int directionVector;
         
 
@@ -69,8 +74,8 @@ public class MatchingDetection : MonoBehaviour
                     directionVector = Vector2Int.down;
                 }
             }
-            
-            Vector2Int startingPos = new Vector2Int((int)Mathf.Round(startWorldPos.x), (int)Mathf.Round(startWorldPos.y));
+
+            Vector2Int startingPos = GridStartPos;
 
             bool foundAMatch = false;
 
@@ -98,29 +103,26 @@ public class MatchingDetection : MonoBehaviour
                 grid.currentGrid[startingPos.y, startingPos.x] = sideEffect;
                 grid.currentGrid[sideEffectPos.y, sideEffectPos.x] = selected;
 
-                GameObject selectedObject;
-                GameObject sideEffectObject;
+                GameObject selectedObject = selected.cubeForDisplay;
+                GameObject sideEffectObject = sideEffect.cubeForDisplay;
 
                 Vector3 selectedPos3;
                 Vector3 sideEffectPos3;
 
-                Physics.Raycast(new Vector3(selectedPos.x, selectedPos.y, -1), Vector3.forward, out hit, 1);
-                
-                selectedObject = hit.transform.gameObject;
                 selectedPos3 = selectedObject.transform.position;
 
-                Physics.Raycast(new Vector3(sideEffectPos.x, sideEffectPos.y, -1), Vector3.forward, out hit, 1);
-                
-                sideEffectObject = hit.transform.gameObject;
                 sideEffectPos3 = sideEffectObject.transform.position;
                 
                 selectedObject.transform.position = sideEffectPos3;
                 sideEffectObject.transform.position = selectedPos3;
 
+                Vector2 selectedIndexData = selectedObject.GetComponent<GridPosition>().index;
+                Vector2 SideEffectIndexData = sideEffectObject.GetComponent<GridPosition>().index;
+
+                selectedObject.GetComponent<GridPosition>().index = SideEffectIndexData;
+                sideEffectObject.GetComponent<GridPosition>().index = selectedIndexData;
 
             }
-
-
         }
     }
 
