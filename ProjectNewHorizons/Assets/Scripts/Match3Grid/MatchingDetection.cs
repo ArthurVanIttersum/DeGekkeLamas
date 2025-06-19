@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class MatchingDetection : MonoBehaviour
 {
-    public CookingEquipment cookingEquipment;
+    public Dish currentDish;
     public Camera mainCamera; // Assign the main camera
     public MatchGridSystem grid;
     private Vector2Int GridStartPos;
@@ -13,13 +13,14 @@ public class MatchingDetection : MonoBehaviour
     private Vector3 endScreenPos;
     private bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right};
-    private RaycastHit hit;
+    
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction, Color.red, 50f);
+            
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 Vector2 gridData = info.transform.GetComponent<GridPosition>().index;
@@ -32,8 +33,8 @@ public class MatchingDetection : MonoBehaviour
         }
         else if (swiping && Input.GetMouseButtonUp(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction);
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue, 50f);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 endScreenPos = Input.mousePosition;
@@ -148,7 +149,7 @@ public class MatchingDetection : MonoBehaviour
                 print("found a match, type1");
                 
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
-                cookingEquipment.CurrentDish.AddIngredient(ingredientToMatch);
+                currentDish.AddIngredient(ingredientToMatch);
                 foundAMatch = true;
                 
             }
@@ -168,7 +169,7 @@ public class MatchingDetection : MonoBehaviour
                 {
                     found = false;
                     print("found a match, type2");
-                    cookingEquipment.CurrentDish.AddIngredient(ingredientToMatch);//match
+                    currentDish.AddIngredient(ingredientToMatch);//match
                     foundAMatch = true;
                 }
             }
