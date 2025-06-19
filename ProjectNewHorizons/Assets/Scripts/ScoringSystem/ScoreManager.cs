@@ -23,6 +23,7 @@ public class ScoreManager : MonoBehaviour
         score = 0;
     }
 
+
     private void Awake()
     {
         if (instance == null) instance = this;
