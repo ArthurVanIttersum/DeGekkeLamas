@@ -79,7 +79,7 @@ public class MatchingDetection : MonoBehaviour
                 foundAMatch = true;
                 print("foundAMatch");
             }
-            if (TestMatch3(startingPos - directionVector, Vector2Int.zero - directionVector))
+            if (TestMatch3(startingPos + directionVector, Vector2Int.zero - directionVector))
             {
                 foundAMatch= true;
                 print("foundAMatch");
@@ -127,7 +127,7 @@ public class MatchingDetection : MonoBehaviour
 
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
-        
+        print(fromGridPos);
         Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
         Vector2Int newPosition = fromGridPos + direction;
         Vector2Int opositeDirection = Vector2Int.zero - direction;
@@ -196,7 +196,7 @@ public class MatchingDetection : MonoBehaviour
         {
             return false;
         }
-        if (position.x > grid.gridDimensions.x)
+        if (position.x > grid.gridDimensions.x - 1)
         {
             return false;
         }
@@ -204,7 +204,7 @@ public class MatchingDetection : MonoBehaviour
         {
             return false;
         }
-        if (position.y > grid.gridDimensions.y)
+        if (position.y > grid.gridDimensions.y - 1)
         {
             return false;
         }
