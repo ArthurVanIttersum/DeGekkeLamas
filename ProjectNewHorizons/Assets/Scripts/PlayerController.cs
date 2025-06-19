@@ -6,12 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent agent;
     public MatchGridSystem matchGridSystem;
+
+    /// <summary>
+    /// Use this variable to lock player moment and interactions when in match3 minigame
+    /// </summary>
+    [HideInInspector] public bool movementLocked;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
     }
     private void Update()
     {
+        if (movementLocked) return;
+
         // Touchscreen is also considered mouse button 0
         if (Input.GetMouseButtonDown(0))
         {
@@ -29,6 +36,11 @@ public class PlayerController : MonoBehaviour
                         List<Dish> dishes = customer.thisCustomersOrder.dishes;
                         if (matchGridSystem != null) matchGridSystem.SetDish(dishes[0], dishes.Count+2);
                         Debug.Log("Received order from customer");
+                    }
+                    // Open oven for match3 minigame
+                    else if (info.collider.gameObject.TryGetComponent(out GridUIRenderer renderer))
+                    {
+                        renderer.GenerateUI();
                     }
 
 

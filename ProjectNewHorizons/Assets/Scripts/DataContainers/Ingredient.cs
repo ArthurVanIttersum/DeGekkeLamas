@@ -5,6 +5,7 @@ using UnityEngine;
 public struct Ingredient // Contains ingredient data
 {
     public string name;
+    public Texture texture;
     public Material material;
     [HideInInspector] public int index;
 

@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class MatchGridSystem : MonoBehaviour
 {
@@ -149,7 +150,6 @@ public class MatchGridSystem : MonoBehaviour
         {
             weights.Add((quantities[i]+1) / (float)total * 100);
         }
-        Debug.Log(weights.Count);
 
         for (int y = 0; y < currentGrid.GetLength(0); y++)
         {
@@ -271,7 +271,7 @@ public class MatchGridSystem : MonoBehaviour
                 }
             }
         }
-        Debug.Log(possibleMoves);
+        //Debug.Log(possibleMoves);
         return possibleMoves > 0;
         //return false;
     }
@@ -341,6 +341,7 @@ public class MatchGridSystem : MonoBehaviour
                 var spawned = Instantiate(debugCube, new(x, y), Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
+                spawned.GetOrAddComponent<GridPosition>().index = new(x, y);
             }
         }
         Debug.Log("Generated grid display!");
