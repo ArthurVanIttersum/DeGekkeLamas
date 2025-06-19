@@ -8,6 +8,9 @@ public class MatchGridSystem : MonoBehaviour
 {
     public Ingredient[] ingredientTypes;
     public Vector2Int gridDimensions;
+    /// <summary>
+    /// The first digit in the array represents Y value, the 2nd digit X value, so currentGrid[y, x]
+    /// </summary>
     public Ingredient[,] currentGrid;
     public int seed;
     public Vector3 spawnPosition;
