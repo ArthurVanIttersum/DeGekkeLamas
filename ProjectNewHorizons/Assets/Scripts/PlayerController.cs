@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        if (movementLocked) return;
+        if (movementLocked || GridActivator.isPlayingMatch3) return;
 
         // Touchscreen is also considered mouse button 0
         if (Input.GetMouseButtonDown(0))
