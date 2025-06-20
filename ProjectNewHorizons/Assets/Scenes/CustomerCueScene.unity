@@ -282,7 +282,9 @@ MonoBehaviour:
   customerQue: []
   customerAntiQue: []
   availableCustomerCount: 0
-  spawnPosition: {x: 0, y: 0, z: 0}
+  spawnRangeX: {x: 0, y: 5.02}
+  spawnRangeY: {x: 0, y: 0}
+  spawnRangeZ: {x: 0, y: 6.92}
 --- !u!4 &896311494
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 1435573585}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 4, y: -1, z: 3}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
