@@ -139,6 +139,10 @@ public class MatchingDetection : MonoBehaviour
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
         print(fromGridPos);
+
+        // Stop execution if out of bounds
+        if (TestIfOutOfBounds(fromGridPos)) return false;
+
         Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
         Vector2Int newPosition = fromGridPos + direction;
         Vector2Int opositeDirection = Vector2Int.zero - direction;
