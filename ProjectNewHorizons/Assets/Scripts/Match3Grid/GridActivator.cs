@@ -8,6 +8,6 @@ public class GridActivator : MonoBehaviour
     public void ToggleGame()
     {
         isPlayingMatch3 = !isPlayingMatch3;
-        gridObject.SetActive( gridObject.activeSelf );
+        gridObject.SetActive(isPlayingMatch3);
     }
 }
