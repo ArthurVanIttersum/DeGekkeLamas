@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
 public class MatchingDetection : MonoBehaviour
 {
     public Dish currentDish;
@@ -19,8 +20,9 @@ public class MatchingDetection : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction, Color.red, 50f);
-            
+
+            Debug.DrawRay(ray.origin, ray.direction*1000f, Color.red, 50f);
+            Debug.Log(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 Vector2 gridData = info.transform.GetComponent<GridPosition>().index;
