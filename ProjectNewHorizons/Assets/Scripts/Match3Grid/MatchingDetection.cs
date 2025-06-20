@@ -20,6 +20,8 @@ public class MatchingDetection : MonoBehaviour
     private List <Vector2Int> foundMatch3Here = new();
     void LateUpdate()
     {
+        if (!GridActivator.isPlayingMatch3) return;
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -88,9 +90,8 @@ public class MatchingDetection : MonoBehaviour
             if (TestMatch3(startingPos, directionVector))
             {
                 foundAMatch = true;
-
             }
-            if (TestMatch3(startingPos + directionVector, Vector2Int.zero - directionVector))
+            if (TestMatch3(startingPos + directionVector, -directionVector))
             {
                 foundAMatch = true;
 
@@ -123,12 +124,19 @@ public class MatchingDetection : MonoBehaviour
                 foundMatch3Here.Clear();
             }
         }
+        GridStartPos = new();
+        startScreenPos = new();
+        endScreenPos = new();
     }
 
 
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
-        //print(fromGridPos);
+        print(fromGridPos);
+
+        // Stop execution if out of bounds
+        if (TestIfOutOfBounds(fromGridPos)) return false;
+
         Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
         Vector2Int newPosition = fromGridPos + direction;
         Vector2Int opositeDirection = Vector2Int.zero - direction;
@@ -146,7 +154,6 @@ public class MatchingDetection : MonoBehaviour
             {
 
 
-                ScoreManager SM = ScoreManager.instance;
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
                 grid.CollectIngredient(ingredientToMatch);
                 currentDish.AddIngredient(ingredientToMatch);
@@ -171,7 +178,6 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     found = false;
-                    ScoreManager SM = ScoreManager.instance;
                     ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
                     grid.CollectIngredient(ingredientToMatch);
                     currentDish.AddIngredient(ingredientToMatch);//match
