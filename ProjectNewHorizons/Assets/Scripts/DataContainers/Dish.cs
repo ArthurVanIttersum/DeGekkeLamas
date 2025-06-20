@@ -53,7 +53,8 @@ public class Dish
     {
         if (IngredientInDish(IngredientToAdd))
         {
-            ScoreManager.instance.IncreaseScore(1000);
+            ScoreManager SM = ScoreManager.instance;
+            SM.IncreaseScore(SM.scoreIngredientCorrect);
         }
         else
         {

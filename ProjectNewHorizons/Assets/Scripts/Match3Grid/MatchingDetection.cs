@@ -147,7 +147,8 @@ public class MatchingDetection : MonoBehaviour
             if (found1 && found2)
             {
                 print("found a match, type1");
-                
+
+                ScoreManager SM = ScoreManager.instance;
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
                 currentDish.AddIngredient(ingredientToMatch);
                 foundAMatch = true;
@@ -184,11 +185,11 @@ public class MatchingDetection : MonoBehaviour
         int bonuspoints = 0;
         if (SampleGrid(testPos, ingredientToMatch))
         {
-            bonuspoints += 500;
+            bonuspoints += ScoreManager.instance.score4InARow;
         }
         if (SampleGrid(testPos, ingredientToMatch))
         {
-            bonuspoints += 1000;
+            bonuspoints += ScoreManager.instance.score5InARow;
         }
         return bonuspoints;
     }
