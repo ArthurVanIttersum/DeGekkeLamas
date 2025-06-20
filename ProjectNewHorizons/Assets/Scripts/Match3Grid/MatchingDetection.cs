@@ -112,18 +112,12 @@ public class MatchingDetection : MonoBehaviour
                     if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
                     {
                         BlocksFallingHorizontal(positions);
-                        for (int j = 0; j < 3; j++)
-                        {
-                            foundMatch3Here.Remove(positions[i]);
-                        }
+                        
                     }
                     else
                     {
                         BlocksFallingVertical(positions);
-                        for (int j = 0; j < 3; j++)
-                        {
-                            foundMatch3Here.Remove(positions[i]);
-                        }
+                        
                     }
                 }
                 foundMatch3Here.Clear();
@@ -246,10 +240,45 @@ public class MatchingDetection : MonoBehaviour
         
     }
     public void BlocksFallingVertical(Vector2Int[] gridPositions)
-    {// work in progress
-        SwitchBlocks(gridPositions[0], gridPositions[0] + Vector2Int.up);
-        SwitchBlocks(gridPositions[1], gridPositions[1] + Vector2Int.up);
-        SwitchBlocks(gridPositions[2], gridPositions[2] + Vector2Int.up);
+    {
+        for (int i = 0; i < gridPositions.Length; i++)
+        {
+            print(gridPositions[i]);
+        }
+
+        if (gridPositions[0].y < gridPositions[2].y)
+        {
+            Vector2Int one = gridPositions[0];
+            Vector2Int two = gridPositions[2];
+            gridPositions[0] = two;
+            gridPositions[2] = one;
+        }
+
+
+        for (int i = 0; i < 11; i++)
+        {
+            bool foundEnd = false;
+            for (int j = 0; j < gridPositions.Length; j++)
+            {
+                if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up) || foundEnd)
+                {
+
+                    print(gridPositions);
+                    ReplaceBlock(gridPositions[j]);
+
+                    foundEnd = true;
+                }
+                else
+                {
+                    SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                }
+                gridPositions[j].y++;
+            }
+            if (foundEnd)
+            {
+                break;
+            }
+        }
     }
 
     public void SwitchBlocks(Vector2Int gridPos1, Vector2Int gridPos2)
@@ -335,8 +364,17 @@ public class MatchingDetection : MonoBehaviour
             ingredientsThatCouldSpawn.RemoveAt(index);
         }
         Ingredient ingredientToSpawn = ingredientsThatCouldSpawn[Random.Range(0, ingredientsThatCouldSpawn.Count)];
+        int indexOfIngredient = ingredientToSpawn.index;
+        for (int i = 0; i < grid.ingredientTypes.Length; i++)
+        {
+            if (grid.ingredientTypes[i].index == indexOfIngredient)
+            {
+                ingredientToSpawn = grid.ingredientTypes[i];
+            }
+            
+        }
         grid.currentGrid[gridPosition.y, gridPosition.x] = ingredientToSpawn;
-        print("this is getting activated");
+        
         //spawn cube
 
 
