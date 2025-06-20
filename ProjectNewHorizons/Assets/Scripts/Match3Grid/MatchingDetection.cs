@@ -151,6 +151,7 @@ public class MatchingDetection : MonoBehaviour
 
                 ScoreManager SM = ScoreManager.instance;
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                grid.CollectIngredient(ingredientToMatch);
                 currentDish.AddIngredient(ingredientToMatch);
                 foundAMatch = true;
                 
@@ -170,8 +171,11 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     found = false;
-                    
+                    ScoreManager SM = ScoreManager.instance;
+                    ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                    grid.CollectIngredient(ingredientToMatch);
                     currentDish.AddIngredient(ingredientToMatch);//match
+                    
                     foundAMatch = true;
                 }
             }

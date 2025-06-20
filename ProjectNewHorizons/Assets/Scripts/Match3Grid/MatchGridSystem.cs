@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using TMPro;
 
 public class MatchGridSystem : MonoBehaviour
 {
@@ -22,12 +23,14 @@ public class MatchGridSystem : MonoBehaviour
     public Ingredient[] requiredIngredients;
     public int totalIngredientQTY;
     public bool autoResize;
+    public float weightInfluence = 2;
 
     private System.Random rand;
 
     [Header("Debug stuff")]
     public MeshRenderer debugCube;
     [SerializeField, HideInInspector] Transform gridContainer;
+    public TMP_Text ingredientList;
     private void OnValidate()
     {
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
@@ -38,6 +41,7 @@ public class MatchGridSystem : MonoBehaviour
                 ].index;
         }
 
+        weightInfluence = Mathf.Max(weightInfluence, 0);
         totalIngredientQTY = Mathf.Max(totalIngredientQTY, requiredIngredients.Length);
 
         // Grid must always be big enough for connections to be possible
@@ -76,8 +80,20 @@ public class MatchGridSystem : MonoBehaviour
                 Ingredient.FindByName(ingredientTypes, requiredIngredients[i].name)
                 ].index;
         }
+        this.GetComponent<MatchingDetection>().currentDish = dish;
 
         Generate();
+        if (ingredientList != null)
+            ingredientList.text = $"{dish.dishType.name}\n {StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
+    }
+
+    /// <summary>
+    /// Collects an ingredient, crossing out its text display
+    /// </summary>
+    public void CollectIngredient(Ingredient ingredient)
+    {
+        ingredientList.text = StringTools.StrikeThrough(ingredientList.text, ingredient.name);
+        print($"Collected {ingredient.name}");
     }
 
     /// <summary>
@@ -91,7 +107,7 @@ public class MatchGridSystem : MonoBehaviour
             gridDimensions = new(totalIngredientQTY+1, totalIngredientQTY + 1);
             gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
             gridCameraController.SetCameraPositionAndScale();
-            print("i am trying to update the camera position");
+            //print("i am trying to update the camera position");
         }
 
         Initialize();
@@ -148,7 +164,7 @@ public class MatchGridSystem : MonoBehaviour
         int total = MathTools.ArrayTotal(quantities);
         for(int i = 0; i < ingredientTypes.Length; i++)
         {
-            weights.Add((quantities[i]+1) / (float)total * 100);
+            weights.Add((quantities[i]+weightInfluence) / (float)total * 100);
         }
 
         for (int y = 0; y < currentGrid.GetLength(0); y++)

@@ -43,9 +43,9 @@ public class CustomerGenerator : MonoBehaviour
     /// </summary>
     public void GiveCustomerOrder()
     {
-        print(newCustomer);
+        //print(newCustomer);
         Order newlyGeneratedOrder = book.GenerateRandomOrder();
-        print(newlyGeneratedOrder);
+        //print(newlyGeneratedOrder);
         newCustomer.GetOrAddComponent<Customer>().thisCustomersOrder = newlyGeneratedOrder;
     }
 

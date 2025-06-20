@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [System.Serializable]
@@ -49,16 +50,27 @@ public class Dish
             }
         }
     }
-    public void AddIngredient(Ingredient IngredientToAdd)
+    public void AddIngredient(Ingredient ingredientToAdd)
     {
-        if (IngredientInDish(IngredientToAdd))
+        ScoreManager SM = ScoreManager.instance;
+        // If ingredient doesn't belong to dish, subtract score
+        if (dishType.IngredientInRecipe(ingredientToAdd))
         {
-            ScoreManager SM = ScoreManager.instance;
-            SM.IncreaseScore(SM.scoreIngredientCorrect);
+            if (IngredientInDish(ingredientToAdd))
+            {
+                SM.IncreaseScore(SM.scoreIngredientCorrect);
+            }
+            else
+            {
+                SM.IncreaseScore(SM.scoreIngredientCorrect);
+                currentIngredients.Add(ingredientToAdd);
+            }
         }
         else
         {
-            currentIngredients.Add(IngredientToAdd);
+            //MonoBehaviour.print($"{ingredientToAdd.name}, {Ingredient.ContainsName(dishType.recipeIngredientsList, ingredientToAdd)}," + 
+            //    $"{StringTools.IngredientArrayToString(dishType.recipeIngredientsList)}");
+            SM.IncreaseScore(SM.scoreIngredientIncorrect);
         }
     }
 }
