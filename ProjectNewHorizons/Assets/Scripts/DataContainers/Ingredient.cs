@@ -39,4 +39,20 @@ public struct Ingredient
         }
         return 0;
     }
+    public static bool ContainsName(Ingredient[] array, Ingredient toSearch)
+    {
+        foreach(Ingredient ingredient in array)
+        {
+            if (toSearch.NameEquals(ingredient)) return true;
+        }
+        return false;
+    }
+    public static bool ContainsIndex(Ingredient[] array, Ingredient toSearch)
+    {
+        foreach(Ingredient ingredient in array)
+        {
+            if (toSearch.IndexEquals(ingredient)) return true;
+        }
+        return false;
+    }
 }

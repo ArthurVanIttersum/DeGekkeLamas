@@ -14023,6 +14023,7 @@ GameObject:
   - component: {fileID: 1692662268}
   - component: {fileID: 1692662267}
   - component: {fileID: 1692662270}
+  - component: {fileID: 1692662271}
   m_Layer: 0
   m_Name: MatchManager
   m_TagString: Untagged
@@ -14238,6 +14239,21 @@ MonoBehaviour:
     amountOfMissingIngredients: 0
   mainCamera: {fileID: 1898457632}
   grid: {fileID: 1692662268}
+--- !u!114 &1692662271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692662266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b1bd536e6130f4d9de88c5f873684e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderTexture: {fileID: 8400000, guid: d10ec5f1dea342145b14198bd9da267a, type: 2}
+  outputCam: {fileID: 1898457632}
+  targetTexture: {fileID: 474888049}
 --- !u!1 &1697233703
 GameObject:
   m_ObjectHideFlags: 0

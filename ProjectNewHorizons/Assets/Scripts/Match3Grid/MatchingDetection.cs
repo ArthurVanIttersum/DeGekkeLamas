@@ -55,7 +55,7 @@ public class MatchingDetection : MonoBehaviour
         Vector2Int directionVector;
 
 
-        if (direction.magnitude > 0.05f) // Threshold to ensure it’s a valid swipe
+        if (direction.magnitude > 0.05f) // Threshold to ensure itï¿½s a valid swipe
         {
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
@@ -154,6 +154,7 @@ public class MatchingDetection : MonoBehaviour
 
                 ScoreManager SM = ScoreManager.instance;
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                grid.CollectIngredient(ingredientToMatch);
                 currentDish.AddIngredient(ingredientToMatch);
                 foundAMatch = true;
                 //save positions here
@@ -176,8 +177,11 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     found = false;
-
+                    ScoreManager SM = ScoreManager.instance;
+                    ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                    grid.CollectIngredient(ingredientToMatch);
                     currentDish.AddIngredient(ingredientToMatch);//match
+                    
                     foundAMatch = true;
                 }
             }
