@@ -91,7 +91,7 @@ public class MatchGridSystem : MonoBehaviour
             gridDimensions = new(totalIngredientQTY+1, totalIngredientQTY + 1);
             gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
             gridCameraController.SetCameraPositionAndScale();
-            print("i am trying to update the camera position");
+            
         }
 
         Initialize();
