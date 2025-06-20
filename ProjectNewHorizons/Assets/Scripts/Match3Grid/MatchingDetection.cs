@@ -22,7 +22,7 @@ public class MatchingDetection : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             Debug.DrawRay(ray.origin, ray.direction*1000f, Color.red, 50f);
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 Vector2 gridData = info.transform.GetComponent<GridPosition>().index;
@@ -85,21 +85,20 @@ public class MatchingDetection : MonoBehaviour
             if (TestMatch3(startingPos, directionVector))
             {
                 foundAMatch = true;
-                print("foundAMatch");
+                
             }
             if (TestMatch3(startingPos + directionVector, Vector2Int.zero - directionVector))
             {
                 foundAMatch= true;
-                print("foundAMatch");
+                
             }
             if (foundAMatch)
             {//switching
-                print("switching");
+                
                 Vector2Int selectedPos = startingPos;
                 Vector2Int sideEffectPos = startingPos + directionVector;
 
-                print(selectedPos);
-                print(sideEffectPos);
+                
 
                 Ingredient selected = grid.currentGrid[startingPos.y,startingPos.x];
                 Ingredient sideEffect = grid.currentGrid[sideEffectPos.y, sideEffectPos.x];
@@ -132,7 +131,7 @@ public class MatchingDetection : MonoBehaviour
 
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
-        print(fromGridPos);
+        //print(fromGridPos);
         Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
         Vector2Int newPosition = fromGridPos + direction;
         Vector2Int opositeDirection = Vector2Int.zero - direction;
@@ -148,7 +147,7 @@ public class MatchingDetection : MonoBehaviour
             bool found2 = SampleGrid(testpos, ingredientToMatch);
             if (found1 && found2)
             {
-                print("found a match, type1");
+                
 
                 ScoreManager SM = ScoreManager.instance;
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
@@ -171,7 +170,7 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     found = false;
-                    print("found a match, type2");
+                    
                     currentDish.AddIngredient(ingredientToMatch);//match
                     foundAMatch = true;
                 }
