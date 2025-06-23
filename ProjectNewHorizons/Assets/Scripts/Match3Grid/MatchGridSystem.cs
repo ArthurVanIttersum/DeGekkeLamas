@@ -52,9 +52,10 @@ public class MatchGridSystem : MonoBehaviour
 
         // Grid must always be big enough for connections to be possible
         gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
-
+        #if UNITY_EDITOR
         if (autoGenerate)
             UnityEditor.EditorApplication.delayCall += () => Generate();
+        #endif
     }
     private void Awake()
     {
@@ -142,11 +143,14 @@ public class MatchGridSystem : MonoBehaviour
     {
         if (gridContainer != null)
         {
+            #if UNITY_EDITOR
             if (!UnityEditor.EditorApplication.isPlaying)
             {
                 DestroyImmediate(gridContainer.gameObject);
             }
-            else Destroy(gridContainer.gameObject);
+            else 
+                #endif
+                Destroy(gridContainer.gameObject);
         }
     }
 
