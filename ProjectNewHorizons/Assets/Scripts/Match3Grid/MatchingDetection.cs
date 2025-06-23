@@ -18,6 +18,8 @@ public class MatchingDetection : MonoBehaviour
     private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
     private List <Vector2Int> foundMatch3Here = new();
+    
+
     void LateUpdate()
     {
         if (!GridActivator.isPlayingMatch3) return;
@@ -51,13 +53,17 @@ public class MatchingDetection : MonoBehaviour
         }
     }
 
+
+
     void SwipeDetected()
     {
+        
+
         Vector2 direction = endScreenPos - startScreenPos;
         Vector2Int directionVector;
 
 
-        if (direction.magnitude > 0.05f) // Threshold to ensure it�s a valid swipe
+        if (direction.magnitude > 0.05f) // Threshold to ensure it's a valid swipe
         {
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
@@ -87,11 +93,11 @@ public class MatchingDetection : MonoBehaviour
 
             bool foundAMatch = false;
 
-            if (TestMatch3(startingPos, directionVector))
+            if (TestMatch3(startingPos, directionVector, grid.currentGrid[startingPos.y, startingPos.x]))
             {
                 foundAMatch = true;
             }
-            if (TestMatch3(startingPos + directionVector, -directionVector))
+            if (TestMatch3(startingPos + directionVector, -directionVector, grid.currentGrid[startingPos.y + directionVector.y, startingPos.x + directionVector.x]))
             {
                 foundAMatch = true;
 
@@ -100,44 +106,26 @@ public class MatchingDetection : MonoBehaviour
             {
                 SwitchBlocks(startingPos, startingPos + directionVector);//switching
 
-                //horizontal or vertical
-                for (int i = 0; i < foundMatch3Here.Count / 3; i++)
-                {
-                    Vector2Int[] positions = new Vector2Int[3];
-                    positions[0] = foundMatch3Here[i * 3];
-                    positions[1] = foundMatch3Here[i * 3 + 1];
-                    positions[2] = foundMatch3Here[i * 3 + 2];
-                    
-                    Vector2Int difference = positions[2] - positions[0];
-
-                    if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
-                    {
-                        BlocksFallingHorizontal(positions);
-                        
-                    }
-                    else
-                    {
-                        BlocksFallingVertical(positions);
-                        
-                    }
-                }
-                foundMatch3Here.Clear();
+                MakeBlocksFall();
+                CheckNewlyCreatedMatches();
             }
         }
+
         GridStartPos = new();
         startScreenPos = new();
         endScreenPos = new();
+        foundMatch3Here.Clear();
     }
 
 
-    public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
+    public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction, Ingredient ingredientToMatch)
     {
         //print(fromGridPos);
 
         // Stop execution if out of bounds
         if (TestIfOutOfBounds(fromGridPos)) return false;
 
-        Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
+        
         Vector2Int newPosition = fromGridPos + direction;
         Vector2Int opositeDirection = Vector2Int.zero - direction;
         List<Vector2Int> directionsToTest = alldirections.ToList();
@@ -177,8 +165,14 @@ public class MatchingDetection : MonoBehaviour
                 {
                     found = false;
                     ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
-                    DishManager.instance.CollectIngredient(ingredientToMatch);
-                    
+                    grid.CollectIngredient(ingredientToMatch);
+                    currentDish.AddIngredient(ingredientToMatch);//match
+
+                    foundMatch3Here.Add(newPosition + directionsToTest[0]);
+                    foundMatch3Here.Add(newPosition);
+                    foundMatch3Here.Add(newPosition + directionsToTest[1]);
+
+
                     foundAMatch = true;
                     return foundAMatch;
                 }
@@ -213,6 +207,32 @@ public class MatchingDetection : MonoBehaviour
         return grid.currentGrid[position.y, position.x].IndexEquals(typeToTest);
     }
 
+    private void MakeBlocksFall()
+    {
+        //horizontal or vertical
+        for (int i = 0; i < foundMatch3Here.Count / 3; i++)
+        {
+            Vector2Int[] positions = new Vector2Int[3];
+            positions[0] = foundMatch3Here[i * 3];
+            positions[1] = foundMatch3Here[i * 3 + 1];
+            positions[2] = foundMatch3Here[i * 3 + 2];
+
+            Vector2Int difference = positions[2] - positions[0];
+
+            if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+            {
+                BlocksFallingHorizontal(positions);
+
+            }
+            else
+            {
+                BlocksFallingVertical(positions);
+
+            }
+        }
+        
+    }
+
     public void BlocksFallingHorizontal(Vector2Int[] gridPositions)
     {
         for(int i = 0; i < 11; i++)
@@ -231,6 +251,7 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                    
                 }
                 gridPositions[j].y++;
             }
@@ -275,6 +296,7 @@ public class MatchingDetection : MonoBehaviour
                 else
                 {
                     SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                    //movementsToTest.Last().Add(gridPositions[j] + Vector2Int.up);
                 }
                 gridPositions[j].y++;
             }
@@ -391,4 +413,95 @@ public class MatchingDetection : MonoBehaviour
         //print(spawned.transform.position);
         Destroy(blockToReplace);
     }
+
+    private void CheckNewlyCreatedMatches()
+    {
+        //horizontal or vertical
+        for (int i = 0; i < foundMatch3Here.Count / 3; i++)
+        {
+            Vector2Int[] positions = new Vector2Int[3];
+            positions[0] = foundMatch3Here[i * 3];
+            positions[1] = foundMatch3Here[i * 3 + 1];
+            positions[2] = foundMatch3Here[i * 3 + 2];
+
+            Vector2Int difference = positions[2] - positions[0];
+
+            if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+            {
+                FellCheckingHorizontal(positions);
+
+            }
+            else
+            {
+                FellCheckingVertical(positions);
+
+            }
+        }
+    }
+
+    public void FellCheckingHorizontal(Vector2Int[] gridPositions)
+    {
+        for (int i = 0; i < 11; i++)
+        {
+            bool foundEnd = false;
+            for (int j = 0; j < gridPositions.Length; j++)
+            {
+                if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up))
+                {
+                    foundEnd = true;
+                }
+                else
+                {
+                    SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                    if (TestMatch3(gridPositions[j], Vector2Int.down, grid.currentGrid[gridPositions[j].y, gridPositions[j].x]))
+                    {
+                        MakeBlocksFall();
+                        //CheckNewlyCreatedMatches();
+                    }
+                }
+                gridPositions[j].y++;
+            }
+            if (foundEnd)
+            {
+                break;
+            }
+        }
+    }
+    public void FellCheckingVertical(Vector2Int[] gridPositions)
+    {
+        if (gridPositions[0].y < gridPositions[2].y)
+        {
+            Vector2Int one = gridPositions[0];
+            Vector2Int two = gridPositions[2];
+            gridPositions[0] = two;
+            gridPositions[2] = one;
+        }
+
+
+        for (int i = 0; i < 11; i++)
+        {
+            bool foundEnd = false;
+            for (int j = 0; j < gridPositions.Length; j++)
+            {
+                if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up) || foundEnd)
+                {
+                    foundEnd = true;
+                }
+                else
+                {
+                    if (TestMatch3(gridPositions[j], Vector2Int.down, grid.currentGrid[gridPositions[j].y, gridPositions[j].x]))
+                    {
+                        MakeBlocksFall();
+                        //CheckNewlyCreatedMatches();
+                    }
+                }
+                gridPositions[j].y++;
+            }
+            if (foundEnd)
+            {
+                break;
+            }
+        }
+    }
+
 }
