@@ -8,10 +8,11 @@ public class CustomerGenerator : MonoBehaviour
 {
     public RecipeBook book;
     public List<GameObject> customerPrefabs = new();
-    [HideInInspector]public List <int> customerQue = new();
-    [HideInInspector]public List <int> customerAntiQue = new();
+    public List <int> customerQue = new();
+    public List <int> customerAntiQue = new();
     //when a customer is not in the que it's in the anti que.
     //this way i can pick a random customer from the anti que.
+    public int customerCount = 5;
     [Header("Spawn position")]
     public Vector2 spawnRangeX;
     public Vector2 spawnRangeY;
@@ -19,10 +20,15 @@ public class CustomerGenerator : MonoBehaviour
     
     private GameObject newCustomer;
     public static CustomerGenerator instance;
+    GameObject customerContainer;
 
     private void Awake()
     {
         if (instance == null) instance = this;
+    }
+    private void OnValidate()
+    {
+        customerCount = Mathf.Min(customerCount, customerPrefabs.Count-1);
     }
 
     /// <summary>
@@ -37,12 +43,13 @@ public class CustomerGenerator : MonoBehaviour
             Random.Range(spawnRangeZ.x, spawnRangeZ.y)
             );
         GameObject toSpawn = customerPrefabs[customerAntiQue[randomCustomer]];
-        newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation);
+        newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation, customerContainer.transform);
         newCustomer.name = $"customer number {customerAntiQue[randomCustomer]}";
-        customerQue.Add(randomCustomer);
+
+        GiveCustomerOrder(customerAntiQue[randomCustomer]);
+        customerQue.Add(customerAntiQue[randomCustomer]);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
 
-        GiveCustomerOrder(randomCustomer);
     }
 
     /// <summary>
@@ -72,13 +79,14 @@ public class CustomerGenerator : MonoBehaviour
 
     void Start()
     {
+        customerContainer = new("Customer container");
+
         customerAntiQue = new();
         for (int i = 0;i < customerPrefabs.Count; i++)
         {
             customerAntiQue.Add(i);
         }
         StartCoroutine(TestSpawning());
-        
     }
 
     /// <summary>
@@ -86,13 +94,10 @@ public class CustomerGenerator : MonoBehaviour
     /// </summary>
     private IEnumerator TestSpawning()
     {
-        int count = customerPrefabs.Count;
-        
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < customerCount; i++)
         {
             SpawnNewCustomer();
             yield return new WaitForSeconds(1);
-            
         }
     }
 

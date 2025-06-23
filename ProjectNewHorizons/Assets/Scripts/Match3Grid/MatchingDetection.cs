@@ -132,7 +132,7 @@ public class MatchingDetection : MonoBehaviour
 
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
-        print(fromGridPos);
+        //print(fromGridPos);
 
         // Stop execution if out of bounds
         if (TestIfOutOfBounds(fromGridPos)) return false;
@@ -152,8 +152,6 @@ public class MatchingDetection : MonoBehaviour
             bool found2 = SampleGrid(testpos, ingredientToMatch);
             if (found1 && found2)
             {
-
-
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
                 DishManager.instance.CollectIngredient(ingredientToMatch);
                 foundAMatch = true;
@@ -161,6 +159,7 @@ public class MatchingDetection : MonoBehaviour
                 foundMatch3Here.Add(newPosition);
                 foundMatch3Here.Add(newPosition + directionsToTest[i]);
                 foundMatch3Here.Add(newPosition + directionsToTest[i] * 2);
+                return foundAMatch;
             }
         }
         directionsToTest.Remove(direction);
@@ -181,6 +180,7 @@ public class MatchingDetection : MonoBehaviour
                     DishManager.instance.CollectIngredient(ingredientToMatch);
                     
                     foundAMatch = true;
+                    return foundAMatch;
                 }
             }
         }
@@ -247,7 +247,7 @@ public class MatchingDetection : MonoBehaviour
     {
         for (int i = 0; i < gridPositions.Length; i++)
         {
-            print(gridPositions[i]);
+            //print(gridPositions[i]);
         }
 
         if (gridPositions[0].y < gridPositions[2].y)
@@ -267,7 +267,7 @@ public class MatchingDetection : MonoBehaviour
                 if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up) || foundEnd)
                 {
 
-                    print(gridPositions);
+                    //print(gridPositions);
                     ReplaceBlock(gridPositions[j]);
 
                     foundEnd = true;
@@ -387,8 +387,8 @@ public class MatchingDetection : MonoBehaviour
         spawned.gameObject.name = $"{gridPosition.x}, {gridPosition.y}, type = {grid.currentGrid[gridPosition.y, gridPosition.x].index}";
         spawned.gameObject.GetOrAddComponent<GridPosition>().index = new(gridPosition.x, gridPosition.y);
         grid.currentGrid[gridPosition.y, gridPosition.x].cubeForDisplay = spawned.gameObject;
-        print(spawned);
-        print(spawned.transform.position);
+        //print(spawned);
+        //print(spawned.transform.position);
         Destroy(blockToReplace);
     }
 }

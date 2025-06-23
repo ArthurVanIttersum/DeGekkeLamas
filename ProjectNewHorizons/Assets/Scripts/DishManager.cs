@@ -16,7 +16,7 @@ public class DishManager : MonoBehaviour
     {
         this.customer = customer.Item1;
         customerIndex = customer.Item2;
-        grid?.SetDish(dish, dish.dishType.recipeIngredientsList.Length + 4);
+        grid.SetDish(dish, dish.dishType.recipeIngredientsList.Length + 4);
         currentDish = dish;
         GridActivator.dishActive = true;
     }
