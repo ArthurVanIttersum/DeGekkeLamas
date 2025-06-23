@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
     public Slider scoreSlider;
     public int maxScore = 1000;
     [Header("Points given")]
+    public int scoreDishComplete = 50;
     public int scoreIngredientCorrect = 10; 
     public int scoreIngredientIncorrect = -10; 
     public int score4InARow = 30;

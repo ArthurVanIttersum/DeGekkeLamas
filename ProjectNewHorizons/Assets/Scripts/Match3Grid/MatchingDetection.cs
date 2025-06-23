@@ -143,8 +143,7 @@ public class MatchingDetection : MonoBehaviour
 
 
                 ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
-                grid.CollectIngredient(ingredientToMatch);
-                currentDish.AddIngredient(ingredientToMatch);
+                DishManager.instance.CollectIngredient(ingredientToMatch);
                 foundAMatch = true;
                 //save positions here
                 foundMatch3Here.Add(newPosition);
@@ -400,7 +399,7 @@ public class MatchingDetection : MonoBehaviour
         //spawn cube
 
 
-        var spawned = Instantiate(grid.debugCube, replacePosition, Quaternion.identity);//blockToReplace.GetComponentInParent<Transform>()
+        var spawned = Instantiate(grid.debugCube, replacePosition, Quaternion.identity, grid.gridContainer);//blockToReplace.GetComponentInParent<Transform>()
         spawned.sharedMaterial = grid.currentGrid[gridPosition.y, gridPosition.x].material;
         spawned.gameObject.name = $"{gridPosition.x}, {gridPosition.y}, type = {grid.currentGrid[gridPosition.y, gridPosition.x].index}";
         spawned.gameObject.GetOrAddComponent<GridPosition>().index = new(gridPosition.x, gridPosition.y);

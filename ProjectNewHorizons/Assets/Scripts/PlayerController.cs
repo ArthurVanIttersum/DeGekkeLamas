@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
                         List<Dish> dishes = customer.thisCustomersOrder.dishes;
-                        if (matchGridSystem != null) matchGridSystem.SetDish(dishes[0], dishes.Count+4);
+                        DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
                         Debug.Log("Received order from customer");
                     }
                     // Open oven for match3 minigame
