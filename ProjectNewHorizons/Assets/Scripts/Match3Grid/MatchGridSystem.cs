@@ -5,9 +5,9 @@ using System.Linq;
 using Unity.VisualScripting;
 using TMPro;
 
+[RequireComponent(typeof(MatchingDetection), typeof(ScreenResolutionManager), typeof(DishManager))]
 public class MatchGridSystem : MonoBehaviour
 {
-    public GridGameraController gridCameraController;
     public Ingredient[] ingredientTypes;
     public Vector2Int gridDimensions;
     /// <summary>
@@ -29,8 +29,14 @@ public class MatchGridSystem : MonoBehaviour
 
     [Header("Debug stuff")]
     public MeshRenderer debugCube;
-    [SerializeField, HideInInspector] Transform gridContainer;
     public TMP_Text ingredientList;
+
+    [Header("References")]
+    public static MatchGridSystem instance;
+    public GridGameraController gridCameraController;
+    public GameObject gridObject;
+    [SerializeField, HideInInspector] public Transform gridContainer;
+
     private void OnValidate()
     {
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
@@ -49,6 +55,10 @@ public class MatchGridSystem : MonoBehaviour
 
         if (autoGenerate)
             UnityEditor.EditorApplication.delayCall += () => Generate();
+    }
+    private void Awake()
+    {
+        if (instance == null) instance = this;
     }
     void Start()
     {
@@ -362,6 +372,11 @@ public class MatchGridSystem : MonoBehaviour
             }
         }
         Debug.Log("Generated grid display!");
+    }
+
+    public void ToggleUI()
+    {
+        gridObject.SetActive(GridActivator.isPlayingMatch3);
     }
 
     /// <summary>

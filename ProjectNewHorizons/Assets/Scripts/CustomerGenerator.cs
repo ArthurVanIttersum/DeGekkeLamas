@@ -8,52 +8,61 @@ public class CustomerGenerator : MonoBehaviour
 {
     public RecipeBook book;
     public List<GameObject> customerPrefabs = new();
-    [HideInInspector]public List <GameObject> customerQue = new();
-    [HideInInspector]public List <GameObject> customerAntiQue = new();
+    [HideInInspector]public List <int> customerQue = new();
+    [HideInInspector]public List <int> customerAntiQue = new();
     //when a customer is not in the que it's in the anti que.
     //this way i can pick a random customer from the anti que.
-    [HideInInspector] public int availableCustomerCount;
     [Header("Spawn position")]
     public Vector2 spawnRangeX;
     public Vector2 spawnRangeY;
     public Vector2 spawnRangeZ;
     
     private GameObject newCustomer;
+    public static CustomerGenerator instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+    }
 
     /// <summary>
     /// Spawns next customer from the antiqueue a random, removing it fromm antiqueue and adding it to queue
     /// </summary>
     public void SpawnNewCustomer()
     {
-        availableCustomerCount = customerPrefabs.Count - customerQue.Count;
-        int randomCustomer = Random.Range(0, availableCustomerCount);
+        int randomCustomer = Random.Range(0, customerAntiQue.Count);
         Vector3 spawnPosition = new(
             Random.Range(spawnRangeX.x, spawnRangeX.y),
             Random.Range(spawnRangeY.x, spawnRangeY.y),
             Random.Range(spawnRangeZ.x, spawnRangeZ.y)
             );
-        GameObject toSpawn = customerAntiQue[randomCustomer];
+        GameObject toSpawn = customerPrefabs[customerAntiQue[randomCustomer]];
         newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation);
-        customerQue.Add(newCustomer);
+        newCustomer.name = $"customer number {customerAntiQue[randomCustomer]}";
+        customerQue.Add(randomCustomer);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
+
+        GiveCustomerOrder(randomCustomer);
     }
 
     /// <summary>
     /// Assign generated customer an order
     /// </summary>
-    public void GiveCustomerOrder()
+    public void GiveCustomerOrder(int index)
     {
         //print(newCustomer);
         Order newlyGeneratedOrder = book.GenerateRandomOrder();
         //print(newlyGeneratedOrder);
-        newCustomer.GetOrAddComponent<Customer>().thisCustomersOrder = newlyGeneratedOrder;
+        Customer c = newCustomer.GetOrAddComponent<Customer>();
+        c.thisCustomersOrder = newlyGeneratedOrder;
+        c.index = index;
     }
 
     public bool CustomerInQue(GameObject customer)
     {
         for (int i = 0; i < customerQue.Count; i++)
         {
-            if (customerQue[i] == customer)
+            if (customerPrefabs[customerQue[i]] == customer)
             {
                 return true;
             }
@@ -63,7 +72,11 @@ public class CustomerGenerator : MonoBehaviour
 
     void Start()
     {
-        customerAntiQue = customerPrefabs.ToList();
+        customerAntiQue = new();
+        for (int i = 0;i < customerPrefabs.Count; i++)
+        {
+            customerAntiQue.Add(i);
+        }
         StartCoroutine(TestSpawning());
         
     }
@@ -78,7 +91,6 @@ public class CustomerGenerator : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             SpawnNewCustomer();
-            GiveCustomerOrder();
             yield return new WaitForSeconds(1);
             
         }
