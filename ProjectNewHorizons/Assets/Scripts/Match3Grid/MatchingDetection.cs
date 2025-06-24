@@ -292,16 +292,17 @@ public class MatchingDetection : MonoBehaviour
 
     public void ReplaceBlock(Vector2Int gridPosition)
     {
+        List<Ingredient> posibleIngredients = new();
         for (int i = 0; i < grid.ingredientTypes.Length; i++)
         {
             ReplaceBlockTo(gridPosition, grid.ingredientTypes[i]);
             if (!TestMatch3AtPosition(gridPosition))
             {
-                print("found a good option");
-                return;
+                posibleIngredients.Add(grid.ingredientTypes[i]);
             }
         }
-        print("didn't find a good option");
+        int randomOption = Random.Range(0,posibleIngredients.Count);
+        ReplaceBlockTo(gridPosition, posibleIngredients[randomOption]);
     }
 
     public void ReplaceBlockTo(Vector2Int gridPosition, Ingredient changeTo)
