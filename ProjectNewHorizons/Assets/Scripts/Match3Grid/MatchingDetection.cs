@@ -132,7 +132,7 @@ public class MatchingDetection : MonoBehaviour
 
     public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
     {
-        print(fromGridPos);
+        //print(fromGridPos);
 
         // Stop execution if out of bounds
         if (TestIfOutOfBounds(fromGridPos)) return false;
@@ -188,11 +188,11 @@ public class MatchingDetection : MonoBehaviour
         return foundAMatch;
     }
 
-    private int TestOverkill(Vector2Int fromGridPos, Vector2Int direction, Ingredient ingredientToMatch)
+    private float TestOverkill(Vector2Int fromGridPos, Vector2Int direction, Ingredient ingredientToMatch)
     {
         Vector2Int opositeDirection = Vector2Int.zero - direction;
         Vector2Int testPos = fromGridPos + opositeDirection;
-        int bonuspoints = 0;
+        float bonuspoints = 0;
         if (SampleGrid(testPos, ingredientToMatch))
         {
             bonuspoints += ScoreManager.instance.score4InARow;
@@ -365,7 +365,7 @@ public class MatchingDetection : MonoBehaviour
         // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
         indexesToRemove.Sort();
         indexesToRemove.Reverse();
-        print($"removed {indexesToRemove.Count} possible ingredients");
+        //print($"removed {indexesToRemove.Count} possible ingredients");
         for (int k = 0; k < indexesToRemove.Count; k++)
         {
             int index = indexesToRemove[k];
