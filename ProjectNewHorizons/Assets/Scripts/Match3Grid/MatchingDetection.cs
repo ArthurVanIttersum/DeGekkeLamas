@@ -243,7 +243,7 @@ public class MatchingDetection : MonoBehaviour
                 if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up))
                 {
                     
-                    print(gridPositions);
+                    //print(gridPositions);
                     ReplaceBlock(gridPositions[j]);
 
                     foundEnd = true;
@@ -280,14 +280,13 @@ public class MatchingDetection : MonoBehaviour
         }
 
 
-        for (int i = 0; i < 11; i++)
+        for (int i = 0; i < grid.gridDimensions.y; i++)
         {
             bool foundEnd = false;
             for (int j = 0; j < gridPositions.Length; j++)
             {
                 if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up) || foundEnd)
                 {
-
                     //print(gridPositions);
                     ReplaceBlock(gridPositions[j]);
 
@@ -362,20 +361,23 @@ public class MatchingDetection : MonoBehaviour
         Vector3 replacePosition = blockToReplace.transform.position;
 
         //make a new ingredient spawn at the top
-        List<Ingredient> ingredientsThatCouldSpawn = grid.requiredIngredients.ToList();
+        List<Ingredient> ingredientsThatCouldSpawn = grid.ingredientTypes.ToList();
         // Do not spawn type if this would create 3 in a row
         List<int> indexesToRemove = new();
         for (int i = 0; i < ingredientsThatCouldSpawn.Count; i++)
         {
-            if (SampleGrid(gridPosition + Vector2Int.left, ingredientsThatCouldSpawn[i]) && SampleGrid(gridPosition + Vector2Int.left * 2, ingredientsThatCouldSpawn[i]))
+            if (SampleGrid(gridPosition + Vector2Int.left, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.left * 2, ingredientsThatCouldSpawn[i]))
             {
                 indexesToRemove.Add(i);
             }
-            else if (SampleGrid(gridPosition + Vector2Int.right, ingredientsThatCouldSpawn[i]) && SampleGrid(gridPosition + Vector2Int.right * 2, ingredientsThatCouldSpawn[i]))
+            else if (SampleGrid(gridPosition + Vector2Int.right, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.right * 2, ingredientsThatCouldSpawn[i]))
             {
                 indexesToRemove.Add(i);
             }
-            else if (SampleGrid(gridPosition + Vector2Int.down, ingredientsThatCouldSpawn[i]) && SampleGrid(gridPosition + Vector2Int.down * 2, ingredientsThatCouldSpawn[i]))
+            else if (SampleGrid(gridPosition + Vector2Int.down, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.down * 2, ingredientsThatCouldSpawn[i]))
             {
                 indexesToRemove.Add(i);
             }
@@ -384,6 +386,7 @@ public class MatchingDetection : MonoBehaviour
         // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
         indexesToRemove.Sort();
         indexesToRemove.Reverse();
+        print($"removed {indexesToRemove.Count} possible ingredients");
         for (int k = 0; k < indexesToRemove.Count; k++)
         {
             int index = indexesToRemove[k];

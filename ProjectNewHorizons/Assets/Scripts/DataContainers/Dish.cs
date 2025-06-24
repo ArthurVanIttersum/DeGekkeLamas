@@ -56,6 +56,7 @@ public class Dish
         // If ingredient doesn't belong to dish, subtract score
         if (dishType.IngredientInRecipe(ingredientToAdd))
         {
+            // Check if ingredient is collected already
             if (Ingredient.ContainsName(currentIngredients.ToArray(), ingredientToAdd))
             {
                 SM.IncreaseScore(SM.scoreIngredientCorrect);
