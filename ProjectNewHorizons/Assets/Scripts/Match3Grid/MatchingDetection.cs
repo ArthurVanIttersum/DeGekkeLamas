@@ -15,14 +15,9 @@ public class MatchingDetection : MonoBehaviour
     private Vector3 startScreenPos;
     private Vector3 endScreenPos;
     private bool swiping = false;
-    private Vector2Int[] alldirections = { Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down };
+    private Vector2Int[] alldirections = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
 
-    private Vector3 swipeDifference;
-
-    private HashSet<Vector2Int> allBlocksToBeDeleted = new();
-
-    
-
+    private List <Vector2Int> foundMatch3Here = new();
     void LateUpdate()
     {
         if (!GridActivator.isPlayingMatch3) return;
@@ -52,77 +47,269 @@ public class MatchingDetection : MonoBehaviour
                 endScreenPos = Input.mousePosition;
             }
             swiping = false;
-
-            swipeDifference = endScreenPos - startScreenPos;
-
-            if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
-            {
-                SwipeDetected();
-            }
+            SwipeDetected();
         }
     }
-    //this is the main method. here you see all the steps in the algorithm.
-    //each step might use helper methods, but it will always return to this methed before moving on to another major step
 
-    private void SwipeDetected()//this is the main method. here you see all the steps in the algorithm. each step might use helper methods, but it will always return to thi methed before moving on to another maor step
+    void SwipeDetected()
     {
-        Vector2Int swipeDirection = CalculateSwipeDirection();
-        Vector2Int swipeStartPosition = GridStartPos;
-        Vector2Int swipeDestination = swipeStartPosition + swipeDirection;
-        
-        if (TestIfOutOfBounds(swipeStartPosition))
-        {
-            return;
-        }
-        if (TestIfOutOfBounds(swipeDestination))
-        {
-            return;
-        }
-        SwitchBlocks(swipeStartPosition, swipeDestination);
-        bool testAtStart = TestMatch3AtPosition(swipeStartPosition);
-        bool testAtEnd = TestMatch3AtPosition(swipeDestination);
-        if (!(testAtStart || testAtEnd))
-        {
-            SwitchBlocks(swipeStartPosition, swipeDestination);//switching the blocks back from where they came since no match was found
-            return;
-        }
-        CollectMatchData3AtPosition(swipeStartPosition);
-        CollectMatchData3AtPosition(swipeDestination);
-        //just for testing
-        Vector2Int[] toDelete = allBlocksToBeDeleted.ToArray();
-        for (int i = 0; i < toDelete.Length; i++)
-        {
-            ReplaceBlock(toDelete[i]);
-        }
-        allBlocksToBeDeleted.Clear();
-    }
-
-    private Vector2Int CalculateSwipeDirection()
-    {
+        Vector2 direction = endScreenPos - startScreenPos;
         Vector2Int directionVector;
-        if (Mathf.Abs(swipeDifference.x) > Mathf.Abs(swipeDifference.y))
+
+
+        if (direction.magnitude > 0.05f) // Threshold to ensure it�s a valid swipe
         {
-            if (swipeDifference.x > 0)
+            if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {
-                directionVector = Vector2Int.right;
+                if (direction.x > 0)
+                {
+                    directionVector = Vector2Int.right;
+                }
+                else
+                {
+                    directionVector = Vector2Int.left;
+                }
+
             }
             else
             {
-                directionVector = Vector2Int.left;
+                if (direction.y > 0)
+                {
+                    directionVector = Vector2Int.up;
+                }
+                else
+                {
+                    directionVector = Vector2Int.down;
+                }
+            }
+
+            Vector2Int startingPos = GridStartPos;
+
+            bool foundAMatch = false;
+
+            if (TestMatch3(startingPos, directionVector))
+            {
+                foundAMatch = true;
+            }
+            if (TestMatch3(startingPos + directionVector, -directionVector))
+            {
+                foundAMatch = true;
+
+            }
+            if (foundAMatch)
+            {
+                SwitchBlocks(startingPos, startingPos + directionVector);//switching
+
+                //horizontal or vertical
+                for (int i = 0; i < foundMatch3Here.Count / 3; i++)
+                {
+                    Vector2Int[] positions = new Vector2Int[3];
+                    positions[0] = foundMatch3Here[i * 3];
+                    positions[1] = foundMatch3Here[i * 3 + 1];
+                    positions[2] = foundMatch3Here[i * 3 + 2];
+                    
+                    Vector2Int difference = positions[2] - positions[0];
+
+                    if (Mathf.Abs(difference.x) > Mathf.Abs(difference.y))
+                    {
+                        BlocksFallingHorizontal(positions);
+                        
+                    }
+                    else
+                    {
+                        BlocksFallingVertical(positions);
+                        
+                    }
+                }
+                foundMatch3Here.Clear();
             }
         }
-        else
+        GridStartPos = new();
+        startScreenPos = new();
+        endScreenPos = new();
+    }
+
+
+    public bool TestMatch3(Vector2Int fromGridPos, Vector2Int direction)
+    {
+        //print(fromGridPos);
+
+        // Stop execution if out of bounds
+        if (TestIfOutOfBounds(fromGridPos)) return false;
+
+        Ingredient ingredientToMatch = grid.currentGrid[fromGridPos.y, fromGridPos.x];
+        Vector2Int newPosition = fromGridPos + direction;
+        Vector2Int opositeDirection = Vector2Int.zero - direction;
+        List<Vector2Int> directionsToTest = alldirections.ToList();
+        directionsToTest.Remove(opositeDirection);
+        Vector2Int testpos;
+        bool foundAMatch = false;
+        for (int i = 0; i < 3; i++)
         {
-            if (swipeDifference.y > 0)
+            testpos = newPosition + directionsToTest[i];
+            bool found1 = SampleGrid(testpos, ingredientToMatch);
+            testpos = newPosition + directionsToTest[i] * 2;
+            bool found2 = SampleGrid(testpos, ingredientToMatch);
+            if (found1 && found2)
             {
-                directionVector = Vector2Int.up;
-            }
-            else
-            {
-                directionVector = Vector2Int.down;
+                ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                DishManager.instance.CollectIngredient(ingredientToMatch);
+                foundAMatch = true;
+                //save positions here
+                foundMatch3Here.Add(newPosition);
+                foundMatch3Here.Add(newPosition + directionsToTest[i]);
+                foundMatch3Here.Add(newPosition + directionsToTest[i] * 2);
+                return foundAMatch;
             }
         }
-        return directionVector;
+        directionsToTest.Remove(direction);
+        bool found = false;
+        for (int i = 0; i < 2; i++)
+        {
+            testpos = newPosition + directionsToTest[i];
+            if (SampleGrid(testpos, ingredientToMatch))
+            {
+                if (!found)
+                {
+                    found = true;
+                }
+                else
+                {
+                    found = false;
+                    ScoreManager.instance.IncreaseScore(TestOverkill(fromGridPos, directionsToTest[i], ingredientToMatch));//match
+                    grid.CollectIngredient(ingredientToMatch);
+                    currentDish.AddIngredient(ingredientToMatch);//match
+                    
+                    foundAMatch = true;
+                    return foundAMatch;
+                }
+            }
+        }
+        return foundAMatch;
+    }
+
+    private float TestOverkill(Vector2Int fromGridPos, Vector2Int direction, Ingredient ingredientToMatch)
+    {
+        Vector2Int opositeDirection = Vector2Int.zero - direction;
+        Vector2Int testPos = fromGridPos + opositeDirection;
+        float bonuspoints = 0;
+        if (SampleGrid(testPos, ingredientToMatch))
+        {
+            bonuspoints += ScoreManager.instance.score4InARow;
+        }
+        if (SampleGrid(testPos, ingredientToMatch))
+        {
+            bonuspoints += ScoreManager.instance.score5InARow;
+        }
+        return bonuspoints;
+    }
+
+    private bool SampleGrid(Vector2Int position, Ingredient typeToTest)
+    {
+        if (TestIfOutOfBounds(position))
+        {
+            return false;
+        }
+        
+        return grid.currentGrid[position.y, position.x].IndexEquals(typeToTest);
+    }
+
+    public void BlocksFallingHorizontal(Vector2Int[] gridPositions)
+    {
+        for(int i = 0; i < 11; i++)
+        {
+            bool foundEnd = false;
+            for (int j = 0; j < gridPositions.Length; j++)
+            {
+                if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up))
+                {
+                    
+                    //print(gridPositions);
+                    ReplaceBlock(gridPositions[j]);
+
+                    foundEnd = true;
+                }
+                else
+                {
+                    SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                }
+                gridPositions[j].y++;
+            }
+            if (foundEnd)
+            {
+                break;
+            }
+        }
+        
+
+        
+    }
+    public void BlocksFallingVertical(Vector2Int[] gridPositions)
+    {
+        for (int i = 0; i < gridPositions.Length; i++)
+        {
+            //print(gridPositions[i]);
+        }
+
+        if (gridPositions[0].y < gridPositions[2].y)
+        {
+            Vector2Int one = gridPositions[0];
+            Vector2Int two = gridPositions[2];
+            gridPositions[0] = two;
+            gridPositions[2] = one;
+        }
+
+
+        for (int i = 0; i < grid.gridDimensions.y; i++)
+        {
+            bool foundEnd = false;
+            for (int j = 0; j < gridPositions.Length; j++)
+            {
+                if (TestIfOutOfBounds(gridPositions[j] + Vector2Int.up) || foundEnd)
+                {
+                    //print(gridPositions);
+                    ReplaceBlock(gridPositions[j]);
+
+                    foundEnd = true;
+                }
+                else
+                {
+                    SwitchBlocks(gridPositions[j], gridPositions[j] + Vector2Int.up);
+                }
+                gridPositions[j].y++;
+            }
+            if (foundEnd)
+            {
+                break;
+            }
+        }
+    }
+
+    public void SwitchBlocks(Vector2Int gridPos1, Vector2Int gridPos2)
+    {
+        Ingredient selected = grid.currentGrid[gridPos1.y, gridPos1.x];
+        Ingredient sideEffect = grid.currentGrid[gridPos2.y, gridPos2.x];
+        grid.currentGrid[gridPos1.y, gridPos1.x] = sideEffect;
+        grid.currentGrid[gridPos2.y, gridPos2.x] = selected;
+
+        GameObject selectedObject = selected.cubeForDisplay;
+        GameObject sideEffectObject = sideEffect.cubeForDisplay;
+
+        Vector3 selectedPos3;
+        Vector3 sideEffectPos3;
+
+        selectedPos3 = selectedObject.transform.position;
+
+        sideEffectPos3 = sideEffectObject.transform.position;
+
+        selectedObject.transform.position = sideEffectPos3;
+        sideEffectObject.transform.position = selectedPos3;
+
+        Vector2 selectedIndexData = selectedObject.GetComponent<GridPosition>().index;
+        Vector2 SideEffectIndexData = sideEffectObject.GetComponent<GridPosition>().index;
+
+        selectedObject.GetComponent<GridPosition>().index = SideEffectIndexData;
+        sideEffectObject.GetComponent<GridPosition>().index = selectedIndexData;
     }
 
     public bool TestIfOutOfBounds(Vector2Int positionToTest)
@@ -146,177 +333,66 @@ public class MatchingDetection : MonoBehaviour
         return false;
     }
 
-    public void SwitchBlocks(Vector2Int gridPos1, Vector2Int gridPos2)
-    {
-        //switching ingredients
-        Ingredient selected = SampleGrid(gridPos1);
-        Ingredient sideEffect = SampleGrid(gridPos2);
-
-        grid.currentGrid[gridPos1.y, gridPos1.x] = sideEffect;
-        grid.currentGrid[gridPos2.y, gridPos2.x] = selected;
-
-        //switching positions
-        GameObject selectedObject = selected.cubeForDisplay;
-        GameObject sideEffectObject = sideEffect.cubeForDisplay;
-
-        Vector3 selectedPos3 = selectedObject.transform.position;
-        Vector3 sideEffectPos3 = sideEffectObject.transform.position;
-
-        selectedObject.transform.position = sideEffectPos3;
-        sideEffectObject.transform.position = selectedPos3;
-
-        //switching indexes
-        Vector2 selectedIndexData = selectedObject.GetComponent<GridPosition>().index;
-        Vector2 SideEffectIndexData = sideEffectObject.GetComponent<GridPosition>().index;
-
-        selectedObject.GetComponent<GridPosition>().index = SideEffectIndexData;
-        sideEffectObject.GetComponent<GridPosition>().index = selectedIndexData;
-    }
-
-    public bool TestMatch3AtPosition(Vector2Int testPosition)
-    {
-        //basic setup
-        Ingredient ingredientToMatch = SampleGrid(testPosition);
-        Vector2Int testpos;
-        bool foundAMatch = false;
-        bool found1, found2;
-        //test for a match 3 assuming the testposition is on the edge of the 3
-        for (int i = 0; i < 4; i++)
-        {
-            testpos = testPosition + alldirections[i];
-            found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-            testpos = testPosition + alldirections[i] * 2;
-            found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-            if (found1 && found2)
-            {
-                foundAMatch = true;
-            }
-        }
-
-        //test for a match 3 assuming the testposition is in the middle of the 3
-        //horizontal
-        testpos = testPosition + alldirections[0];
-        found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-        testpos = testPosition + alldirections[1];
-        found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-        if (found1 && found2) { foundAMatch = true; }
-
-        //vertical
-        testpos = testPosition + alldirections[2];
-        found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-        testpos = testPosition + alldirections[3];
-        found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-        if (found1 && found2) { foundAMatch = true; }
-
-        return foundAMatch;
-    }
-    private bool SampleAndTestGrid(Vector2Int position, Ingredient typeToTest)
-    {
-        if (TestIfOutOfBounds(position))
-        {
-            return false;
-        }
-
-        return grid.currentGrid[position.y, position.x].IndexEquals(typeToTest);
-    }
-
-    private Ingredient SampleGrid(Vector2Int position)
-    {
-        if (TestIfOutOfBounds(position))
-        {
-            print(position);
-            return new Ingredient();
-        }
-
-        return grid.currentGrid[position.y, position.x];
-    }
-
-    public void CollectMatchData3AtPosition(Vector2Int testPosition)
-    {
-        //basic setup
-        Ingredient ingredientToMatch = SampleGrid(testPosition);
-        Vector2Int testpos;
-        bool found1, found2;
-        //test for a match 3 assuming the testposition is on the edge of the 3
-        for (int i = 0; i < 4; i++)
-        {
-            testpos = testPosition + alldirections[i];
-            found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-            testpos = testPosition + alldirections[i] * 2;
-            found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-            if (found1 && found2)
-            {
-                allBlocksToBeDeleted.Add(testPosition);
-                allBlocksToBeDeleted.Add(testPosition + alldirections[i]);
-                allBlocksToBeDeleted.Add(testPosition + alldirections[i] * 2);
-            }
-        }
-
-        //test for a match 3 assuming the testposition is in the middle of the 3
-        //horizontal
-        testpos = testPosition + alldirections[0];
-        found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-        testpos = testPosition + alldirections[1];
-        found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-        if (found1 && found2)
-        {
-            allBlocksToBeDeleted.Add(testPosition);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[0]);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[1]);
-        }
-
-        //vertical
-        testpos = testPosition + alldirections[2];
-        found1 = SampleAndTestGrid(testpos, ingredientToMatch);
-        testpos = testPosition + alldirections[3];
-        found2 = SampleAndTestGrid(testpos, ingredientToMatch);
-        if (found1 && found2)
-        {
-            allBlocksToBeDeleted.Add(testPosition);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[2]);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[3]);
-        }
-    }
-
     public void ReplaceBlock(Vector2Int gridPosition)
     {
-        for (int i = 0; i < grid.ingredientTypes.Length; i++)
+        //remove object in worldspace
+        GameObject blockToReplace = grid.currentGrid[gridPosition.y, gridPosition.x].cubeForDisplay;
+        Vector3 replacePosition = blockToReplace.transform.position;
+
+        //make a new ingredient spawn at the top
+        List<Ingredient> ingredientsThatCouldSpawn = grid.ingredientTypes.ToList();
+        // Do not spawn type if this would create 3 in a row
+        List<int> indexesToRemove = new();
+        for (int i = 0; i < ingredientsThatCouldSpawn.Count; i++)
         {
-            ReplaceBlockTo(gridPosition, grid.ingredientTypes[i]);
-            if (!TestMatch3AtPosition(gridPosition))
+            if (SampleGrid(gridPosition + Vector2Int.left, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.left * 2, ingredientsThatCouldSpawn[i]))
             {
-                print("found a good option");
-                return;
+                indexesToRemove.Add(i);
+            }
+            else if (SampleGrid(gridPosition + Vector2Int.right, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.right * 2, ingredientsThatCouldSpawn[i]))
+            {
+                indexesToRemove.Add(i);
+            }
+            else if (SampleGrid(gridPosition + Vector2Int.down, ingredientsThatCouldSpawn[i]) && 
+                SampleGrid(gridPosition + Vector2Int.down * 2, ingredientsThatCouldSpawn[i]))
+            {
+                indexesToRemove.Add(i);
             }
         }
-        print("didn't find a good option");
-    }
 
-    public void ReplaceBlockTo(Vector2Int gridPosition, Ingredient changeTo)
-    {
-        Ingredient toReplace = SampleGrid(gridPosition);
-        GameObject blockToReplace = toReplace.cubeForDisplay.gameObject;
-        Vector3 replacePosition = blockToReplace.transform.position;
-        Ingredient ingredientToSpawn = grid.ingredientTypes.First();//first one by default
+        // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
+        indexesToRemove.Sort();
+        indexesToRemove.Reverse();
+        //print($"removed {indexesToRemove.Count} possible ingredients");
+        for (int k = 0; k < indexesToRemove.Count; k++)
+        {
+            int index = indexesToRemove[k];
+            ingredientsThatCouldSpawn.RemoveAt(index);
+        }
+        Ingredient ingredientToSpawn = ingredientsThatCouldSpawn[Random.Range(0, ingredientsThatCouldSpawn.Count)];
+        int indexOfIngredient = ingredientToSpawn.index;
         for (int i = 0; i < grid.ingredientTypes.Length; i++)
         {
-            if (grid.ingredientTypes[i].index == changeTo.index)
+            if (grid.ingredientTypes[i].index == indexOfIngredient)
             {
                 ingredientToSpawn = grid.ingredientTypes[i];
             }
+            
         }
         grid.currentGrid[gridPosition.y, gridPosition.x] = ingredientToSpawn;
-
+        
         //spawn cube
+
+
         var spawned = Instantiate(grid.debugCube, replacePosition, Quaternion.identity, grid.gridContainer);//blockToReplace.GetComponentInParent<Transform>()
         spawned.sharedMaterial = grid.currentGrid[gridPosition.y, gridPosition.x].material;
         spawned.gameObject.name = $"{gridPosition.x}, {gridPosition.y}, type = {grid.currentGrid[gridPosition.y, gridPosition.x].index}";
         spawned.gameObject.GetOrAddComponent<GridPosition>().index = new(gridPosition.x, gridPosition.y);
         grid.currentGrid[gridPosition.y, gridPosition.x].cubeForDisplay = spawned.gameObject;
-
+        //print(spawned);
+        //print(spawned.transform.position);
         Destroy(blockToReplace);
     }
-    
-
-
 }
