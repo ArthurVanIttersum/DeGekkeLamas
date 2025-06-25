@@ -19,6 +19,8 @@ public class MatchGridSystem : MonoBehaviour
     public int seed;
     public Vector3 spawnPosition;
     public MeshRenderer gridQuad;
+    public Material gridBase;
+    public float baseSizeOffset = 5;
 
     public bool autoGenerate;
 
@@ -399,14 +401,19 @@ public class MatchGridSystem : MonoBehaviour
         {
             for (int x = 0; x < currentGrid.GetLength(1); x++)
             {
-                var spawned = Instantiate(gridQuad, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
-                if (currentGrid[y, x].material == null) print($"WHYYYYYYYY, {currentGrid[y,x].name}");
+                MeshRenderer spawned = Instantiate(gridQuad, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
                 spawned.GetOrAddComponent<GridPosition>().index = new(x, y);
                 currentGrid[y, x].cubeForDisplay = spawned.gameObject;
             }
         }
+        var spawnedBase = Instantiate(gridQuad, spawnPosition + Vector3.forward, Quaternion.identity, gridContainer.transform);
+        spawnedBase.name = "Grid Base";
+        spawnedBase.sharedMaterial = gridBase;
+        spawnedBase.transform.localScale = (gridDimensions.x+baseSizeOffset) * Vector3.one;
+        spawnedBase.transform.position += (gridDimensions.x-1) * 0.5f * new Vector3(1,1,0);
+        spawnedBase.transform.position += new Vector3(0, baseSizeOffset * .25f, 0);
         Debug.Log("Generated grid display!");
     }
 

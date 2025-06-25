@@ -12,7 +12,7 @@ public class GridGameraController : MonoBehaviour
         Vector2 size2D = (Vector2)gridsize;
         Vector3 size3D = new Vector3(size2D.x, size2D.y, 0);
         Vector3 Offset = size3D / 2;
-        transform.position = gridManager.spawnPosition + Offset + OffsetByHand;
-        gameObject.GetComponent<Camera>().orthographicSize = (float)gridsize.y / 2;
+        transform.position = gridManager.spawnPosition + Offset + OffsetByHand + Vector3.up;
+        gameObject.GetComponent<Camera>().orthographicSize = (float)gridsize.y / 2 + 3;
     }
 }

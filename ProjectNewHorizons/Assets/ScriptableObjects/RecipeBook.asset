@@ -64,7 +64,7 @@ MonoBehaviour:
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 21
+      index: 22
       cubeForDisplay: {fileID: 0}
   - name: Burrito
     texture: {fileID: 0}
@@ -107,6 +107,11 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 8
       cubeForDisplay: {fileID: 0}
+    - name: Water
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 16
+      cubeForDisplay: {fileID: 0}
     - name: Milk
       texture: {fileID: 0}
       material: {fileID: 0}
@@ -115,7 +120,7 @@ MonoBehaviour:
   - name: Fish cookies
     texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Eggs
+    - name: Egg
       texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
@@ -136,12 +141,12 @@ MonoBehaviour:
     - name: Potato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 16
       cubeForDisplay: {fileID: 0}
     - name: Cheese
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 3
       cubeForDisplay: {fileID: 0}
   - name: Grilled fish
     texture: {fileID: 0}
@@ -149,12 +154,12 @@ MonoBehaviour:
     - name: Fish
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 9
       cubeForDisplay: {fileID: 0}
     - name: Butter
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 2
       cubeForDisplay: {fileID: 0}
   - name: Ice cream
     texture: {fileID: 0}
@@ -175,17 +180,17 @@ MonoBehaviour:
     - name: Water
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 0
       cubeForDisplay: {fileID: 0}
     - name: Syrup
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 20
       cubeForDisplay: {fileID: 0}
     - name: Ice
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 12
       cubeForDisplay: {fileID: 0}
   - name: Indian curry
     texture: {fileID: 0}
@@ -193,27 +198,27 @@ MonoBehaviour:
     - name: Curry
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 0
       cubeForDisplay: {fileID: 0}
     - name: Rice
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 17
       cubeForDisplay: {fileID: 0}
     - name: Chicken
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 4
       cubeForDisplay: {fileID: 0}
     - name: Garlic
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 11
       cubeForDisplay: {fileID: 0}
     - name: Onion
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 15
       cubeForDisplay: {fileID: 0}
   - name: Katsa curry
     texture: {fileID: 0}
@@ -249,27 +254,27 @@ MonoBehaviour:
     - name: Flour
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 10
       cubeForDisplay: {fileID: 0}
     - name: Beef
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 1
       cubeForDisplay: {fileID: 0}
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 22
       cubeForDisplay: {fileID: 0}
     - name: Garlic
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 11
       cubeForDisplay: {fileID: 0}
     - name: Cheese
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 3
       cubeForDisplay: {fileID: 0}
   - name: Milkshake
     texture: {fileID: 0}
@@ -292,7 +297,7 @@ MonoBehaviour:
   - name: Pancakes
     texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Eggs
+    - name: Egg
       texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
@@ -387,7 +392,7 @@ MonoBehaviour:
     - name: Beef
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 1
       cubeForDisplay: {fileID: 0}
     - name: Potato
       texture: {fileID: 0}
@@ -397,22 +402,22 @@ MonoBehaviour:
     - name: Garlic
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 11
       cubeForDisplay: {fileID: 0}
     - name: Butter
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 2
       cubeForDisplay: {fileID: 0}
     - name: Cucumber
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 7
       cubeForDisplay: {fileID: 0}
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 22
       cubeForDisplay: {fileID: 0}
   - name: Risotto
     texture: {fileID: 0}
@@ -438,17 +443,17 @@ MonoBehaviour:
     - name: Lettuce
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 13
       cubeForDisplay: {fileID: 0}
     - name: Cucumber
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 7
       cubeForDisplay: {fileID: 0}
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 22
       cubeForDisplay: {fileID: 0}
   - name: Sashimi
     texture: {fileID: 0}
@@ -474,22 +479,22 @@ MonoBehaviour:
     - name: Flour
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 10
       cubeForDisplay: {fileID: 0}
     - name: Beef
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 1
       cubeForDisplay: {fileID: 0}
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 22
       cubeForDisplay: {fileID: 0}
     - name: Butter
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 2
       cubeForDisplay: {fileID: 0}
   - name: Spare ribs
     texture: {fileID: 0}
@@ -574,20 +579,20 @@ MonoBehaviour:
     - name: Rice
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 17
       cubeForDisplay: {fileID: 0}
     - name: Chicken
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 4
       cubeForDisplay: {fileID: 0}
     - name: Onion
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 15
       cubeForDisplay: {fileID: 0}
     - name: Spices
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 18
       cubeForDisplay: {fileID: 0}
