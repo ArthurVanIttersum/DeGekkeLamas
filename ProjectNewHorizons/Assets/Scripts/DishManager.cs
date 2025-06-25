@@ -4,9 +4,11 @@ public class DishManager : MonoBehaviour
 {
     MatchGridSystem grid;
     public static DishManager instance;
+    public int dishesRequired = 20;
+    int dishesDone;
     [HideInInspector] public Dish currentDish;
-    [HideInInspector] GameObject customer;
-    [HideInInspector] int customerIndex;
+    GameObject customer;
+    int customerIndex;
     private void Awake()
     {
         grid = GetComponent<MatchGridSystem>();
@@ -49,5 +51,13 @@ public class DishManager : MonoBehaviour
         CG.customerQue.Remove(customerIndex);
         Destroy(customer);
         CG.SpawnNewCustomer();
+        dishesDone++;
+
+        if (dishesDone >= dishesRequired) WinGame();
+    }
+
+    void WinGame()
+    {
+        print("You won!");
     }
 }

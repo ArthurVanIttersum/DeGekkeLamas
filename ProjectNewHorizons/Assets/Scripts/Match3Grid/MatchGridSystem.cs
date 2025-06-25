@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.UIElements;
 
 [RequireComponent(typeof(MatchingDetection), typeof(ScreenResolutionManager), typeof(DishManager))]
 public class MatchGridSystem : MonoBehaviour
 {
     public Ingredient[] ingredientTypes;
+    List<Ingredient> ingredientsUsed;
     public Vector2Int gridDimensions;
     /// <summary>
     /// The first digit in the array represents Y value, the 2nd digit X value, so currentGrid[y, x]
@@ -16,6 +18,9 @@ public class MatchGridSystem : MonoBehaviour
     public Ingredient[,] currentGrid;
     public int seed;
     public Vector3 spawnPosition;
+    public MeshRenderer gridQuad;
+    public Material gridBase;
+    public float baseSizeOffset = 5;
 
     public bool autoGenerate;
 
@@ -28,14 +33,13 @@ public class MatchGridSystem : MonoBehaviour
     private System.Random rand;
 
     [Header("Debug stuff")]
-    public MeshRenderer debugCube;
     public TMP_Text ingredientList;
 
     [Header("References")]
-    public static MatchGridSystem instance;
     public GridGameraController gridCameraController;
     public GameObject gridObject;
     [SerializeField, HideInInspector] public Transform gridContainer;
+    public static MatchGridSystem instance;
 
     private void OnValidate()
     {
@@ -113,12 +117,31 @@ public class MatchGridSystem : MonoBehaviour
     [NaughtyAttributes.Button]
     void Generate()
     {
+        rand = new(seed);
+        ingredientsUsed = new();
+
         if (autoResize)
         {
             gridDimensions = new(totalIngredientQTY+1, totalIngredientQTY + 1);
             gridDimensions = new(Mathf.Max(3, gridDimensions.x), Mathf.Max(3, gridDimensions.y));
             gridCameraController.SetCameraPositionAndScale();
             //print("i am trying to update the camera position");
+        }
+
+        // Determine which ingredients actually appear in the grid
+        foreach(Ingredient ingredient in requiredIngredients)
+        {
+            ingredientsUsed.Add(ingredientTypes[ingredient.index]);
+        }
+        for(int i = 0; i < totalIngredientQTY - requiredIngredients.Length; i++)
+        {
+            int index;
+            do
+            {
+                index = rand.Next(0, ingredientTypes.Length);
+            } 
+            while (ingredientsUsed.Contains(ingredientTypes[index]));
+            ingredientsUsed.Add(ingredientTypes[index]);
         }
 
         Initialize();
@@ -133,7 +156,7 @@ public class MatchGridSystem : MonoBehaviour
             GenerateGrid();
         }
         DestroyOldGrid();
-        if (debugCube != null) GenerateDisplay();
+        if (gridQuad != null) GenerateDisplay();
     }
 
     /// <summary>
@@ -169,23 +192,27 @@ public class MatchGridSystem : MonoBehaviour
     /// </summary>
     void GenerateGrid()
     {
-        int[] quantities = new int[ingredientTypes.Length];
+        int[] quantities = new int[ingredientsUsed.Count];
         foreach(var ingredient in requiredIngredients)
         {
-            quantities[ingredient.index]++;
+            quantities[Ingredient.FindIndex(ingredientsUsed.ToArray(), ingredient.index)]++;
         }
         List<float> weights = new(); // Weights is used for making ingredients in the required list have a higher ratio in the generated grid
         int total = MathTools.ArrayTotal(quantities);
-        for(int i = 0; i < ingredientTypes.Length; i++)
+        for(int i = 0; i < ingredientsUsed.Count; i++)
         {
             weights.Add((quantities[i]+weightInfluence) / (float)total * 100);
         }
 
-        for (int y = 0; y < currentGrid.GetLength(0); y++)
+        for (int y = 0; y < currentGrid.GetLength(0); y++) // Y axis
         {
-            for(int x = 0; x < currentGrid.GetLength(1); x++)
+            for(int x = 0; x < currentGrid.GetLength(1); x++) // X axis
             {
-                List<Ingredient> possibleIngredients = new(ingredientTypes);
+                List<Ingredient> possibleIngredients = new();
+                for (int i = 0; i < ingredientsUsed.Count; i++)
+                {
+                    possibleIngredients.Add( ingredientsUsed[i] );
+                }
 
                 // Do not spawn type if this would create 3 in a row
                 List<int> indexesToRemove = new();
@@ -201,15 +228,21 @@ public class MatchGridSystem : MonoBehaviour
                 }
                 // Remove objects that shouldnt spawn, in correct order to avoid deleting the order one if indexes shifted
                 List<float> localWeights = new(weights);
+                for(int i = 0;i < indexesToRemove.Count; i++)
+                {
+                    indexesToRemove[i] = possibleIngredients.FindIndex(x => x.index == indexesToRemove[i]);
+                }
                 indexesToRemove.Sort();
                 indexesToRemove.Reverse();
-                for(int i = 0; i < indexesToRemove.Count; i++)
+                for (int i = 0; i < indexesToRemove.Count; i++)
                 {
                     int index = indexesToRemove[i];
-                    possibleIngredients.RemoveAt(index);
-                    localWeights.RemoveAt(index);
+
+                    //print($"{localWeights.Count}, {index}, {possibleIngredients.Count}");
+
+                    localWeights.RemoveAt( index );
+                    possibleIngredients.RemoveAt( index );
                 }
-                //currentGrid[y, x] = possibleIngredients[rand.Next(0, possibleIngredients.Count)];
                 localWeights = ReadjustWeights(localWeights.ToArray(), 100).ToList();
                 currentGrid[y, x] = WeightedRandomOption(possibleIngredients.ToArray(), localWeights.ToArray());
             }
@@ -221,7 +254,7 @@ public class MatchGridSystem : MonoBehaviour
     /// </summary>
     T WeightedRandomOption<T>(T[] possibilities, float[] weights)
     {
-        if (possibilities.Length != weights.Length) Debug.LogWarning("arrays are different lengths");
+        if (possibilities.Length != weights.Length) Debug.LogWarning($"arrays are different lengths, {possibilities.Length} and {weights.Length}");
 
         int value = rand.Next(0, 100);
         float currentweight = 0;
@@ -368,13 +401,19 @@ public class MatchGridSystem : MonoBehaviour
         {
             for (int x = 0; x < currentGrid.GetLength(1); x++)
             {
-                var spawned = Instantiate(debugCube, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
+                MeshRenderer spawned = Instantiate(gridQuad, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
                 spawned.GetOrAddComponent<GridPosition>().index = new(x, y);
                 currentGrid[y, x].cubeForDisplay = spawned.gameObject;
             }
         }
+        var spawnedBase = Instantiate(gridQuad, spawnPosition + Vector3.forward, Quaternion.identity, gridContainer.transform);
+        spawnedBase.name = "Grid Base";
+        spawnedBase.sharedMaterial = gridBase;
+        spawnedBase.transform.localScale = (gridDimensions.x+baseSizeOffset) * Vector3.one;
+        spawnedBase.transform.position += (gridDimensions.x-1) * 0.5f * new Vector3(1,1,0);
+        spawnedBase.transform.position += new Vector3(0, baseSizeOffset * .25f, 0);
         Debug.Log("Generated grid display!");
     }
 
