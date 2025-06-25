@@ -104,10 +104,13 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (!boostActive && GridActivator.isPlayingMatch3)
+        if (!boostActive)
         {
-            score -= decreaseSpeed * Time.deltaTime;
-            if (score - cachedScore < 0) OnScoreZero();
+            if (GridActivator.isPlayingMatch3)
+            {
+                score -= decreaseSpeed * Time.deltaTime;
+                if (score - cachedScore < 0) OnScoreZero();
+            }
             scoreSlider.value += (score - cachedScore - scoreSlider.value) * Time.deltaTime * updateSpeed;
         }
     }

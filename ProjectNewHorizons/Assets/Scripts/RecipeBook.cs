@@ -35,6 +35,7 @@ public class Recipe
 {
     [SerializeField]
     public string name;
+    public Texture texture;
     public Ingredient[] recipeIngredientsList;
 
     /// <summary>

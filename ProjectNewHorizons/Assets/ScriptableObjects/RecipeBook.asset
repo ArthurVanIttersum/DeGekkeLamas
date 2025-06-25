@@ -15,38 +15,108 @@ MonoBehaviour:
   randomDishCountRangeMin: 1
   randomDishCountRangeMax: 3
   allrecipes:
-  - name: Guitar salad
+  - name: Burger
+    texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Red
+    - name: Beef
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-    - name: Blue
+      cubeForDisplay: {fileID: 0}
+    - name: Cheese
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-  - name: SCP 682
+      cubeForDisplay: {fileID: 0}
+    - name: Flour
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+    - name: Lettuce
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+    - name: Onion
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+    - name: Tomato
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+  - name: Fish cookies
+    texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Red
+    - name: Eggs
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-    - name: Jordy
+      cubeForDisplay: {fileID: 0}
+    - name: Flour
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-  - name: Just all of it
+      cubeForDisplay: {fileID: 0}
+    - name: Sugar
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+  - name: Pancakes
+    texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Yellow
+    - name: Eggs
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-    - name: Red
+      cubeForDisplay: {fileID: 0}
+    - name: Flour
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-    - name: Green
+      cubeForDisplay: {fileID: 0}
+    - name: Milk
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-  - name: Cheese
+      cubeForDisplay: {fileID: 0}
+    - name: Sugar
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+  - name: Ramen
+    texture: {fileID: 0}
     recipeIngredientsList:
-    - name: Green
+    - name: Egg
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
-    - name: Magenta
+      cubeForDisplay: {fileID: 0}
+    - name: Fish
+      texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
+      cubeForDisplay: {fileID: 0}
+    - name: Flour
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+  - name: Sushi
+    texture: {fileID: 0}
+    recipeIngredientsList:
+    - name: Fish
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}
+    - name: Rice
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 0
+      cubeForDisplay: {fileID: 0}

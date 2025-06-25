@@ -16,6 +16,7 @@ public class MatchGridSystem : MonoBehaviour
     public Ingredient[,] currentGrid;
     public int seed;
     public Vector3 spawnPosition;
+    public MeshRenderer gridQuad;
 
     public bool autoGenerate;
 
@@ -28,14 +29,13 @@ public class MatchGridSystem : MonoBehaviour
     private System.Random rand;
 
     [Header("Debug stuff")]
-    public MeshRenderer debugCube;
     public TMP_Text ingredientList;
 
     [Header("References")]
-    public static MatchGridSystem instance;
     public GridGameraController gridCameraController;
     public GameObject gridObject;
     [SerializeField, HideInInspector] public Transform gridContainer;
+    public static MatchGridSystem instance;
 
     private void OnValidate()
     {
@@ -133,7 +133,7 @@ public class MatchGridSystem : MonoBehaviour
             GenerateGrid();
         }
         DestroyOldGrid();
-        if (debugCube != null) GenerateDisplay();
+        if (gridQuad != null) GenerateDisplay();
     }
 
     /// <summary>
@@ -368,7 +368,7 @@ public class MatchGridSystem : MonoBehaviour
         {
             for (int x = 0; x < currentGrid.GetLength(1); x++)
             {
-                var spawned = Instantiate(debugCube, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
+                var spawned = Instantiate(gridQuad, new Vector3(x, y) + spawnPosition, Quaternion.identity, gridContainer.transform);
                 spawned.sharedMaterial = currentGrid[y, x].material;
                 spawned.gameObject.name = $"{x}, {y}, type = {currentGrid[y, x].index}";
                 spawned.GetOrAddComponent<GridPosition>().index = new(x, y);

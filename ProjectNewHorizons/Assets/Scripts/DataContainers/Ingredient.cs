@@ -10,7 +10,7 @@ public struct Ingredient
     public Texture texture;
     public Material material;
     [HideInInspector] public int index;
-    public GameObject cubeForDisplay;
+    [HideInInspector] public GameObject cubeForDisplay;
 
     /// <summary>
     /// Checks if 2 ingredients are the same by using their hidden index
