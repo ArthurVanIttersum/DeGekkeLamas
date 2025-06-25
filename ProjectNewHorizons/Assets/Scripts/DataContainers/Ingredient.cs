@@ -55,4 +55,12 @@ public struct Ingredient
         }
         return false;
     }
+    public static int FindIndex(Ingredient[] array, int toSearch)
+    {
+        foreach(Ingredient ingredient in array)
+        {
+            if (toSearch == ingredient.index) return ingredient.index;
+        }
+        return 0;
+    }
 }
