@@ -13244,25 +13244,30 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: e6c865f9fd72cf146be5752e33a2b15d, type: 2}
     index: 18
     cubeForDisplay: {fileID: 0}
+  - name: Sugar
+    texture: {fileID: 2800000, guid: d62e020c0869efc488d31c61ccd00a35, type: 3}
+    material: {fileID: 2100000, guid: 7a6c52a6de420ac46a1d1353b2dfa630, type: 2}
+    index: 19
+    cubeForDisplay: {fileID: 0}
   - name: Syrup
     texture: {fileID: 2800000, guid: 14ab4d102320e034392ac9d46823039c, type: 3}
     material: {fileID: 2100000, guid: 1888c8fe17d4143489ab7eaee48b3bd5, type: 2}
-    index: 19
+    index: 20
     cubeForDisplay: {fileID: 0}
   - name: Tapioca
     texture: {fileID: 2800000, guid: 2635f8274203e9643b7e769419ff93f5, type: 3}
     material: {fileID: 2100000, guid: 646da2ec5e6f27c40a53834856d38fcd, type: 2}
-    index: 20
+    index: 21
     cubeForDisplay: {fileID: 0}
   - name: Tomato
     texture: {fileID: 2800000, guid: 4153be03ec9d5404c85046664bfeda22, type: 3}
     material: {fileID: 2100000, guid: 1f5a7cf6e60ec36449604260d6648543, type: 2}
-    index: 21
+    index: 22
     cubeForDisplay: {fileID: 0}
   - name: Wasabi
     texture: {fileID: 2800000, guid: 33e45ef1e9257cd47b84bd9ff7c0dd03, type: 3}
     material: {fileID: 2100000, guid: 286e79ab5cf15804382c32e70caacd81, type: 2}
-    index: 22
+    index: 23
     cubeForDisplay: {fileID: 0}
   gridDimensions: {x: 11, y: 11}
   seed: 1379353625
@@ -13465,7 +13470,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c818fb3058cadea4e80f0b479816a33c, type: 2}
+  - {fileID: 2100000, guid: 7a6c52a6de420ac46a1d1353b2dfa630, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
