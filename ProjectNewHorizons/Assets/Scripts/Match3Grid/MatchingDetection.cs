@@ -19,7 +19,10 @@ public class MatchingDetection : MonoBehaviour
 
     private Vector3 swipeDifference;
 
-    private HashSet<Vector2Int> allBlocksToBeDeleted = new();
+    private HashSet<Vector2Int> allBlocksToBeReplaced = new();
+    private HashSet<Vector2Int> allPositionsToCheck = new();
+    private Dictionary<int, List<Vector2Int>> columnsOfBlocksToBeReplaced = new();
+
 
     void LateUpdate()
     {
@@ -59,11 +62,11 @@ public class MatchingDetection : MonoBehaviour
             }
         }
     }
+
+
     //this is the main method. here you see all the steps in the algorithm.
     //each step might use helper methods, but it will always return to this methed before moving on to another major step
-
-
-    private void SwipeDetected()//this is the main method. here you see all the steps in the algorithm. each step might use helper methods, but it will always return to thi methed before moving on to another maor step
+    private void SwipeDetected()
     {
         Vector2Int swipeDirection = CalculateSwipeDirection();
         Vector2Int swipeStartPosition = GridStartPos;
@@ -78,22 +81,41 @@ public class MatchingDetection : MonoBehaviour
             return;
         }
         SwitchBlocks(swipeStartPosition, swipeDestination);
-        bool testAtStart = TestMatch3AtPosition(swipeStartPosition);
-        bool testAtEnd = TestMatch3AtPosition(swipeDestination);
-        if (!(testAtStart || testAtEnd))
+        allPositionsToCheck.Add(swipeStartPosition);
+        allPositionsToCheck.Add(swipeDestination);
+        bool onlyFirstTime = true;
+
+        for (int i = 0; i < 10; i++)
         {
-            SwitchBlocks(swipeStartPosition, swipeDestination);//switching the blocks back from where they came since no match was found
-            return;
+            if (!CheckAllPositions())
+            {
+                if (onlyFirstTime)
+                {
+                    SwitchBlocks(swipeStartPosition, swipeDestination);//switching the blocks back from where they came since no match was found
+                    onlyFirstTime = false;
+                }
+                allPositionsToCheck.Clear();
+                return;
+            }
+            if (onlyFirstTime)
+            {
+                onlyFirstTime = false;
+            }
+            CollectDataOfAllPositions();
+
+            columnsOfBlocksToBeReplaced = allBlocksToBeReplaced.GroupBy(point => point.x).ToDictionary(group => group.Key, group => group.ToList());
+
+            Vector2Int[] toReplace = allBlocksToBeReplaced.ToArray();
+
+            for (int j = 0; j < toReplace.Length; j++)
+            {
+                ReplaceBlock(toReplace[j]);
+            }
+            MoveEverythingUp();
+            columnsOfBlocksToBeReplaced.Clear();
+            allBlocksToBeReplaced.Clear();
         }
-        CollectMatchData3AtPosition(swipeStartPosition);
-        CollectMatchData3AtPosition(swipeDestination);
-        //just for testing
-        Vector2Int[] toDelete = allBlocksToBeDeleted.ToArray();
-        for (int i = 0; i < toDelete.Length; i++)
-        {
-            ReplaceBlock(toDelete[i]);
-        }
-        allBlocksToBeDeleted.Clear();
+
     }
 
     private Vector2Int CalculateSwipeDirection()
@@ -258,9 +280,9 @@ public class MatchingDetection : MonoBehaviour
             found2 = SampleAndTestGrid(testpos, ingredientToMatch);
             if (found1 && found2)
             {
-                allBlocksToBeDeleted.Add(testPosition);
-                allBlocksToBeDeleted.Add(testPosition + alldirections[i]);
-                allBlocksToBeDeleted.Add(testPosition + alldirections[i] * 2);
+                allBlocksToBeReplaced.Add(testPosition);
+                allBlocksToBeReplaced.Add(testPosition + alldirections[i]);
+                allBlocksToBeReplaced.Add(testPosition + alldirections[i] * 2);
             }
         }
 
@@ -272,9 +294,9 @@ public class MatchingDetection : MonoBehaviour
         found2 = SampleAndTestGrid(testpos, ingredientToMatch);
         if (found1 && found2)
         {
-            allBlocksToBeDeleted.Add(testPosition);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[0]);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[1]);
+            allBlocksToBeReplaced.Add(testPosition);
+            allBlocksToBeReplaced.Add(testPosition + alldirections[0]);
+            allBlocksToBeReplaced.Add(testPosition + alldirections[1]);
         }
 
         //vertical
@@ -284,9 +306,9 @@ public class MatchingDetection : MonoBehaviour
         found2 = SampleAndTestGrid(testpos, ingredientToMatch);
         if (found1 && found2)
         {
-            allBlocksToBeDeleted.Add(testPosition);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[2]);
-            allBlocksToBeDeleted.Add(testPosition + alldirections[3]);
+            allBlocksToBeReplaced.Add(testPosition);
+            allBlocksToBeReplaced.Add(testPosition + alldirections[2]);
+            allBlocksToBeReplaced.Add(testPosition + alldirections[3]);
         }
     }
 
@@ -330,4 +352,79 @@ public class MatchingDetection : MonoBehaviour
         Destroy(blockToReplace);
     }
 
+    private void MoveEverythingUp()
+    {
+        for (int i = 0; i < grid.gridDimensions.y; i++)//for every column
+        {
+            if (columnsOfBlocksToBeReplaced.TryGetValue(i, out List<Vector2Int> columnList))
+            {
+                MoveColumnUp(columnList, i);
+            }
+        }
+    }
+
+    private void MoveColumnUp(List<Vector2Int> blocksInColumn, int column)
+    {
+        int numberOfBlocks = blocksInColumn.Count;
+        for (int i = 0; i < numberOfBlocks; i++)
+        {
+            Vector2Int highest = FindHighestInColumn(column, blocksInColumn.ToArray());
+            MoveOneBlockAllTheWayUp(highest);
+            blocksInColumn.Remove(highest);
+        }
+    }
+
+    private void MoveOneBlockAllTheWayUp(Vector2Int gridPosition)
+    {
+        
+        
+        for (int i = 0; i < grid.gridDimensions.x; i++)
+        {
+            allPositionsToCheck.Add(gridPosition);
+            if (TestIfOutOfBounds(gridPosition + Vector2Int.up))
+            {
+                return;
+            }
+            else
+            {
+                SwitchBlocks(gridPosition, gridPosition + Vector2Int.up);
+            }
+            gridPosition.y++;
+        }
+    }
+
+    private Vector2Int FindHighestInColumn(int column, Vector2Int[] blocks)
+    {
+        int highest = 0;
+        for (int j = 0; j < grid.gridDimensions.y; j++)
+        {
+            if (blocks.Contains(new Vector2Int(column, j)))
+            {
+                highest = j;
+            }
+        }
+        return new Vector2Int(column, highest);
+    }
+
+    private bool CheckAllPositions()
+    {
+        Vector2Int[] allPositions = allPositionsToCheck.ToArray();
+        for (int i = 0; i < allPositions.Length; i++)
+        {
+            if (TestMatch3AtPosition(allPositions[i]))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void CollectDataOfAllPositions()
+    {
+        Vector2Int[] allPositions = allPositionsToCheck.ToArray();
+        for (int i = 0; i < allPositions.Length; i++)
+        {
+            CollectMatchData3AtPosition(allPositions[i]);
+        }
+    }
 }
