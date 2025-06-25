@@ -193,7 +193,7 @@ public class MatchGridSystem : MonoBehaviour
         int[] quantities = new int[ingredientsUsed.Count];
         foreach(var ingredient in requiredIngredients)
         {
-            quantities[ingredient.index]++;
+            quantities[Ingredient.FindIndex(ingredientsUsed.ToArray(), ingredient.index)]++;
         }
         List<float> weights = new(); // Weights is used for making ingredients in the required list have a higher ratio in the generated grid
         int total = MathTools.ArrayTotal(quantities);

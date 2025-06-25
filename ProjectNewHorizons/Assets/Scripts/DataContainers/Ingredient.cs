@@ -57,9 +57,9 @@ public struct Ingredient
     }
     public static int FindIndex(Ingredient[] array, int toSearch)
     {
-        foreach(Ingredient ingredient in array)
+        for(int i = 0; i < array.Length; i++)
         {
-            if (toSearch == ingredient.index) return ingredient.index;
+            if (toSearch == array[i].index) return i;
         }
         return 0;
     }

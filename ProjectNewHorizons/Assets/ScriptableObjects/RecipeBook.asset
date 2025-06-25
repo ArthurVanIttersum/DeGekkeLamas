@@ -21,32 +21,32 @@ MonoBehaviour:
     - name: Beef
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 1
       cubeForDisplay: {fileID: 0}
     - name: Cheese
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 3
       cubeForDisplay: {fileID: 0}
     - name: Flour
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 10
       cubeForDisplay: {fileID: 0}
     - name: Lettuce
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 13
       cubeForDisplay: {fileID: 0}
     - name: Onion
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 15
       cubeForDisplay: {fileID: 0}
     - name: Tomato
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 21
       cubeForDisplay: {fileID: 0}
   - name: Fish cookies
     texture: {fileID: 0}
@@ -59,12 +59,25 @@ MonoBehaviour:
     - name: Flour
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 10
       cubeForDisplay: {fileID: 0}
     - name: Sugar
       texture: {fileID: 0}
       material: {fileID: 0}
       index: 0
+      cubeForDisplay: {fileID: 0}
+  - name: Fries
+    texture: {fileID: 0}
+    recipeIngredientsList:
+    - name: Potato
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 8
+      cubeForDisplay: {fileID: 0}
+    - name: Cheese
+      texture: {fileID: 0}
+      material: {fileID: 0}
+      index: 16
       cubeForDisplay: {fileID: 0}
   - name: Pancakes
     texture: {fileID: 0}
@@ -95,17 +108,17 @@ MonoBehaviour:
     - name: Egg
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 8
       cubeForDisplay: {fileID: 0}
     - name: Fish
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 9
       cubeForDisplay: {fileID: 0}
     - name: Flour
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 10
       cubeForDisplay: {fileID: 0}
   - name: Sushi
     texture: {fileID: 0}
@@ -113,10 +126,10 @@ MonoBehaviour:
     - name: Fish
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 8
       cubeForDisplay: {fileID: 0}
     - name: Rice
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 0
+      index: 16
       cubeForDisplay: {fileID: 0}
