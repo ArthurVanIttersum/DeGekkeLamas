@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-
 
 public class MatchingDetection : MonoBehaviour
 {
@@ -22,8 +20,10 @@ public class MatchingDetection : MonoBehaviour
     private HashSet<Vector2Int> allBlocksToBeReplaced = new();
     private HashSet<Vector2Int> allPositionsToCheck = new();
     private Dictionary<int, List<Vector2Int>> columnsOfBlocksToBeReplaced = new();
+    private List<GameObject> theObjectsThatGotMovedUp = new();
 
-
+    private List<Ingredient> foundIngredientTypes = new();
+    private int removedBlocks = 0;
     void LateUpdate()
     {
         if (!GridActivator.isPlayingMatch3) return;
@@ -63,7 +63,6 @@ public class MatchingDetection : MonoBehaviour
         }
     }
 
-
     //this is the main method. here you see all the steps in the algorithm.
     //each step might use helper methods, but it will always return to this methed before moving on to another major step
     private void SwipeDetected()
@@ -83,39 +82,45 @@ public class MatchingDetection : MonoBehaviour
         SwitchBlocks(swipeStartPosition, swipeDestination);
         allPositionsToCheck.Add(swipeStartPosition);
         allPositionsToCheck.Add(swipeDestination);
-        bool onlyFirstTime = true;
-
-        for (int i = 0; i < 10; i++)
+        if (!CheckAllPositions())
+        {
+            SwitchBlocks(swipeStartPosition, swipeDestination);
+            allPositionsToCheck.Clear();
+            return;
+        }
+        for (int i = 0; i < 10; i++)//10 is a limiter, so that if it keeps looping it won't loop forever breaking the game.
         {
             if (!CheckAllPositions())
             {
-                if (onlyFirstTime)
-                {
-                    SwitchBlocks(swipeStartPosition, swipeDestination);//switching the blocks back from where they came since no match was found
-                    onlyFirstTime = false;
-                }
                 allPositionsToCheck.Clear();
+                FinalizeIngredients();
                 return;
             }
-            if (onlyFirstTime)
-            {
-                onlyFirstTime = false;
-            }
             CollectDataOfAllPositions();
-
+            
+            Vector2Int[] toReplace = allBlocksToBeReplaced.ToArray();
+            CalculateIngredients(toReplace);
             columnsOfBlocksToBeReplaced = allBlocksToBeReplaced.GroupBy(point => point.x).ToDictionary(group => group.Key, group => group.ToList());
 
-            Vector2Int[] toReplace = allBlocksToBeReplaced.ToArray();
-
+            
             for (int j = 0; j < toReplace.Length; j++)
             {
-                ReplaceBlock(toReplace[j]);
+                Ingredient ingredientFound = SampleGrid(toReplace[j]);
+                GameObject theCubeObject = ingredientFound.cubeForDisplay.gameObject;
+                theObjectsThatGotMovedUp.Add(theCubeObject);
             }
             MoveEverythingUp();
+            for (int j = 0; j < theObjectsThatGotMovedUp.Count; j++)
+            {
+                Vector2 position = theObjectsThatGotMovedUp[j].GetComponent<GridPosition>().index;
+                Vector2Int gridPosition = new Vector2Int((int)position.x, (int)position.y);
+                ReplaceBlock(gridPosition);
+            }
+            
+            theObjectsThatGotMovedUp.Clear();
             columnsOfBlocksToBeReplaced.Clear();
             allBlocksToBeReplaced.Clear();
         }
-
     }
 
     private Vector2Int CalculateSwipeDirection()
@@ -132,7 +137,6 @@ public class MatchingDetection : MonoBehaviour
             {
                 directionVector = Vector2Int.left;
             }
-
         }
         else
         {
@@ -146,18 +150,6 @@ public class MatchingDetection : MonoBehaviour
             }
         }
         return directionVector;
-    }
-
-
-
-    private bool SampleGrid(Vector2Int position, Ingredient typeToTest)
-    {
-        if (TestIfOutOfBounds(position))
-        {
-            return false;
-        }
-
-        return grid.currentGrid[position.y, position.x].IndexEquals(typeToTest);
     }
 
     public bool TestIfOutOfBounds(Vector2Int positionToTest)
@@ -376,8 +368,6 @@ public class MatchingDetection : MonoBehaviour
 
     private void MoveOneBlockAllTheWayUp(Vector2Int gridPosition)
     {
-        
-        
         for (int i = 0; i < grid.gridDimensions.x; i++)
         {
             allPositionsToCheck.Add(gridPosition);
@@ -426,5 +416,30 @@ public class MatchingDetection : MonoBehaviour
         {
             CollectMatchData3AtPosition(allPositions[i]);
         }
+    }
+
+    private void CalculateIngredients(Vector2Int[] foundBlocks)
+    {
+        for (int i = 0; i < foundBlocks.Length; i++)
+        {
+            Ingredient theIngredientFromTheGrid = SampleGrid(foundBlocks[i]);
+            if (!Ingredient.ContainsIndex(foundIngredientTypes.ToArray(), theIngredientFromTheGrid))
+            {
+                foundIngredientTypes.Add(theIngredientFromTheGrid);
+            }
+            removedBlocks += foundBlocks.Length;
+        }
+    }
+
+    private void FinalizeIngredients()
+    {
+        for (int i = 0; i < foundIngredientTypes.Count; i++)
+        {
+            currentDish.AddIngredient(foundIngredientTypes[i]);
+        }
+        int scoreToAdd = removedBlocks - foundIngredientTypes.Count * 3;
+        
+        ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * scoreToAdd);
+        removedBlocks = 0;
     }
 }
