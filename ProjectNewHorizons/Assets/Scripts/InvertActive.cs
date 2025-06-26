@@ -4,6 +4,6 @@ public class InvertActive : MonoBehaviour
 {
     public void ToggleActive()
     {
-        this.gameObject.SetActive(this.gameObject.activeSelf);
+        this.gameObject.SetActive(!this.gameObject.activeSelf);
     }
 }
