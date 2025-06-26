@@ -41,23 +41,29 @@ public class DishManager : MonoBehaviour
     {
         print("Completed dish!");
         ScoreManager SM = ScoreManager.instance;
-        CustomerGenerator CG = CustomerGenerator.instance;
+        
 
         SM.IncreaseScore(SM.scoreDishComplete);
         GridActivator.dishActive = false;
         GridActivator.isPlayingMatch3 = false;
         grid.ToggleUI();
-        CG.customerAntiQue.Add(customerIndex);
-        CG.customerQue.Remove(customerIndex);
-        Destroy(customer);
-        CG.SpawnNewCustomer();
-        dishesDone++;
-
-        if (dishesDone >= dishesRequired) WinGame();
+        customer.GetComponent<Customer>().thisCustomersOrder.orderComplete = true;//assuming only one order per customer
     }
 
     void WinGame()
     {
         print("You won!");
+    }
+
+    public void SatisfyCustomer()
+    {
+        CustomerGenerator CG = CustomerGenerator.instance;
+        CG.customerAntiQue.Add(customerIndex);
+        CG.customerQue.Remove(customerIndex);
+        Destroy(customer);
+        CG.SpawnNewCustomer();
+        dishesDone++;
+        MatchGridSystem.instance.ingredientList.text = string.Empty;
+        if (dishesDone >= dishesRequired) WinGame();
     }
 }
