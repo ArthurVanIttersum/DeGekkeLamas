@@ -10,7 +10,7 @@ public class DishManager : MonoBehaviour
     [HideInInspector] public Dish currentDish;
     GameObject customer;
     int customerIndex;
-    UnityEvent onGameWon;
+    public UnityEvent onGameWon;
     private void Awake()
     {
         grid = GetComponent<MatchGridSystem>();
