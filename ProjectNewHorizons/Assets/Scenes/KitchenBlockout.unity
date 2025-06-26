@@ -17106,10 +17106,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 171.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 261.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 2323657214804858213, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3464074863328190580, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 833813502}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_margin.w
+      value: -148.97972
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_margin.y
+      value: 26.48424
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_margin.z
+      value: 110.50328
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6504589188080551737, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_Name
       value: UI
