@@ -21,6 +21,7 @@ public class MatchGridSystem : MonoBehaviour
     public MeshRenderer gridQuad;
     public Material gridBase;
     public float baseSizeOffset = 5;
+    public int extraIngredients = 2;
 
     public bool autoGenerate;
 
@@ -34,6 +35,7 @@ public class MatchGridSystem : MonoBehaviour
 
     [Header("Debug stuff")]
     public TMP_Text ingredientList;
+    public Color recipeColor;
 
     [Header("References")]
     public GridGameraController gridCameraController;
@@ -99,7 +101,7 @@ public class MatchGridSystem : MonoBehaviour
 
         Generate();
         if (ingredientList != null)
-            ingredientList.text = $"{dish.dishType.name}\n {StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
+            ingredientList.text = $"{StringTools.Color(dish.dishType.name, recipeColor)}\n {StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
     }
 
     /// <summary>

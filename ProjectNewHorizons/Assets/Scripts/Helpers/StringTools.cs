@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 static public class StringTools
@@ -32,5 +33,13 @@ static public class StringTools
     static public string Bold(string full, string part)
     {
         return full.Replace(part, $"<b>{part}</b>");
+    }
+    static public string Color(string str, Color color)
+    {
+        return $"<color=#{color.ToHexString()}>{str}</color>";
+    }
+    static public string Color(string full, string part, Color color)
+    {
+        return full.Replace(part, $"<color=#{color.ToHexString()}>{part}</color>");
     }
 }
