@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
 
                         if (customer.thisCustomersOrder.orderComplete)
                         {
-                            DishManager.instance.SatisfyCustomer();
+                            print("startWalkingAway Animation Script");
+                            StartCoroutine(customer.WalkingAwayAnimation());
                         }
                         else
                         {

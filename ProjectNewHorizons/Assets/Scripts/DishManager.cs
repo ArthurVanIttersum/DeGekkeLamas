@@ -55,7 +55,7 @@ public class DishManager : MonoBehaviour
         print("You won!");
     }
 
-    public void SatisfyCustomer()
+    public void DespawnAndRespawnCustomer()
     {
         CustomerGenerator CG = CustomerGenerator.instance;
         CG.customerAntiQue.Add(customerIndex);

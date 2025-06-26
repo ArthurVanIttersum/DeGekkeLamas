@@ -63,6 +63,8 @@ public class CustomerGenerator : MonoBehaviour
         Customer c = newCustomer.GetOrAddComponent<Customer>();
         c.thisCustomersOrder = newlyGeneratedOrder;
         c.index = index;
+        c.walkingAwayDirectionAndSpeed = new Vector3 (0.1f, 0, 0);
+        c.walkingTime = 2f;
     }
 
     public bool CustomerInQue(GameObject customer)
