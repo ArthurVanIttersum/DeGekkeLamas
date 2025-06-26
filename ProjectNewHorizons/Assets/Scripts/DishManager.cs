@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DishManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DishManager : MonoBehaviour
     [HideInInspector] public Dish currentDish;
     GameObject customer;
     int customerIndex;
+    UnityEvent onGameWon;
     private void Awake()
     {
         grid = GetComponent<MatchGridSystem>();
@@ -52,6 +54,7 @@ public class DishManager : MonoBehaviour
 
     void WinGame()
     {
+        onGameWon.Invoke();
         print("You won!");
     }
 
