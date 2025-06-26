@@ -11,4 +11,8 @@ public class UIButtons : MonoBehaviour
     {
         Application.Quit();
     }
+    public void MainMenuReturn()
+    {
+        SceneManager.LoadScene("Start Menu Scene");
+    }
 }
