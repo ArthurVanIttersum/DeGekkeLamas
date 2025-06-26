@@ -13205,85 +13205,95 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: e26b8525aad82954dbe35b4665d3a568, type: 2}
     index: 7
     cubeForDisplay: {fileID: 0}
+  - name: Curry
+    texture: {fileID: 2800000, guid: b3d8bc625fb328d4f96648ac826b76d3, type: 3}
+    material: {fileID: 2100000, guid: cdc77f6e206e9354e986e69fa1f8b25a, type: 2}
+    index: 8
+    cubeForDisplay: {fileID: 0}
   - name: Egg
     texture: {fileID: 2800000, guid: 71b342a0549fc7f418944cd75c4624d9, type: 3}
     material: {fileID: 2100000, guid: acc8adaeb1a29a54887fb6761282e050, type: 2}
-    index: 8
+    index: 9
     cubeForDisplay: {fileID: 0}
   - name: Fish
     texture: {fileID: 2800000, guid: c3c768bc26148374295fa5689f36e5f2, type: 3}
     material: {fileID: 2100000, guid: 849c727c18c3d064e9eb03cdc0dc5699, type: 2}
-    index: 9
+    index: 10
     cubeForDisplay: {fileID: 0}
   - name: Flour
     texture: {fileID: 2800000, guid: 4771627e19cb9704eac0ee87957d4abd, type: 3}
     material: {fileID: 2100000, guid: 04191f1aeda72fb4199df51812e1630d, type: 2}
-    index: 10
+    index: 11
     cubeForDisplay: {fileID: 0}
   - name: Garlic
     texture: {fileID: 2800000, guid: 6c1c5c66cd20b494cbe371f327a2b55d, type: 3}
     material: {fileID: 2100000, guid: ee572c6ab993b794087bac76b26d17d2, type: 2}
-    index: 11
+    index: 12
     cubeForDisplay: {fileID: 0}
   - name: Ice
     texture: {fileID: 2800000, guid: 282f1aeec0dc6f8479c85b4540c7139b, type: 3}
     material: {fileID: 2100000, guid: 6f728216c1988594bab5db9d88356f23, type: 2}
-    index: 12
+    index: 13
     cubeForDisplay: {fileID: 0}
   - name: Lettuce
     texture: {fileID: 2800000, guid: c60ed70103d244d44849b1f15df95e36, type: 3}
     material: {fileID: 2100000, guid: 81cd00b2fc7016344b255f7f98706dfd, type: 2}
-    index: 13
+    index: 14
     cubeForDisplay: {fileID: 0}
   - name: Milk
     texture: {fileID: 2800000, guid: 6e7ca2e5f9a5ddd4092a6c125ab8e700, type: 3}
     material: {fileID: 2100000, guid: ce0c271eaebc8514cb80ec3f06fed750, type: 2}
-    index: 14
+    index: 15
     cubeForDisplay: {fileID: 0}
   - name: Onion
     texture: {fileID: 2800000, guid: f9eb5433b3bec1e43ba9e4f54ad70fe1, type: 3}
     material: {fileID: 2100000, guid: 4c3bd9ea2e8f8fb46bd883c56d415e75, type: 2}
-    index: 15
+    index: 16
     cubeForDisplay: {fileID: 0}
   - name: Potato
     texture: {fileID: 2800000, guid: b542961173c32264cae50632b3c12371, type: 3}
     material: {fileID: 2100000, guid: ca807e39828148e4586e13c3c34e127b, type: 2}
-    index: 16
+    index: 17
     cubeForDisplay: {fileID: 0}
   - name: Rice
     texture: {fileID: 2800000, guid: 23ed4e0ca136557448ed336343ab9b21, type: 3}
     material: {fileID: 2100000, guid: 07363b08d7b6b964ca66d2eda99af0e7, type: 2}
-    index: 17
+    index: 18
     cubeForDisplay: {fileID: 0}
   - name: Spices
     texture: {fileID: 2800000, guid: c1b3ac983b606c24782ed528a3c1cd97, type: 3}
     material: {fileID: 2100000, guid: e6c865f9fd72cf146be5752e33a2b15d, type: 2}
-    index: 18
+    index: 19
     cubeForDisplay: {fileID: 0}
   - name: Sugar
     texture: {fileID: 2800000, guid: d62e020c0869efc488d31c61ccd00a35, type: 3}
     material: {fileID: 2100000, guid: 7a6c52a6de420ac46a1d1353b2dfa630, type: 2}
-    index: 19
+    index: 20
     cubeForDisplay: {fileID: 0}
   - name: Syrup
     texture: {fileID: 2800000, guid: 14ab4d102320e034392ac9d46823039c, type: 3}
     material: {fileID: 2100000, guid: 1888c8fe17d4143489ab7eaee48b3bd5, type: 2}
-    index: 20
+    index: 21
     cubeForDisplay: {fileID: 0}
   - name: Tapioca
     texture: {fileID: 2800000, guid: 2635f8274203e9643b7e769419ff93f5, type: 3}
     material: {fileID: 2100000, guid: 646da2ec5e6f27c40a53834856d38fcd, type: 2}
-    index: 21
+    index: 22
     cubeForDisplay: {fileID: 0}
   - name: Tomato
     texture: {fileID: 2800000, guid: 4153be03ec9d5404c85046664bfeda22, type: 3}
     material: {fileID: 2100000, guid: 1f5a7cf6e60ec36449604260d6648543, type: 2}
-    index: 22
+    index: 23
     cubeForDisplay: {fileID: 0}
   - name: Wasabi
     texture: {fileID: 2800000, guid: 33e45ef1e9257cd47b84bd9ff7c0dd03, type: 3}
     material: {fileID: 2100000, guid: 286e79ab5cf15804382c32e70caacd81, type: 2}
-    index: 23
+    index: 24
+    cubeForDisplay: {fileID: 0}
+  - name: Water
+    texture: {fileID: 2800000, guid: 03d1e14e8ff30ad438d271dc70c4a461, type: 3}
+    material: {fileID: 2100000, guid: 23f012ae7b35f384786bb74527c4139b, type: 2}
+    index: 25
     cubeForDisplay: {fileID: 0}
   gridDimensions: {x: 11, y: 11}
   seed: 1082981172
@@ -13311,7 +13321,7 @@ MonoBehaviour:
   - name: Fish
     texture: {fileID: 0}
     material: {fileID: 0}
-    index: 9
+    index: 10
     cubeForDisplay: {fileID: 0}
   totalIngredientQTY: 10
   autoResize: 1
@@ -17134,6 +17144,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 833813502}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_text
       value: 
