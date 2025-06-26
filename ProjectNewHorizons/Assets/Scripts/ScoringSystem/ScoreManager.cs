@@ -26,8 +26,6 @@ public class ScoreManager : MonoBehaviour
     public float scoreDishComplete = 50;
     public float scoreIngredientCorrect = 10; 
     public float scoreIngredientIncorrect = -30; 
-    public float score4InARow = 30;
-    public float score5InARow = 50;
 
     public static ScoreManager instance;
 

@@ -70,8 +70,6 @@ public class Dish
         }
         else
         {
-            //MonoBehaviour.print($"{ingredientToAdd.name}, {Ingredient.ContainsName(dishType.recipeIngredientsList, ingredientToAdd)}," + 
-            //    $"{StringTools.IngredientArrayToString(dishType.recipeIngredientsList)}");
             SM.IncreaseScore(SM.scoreIngredientIncorrect);
         }
     }
