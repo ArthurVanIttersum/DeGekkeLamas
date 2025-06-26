@@ -65,6 +65,7 @@ public class Dish
             {
                 SM.IncreaseScore(SM.scoreIngredientCorrect);
                 currentIngredients.Add(ingredientToAdd);
+                DishManager.instance.CollectIngredient(ingredientToAdd);
             }
         }
         else

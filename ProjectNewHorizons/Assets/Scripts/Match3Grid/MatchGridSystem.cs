@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 public class MatchGridSystem : MonoBehaviour
 {
     public Ingredient[] ingredientTypes;
-    List<Ingredient> ingredientsUsed;
+    [HideInInspector] public List<Ingredient> ingredientsUsed;
     public Vector2Int gridDimensions;
     /// <summary>
     /// The first digit in the array represents Y value, the 2nd digit X value, so currentGrid[y, x]
