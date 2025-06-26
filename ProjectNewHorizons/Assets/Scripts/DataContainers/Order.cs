@@ -12,6 +12,7 @@ public class Order
     [HideInInspector] public int amountOfCorrectIngredients = 0;
     [HideInInspector] public int amountOfInCorrectIngredients = 0;
     [HideInInspector] public int amountOfMissingIngredients = 0;
+    [HideInInspector] public bool orderComplete = false;
     
 
     public void EvaluateOrder()

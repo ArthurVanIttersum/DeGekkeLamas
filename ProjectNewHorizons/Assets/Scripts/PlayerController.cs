@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.AI;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,14 +29,24 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 // Interact instead of setting destination if interactions
-                if (info.collider.gameObject.CompareTag("Interactible"))
+                if (info.collider.gameObject.CompareTag("Interactible") && Vector3.Distance(transform.position, info.transform.position) < 5)
                 {
+
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
-                        List<Dish> dishes = customer.thisCustomersOrder.dishes;
-                        DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
-                        Debug.Log("Received order from customer");
+
+                        if (customer.thisCustomersOrder.orderComplete)
+                        {
+                            DishManager.instance.SatisfyCustomer();
+                        }
+                        else
+                        {
+                            List<Dish> dishes = customer.thisCustomersOrder.dishes;
+                            DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
+                            Debug.Log("Received order from customer");
+                        }
+
                     }
                     // Open oven for match3 minigame
                     else if (info.collider.gameObject.TryGetComponent(out GridActivator activator))
