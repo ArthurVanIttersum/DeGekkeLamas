@@ -307,12 +307,12 @@ public class MatchingDetection : MonoBehaviour
     public void ReplaceBlock(Vector2Int gridPosition)
     {
         List<Ingredient> posibleIngredients = new();
-        for (int i = 0; i < grid.ingredientTypes.Length; i++)
+        for (int i = 0; i < grid.ingredientsUsed.Count; i++)
         {
-            ReplaceBlockTo(gridPosition, grid.ingredientTypes[i]);
+            ReplaceBlockTo(gridPosition, grid.ingredientsUsed[i]);
             if (!TestMatch3AtPosition(gridPosition))
             {
-                posibleIngredients.Add(grid.ingredientTypes[i]);
+                posibleIngredients.Add(grid.ingredientsUsed[i]);
             }
         }
         int randomOption = Random.Range(0,posibleIngredients.Count);
