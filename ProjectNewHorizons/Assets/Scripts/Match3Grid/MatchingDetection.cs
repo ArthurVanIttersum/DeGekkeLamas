@@ -439,13 +439,11 @@ public class MatchingDetection : MonoBehaviour
 
     private void FinalizeIngredients()
     {
-        print(foundIngredientTypes.Count);
         for (int i = 0; i < foundIngredientTypes.Count; i++)
         {
             currentDish.AddIngredient(foundIngredientTypes[i]);
         }
         int ExtraScoreToAdd = removedBlocks - 3;
-        //print($"scoreToAdd = {scoreToAdd}");
         
         ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * ExtraScoreToAdd);
         removedBlocks = 0;

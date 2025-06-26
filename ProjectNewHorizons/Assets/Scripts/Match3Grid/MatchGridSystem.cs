@@ -18,30 +18,30 @@ public class MatchGridSystem : MonoBehaviour
     public Ingredient[,] currentGrid;
     public int seed;
     public Vector3 spawnPosition;
-    public MeshRenderer gridQuad;
     public Material gridBase;
-    public float baseSizeOffset = 5;
-    public int extraIngredients = 2;
 
     public bool autoGenerate;
 
     [Header("Requirements")]
     public Ingredient[] requiredIngredients;
-    public int totalIngredientQTY;
+    public int extraIngredients = 2;
+    [HideInInspector] public int totalIngredientQTY;
     public bool autoResize;
     public float weightInfluence = 2;
+    public float baseSizeOffset = 5;
 
-    private System.Random rand;
 
-    [Header("Debug stuff")]
+    [Header("Recipe stuff")]
     public TMP_Text ingredientList;
     public Color recipeColor;
 
     [Header("References")]
+    public MeshRenderer gridQuad;
     public GridGameraController gridCameraController;
     public GameObject gridObject;
     [SerializeField, HideInInspector] public Transform gridContainer;
     public static MatchGridSystem instance;
+    private System.Random rand;
 
     private void OnValidate()
     {
