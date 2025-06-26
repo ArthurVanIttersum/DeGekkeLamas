@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DishManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class DishManager : MonoBehaviour
     [HideInInspector] public Dish currentDish;
     GameObject customer;
     int customerIndex;
+    UnityEvent onGameWon;
     private void Awake()
     {
         grid = GetComponent<MatchGridSystem>();
@@ -18,7 +20,7 @@ public class DishManager : MonoBehaviour
     {
         this.customer = customer.Item1;
         customerIndex = customer.Item2;
-        grid.SetDish(dish, dish.dishType.recipeIngredientsList.Length + 4);
+        grid.SetDish(dish, dish.dishType.recipeIngredientsList.Length + MatchGridSystem.instance.extraIngredients);
         currentDish = dish;
         GridActivator.dishActive = true;
     }
@@ -26,7 +28,7 @@ public class DishManager : MonoBehaviour
     public void CollectIngredient(Ingredient ingredient)
     {
         grid.CollectIngredient(ingredient);
-        currentDish.AddIngredient(ingredient);//match
+        //currentDish.AddIngredient(ingredient);//match
 
         if (currentDish.dishType.recipeIngredientsList.Length == currentDish.currentIngredients.Count)
         {
@@ -52,10 +54,11 @@ public class DishManager : MonoBehaviour
 
     void WinGame()
     {
+        onGameWon.Invoke();
         print("You won!");
     }
 
-    public void SatisfyCustomer()
+    public void DespawnAndRespawnCustomer()
     {
         CustomerGenerator CG = CustomerGenerator.instance;
         CG.customerAntiQue.Add(customerIndex);

@@ -11845,8 +11845,6 @@ MonoBehaviour:
   scoreDishComplete: 200
   scoreIngredientCorrect: 50
   scoreIngredientIncorrect: -100
-  score4InARow: 100
-  score5InARow: 150
   testPts: 100
 --- !u!1 &1398155397
 GameObject:
@@ -13990,7 +13988,8 @@ MonoBehaviour:
   spawnPosition: {x: 20, y: 0, z: 20}
   gridQuad: {fileID: 7715720319054458399, guid: 69c37fed1adbb72449b0e2ad26685dd1, type: 3}
   gridBase: {fileID: 2100000, guid: 170bbfe07f00708478807fc7a90178df, type: 2}
-  baseSizeOffset: 5
+  baseSizeOffset: 3
+  extraIngredients: 2
   autoGenerate: 0
   requiredIngredients:
   - name: BBQ
@@ -14017,6 +14016,7 @@ MonoBehaviour:
   autoResize: 1
   weightInfluence: 2
   ingredientList: {fileID: 52529003206896123}
+  recipeColor: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 1}
   gridCameraController: {fileID: 1898457634}
   gridObject: {fileID: 2329447972760408434}
   gridContainer: {fileID: 429955706}

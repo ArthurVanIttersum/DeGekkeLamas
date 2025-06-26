@@ -36,11 +36,14 @@ public class MatchingDetection : MonoBehaviour
             //Debug.Log(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit info))
             {
-                Vector2 gridData = info.transform.GetComponent<GridPosition>().index;
+                if (info.transform.TryGetComponent(out GridPosition gridPosition))
+                {
+                    Vector2 gridData = gridPosition.index;
 
-                GridStartPos.x = (int)gridData.x;
-                GridStartPos.y = (int)gridData.y;
-                startScreenPos = Input.mousePosition;
+                    GridStartPos.x = (int)gridData.x;
+                    GridStartPos.y = (int)gridData.y;
+                    startScreenPos = Input.mousePosition;
+                }
             }
             swiping = true;
         }
@@ -48,7 +51,7 @@ public class MatchingDetection : MonoBehaviour
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction, Color.blue, 50f);
-            if (Physics.Raycast(ray, out RaycastHit info))
+            if (Physics.Raycast(ray, out _))
             {
                 endScreenPos = Input.mousePosition;
             }
@@ -59,12 +62,15 @@ public class MatchingDetection : MonoBehaviour
             if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
             {
                 SwipeDetected();
+                return;
             }
         }
     }
 
-    //this is the main method. here you see all the steps in the algorithm.
-    //each step might use helper methods, but it will always return to this methed before moving on to another major step
+    /// <summary>
+    /// this is the main method. here you see all the steps in the algorithm. 
+    /// each step might use helper methods, but it will always return to this methed before moving on to another major step
+    /// </summary>
     private void SwipeDetected()
     {
         Vector2Int swipeDirection = CalculateSwipeDirection();
@@ -427,7 +433,7 @@ public class MatchingDetection : MonoBehaviour
             {
                 foundIngredientTypes.Add(theIngredientFromTheGrid);
             }
-            removedBlocks += foundBlocks.Length;
+            removedBlocks = foundBlocks.Length;
         }
     }
 
@@ -437,9 +443,10 @@ public class MatchingDetection : MonoBehaviour
         {
             currentDish.AddIngredient(foundIngredientTypes[i]);
         }
-        int scoreToAdd = removedBlocks - foundIngredientTypes.Count * 3;
+        int ExtraScoreToAdd = removedBlocks - 3;
         
-        ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * scoreToAdd);
+        ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * ExtraScoreToAdd);
         removedBlocks = 0;
+        foundIngredientTypes.Clear();
     }
 }
