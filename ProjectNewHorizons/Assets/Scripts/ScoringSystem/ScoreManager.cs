@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -14,6 +15,7 @@ public class ScoreManager : MonoBehaviour
     public float startScore = 500;
     public float decreaseSpeed = 1;
     public float updateSpeed = 1;
+    public UnityEvent onGameLost;
     [Header("Boost stuff")]
     public float boostDuration = 3;
     public float boostMultiplier = 2;
@@ -98,6 +100,7 @@ public class ScoreManager : MonoBehaviour
     void OnScoreZero()
     {
         print("You fucking suck");
+        onGameLost.Invoke();
     }
 
     private void Update()
