@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
                         }
                         else
                         {
+                            StartCoroutine(customer.SetPopupToSpeachAndBack());
                             List<Dish> dishes = customer.thisCustomersOrder.dishes;
                             DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
                             Debug.Log("Received order from customer");

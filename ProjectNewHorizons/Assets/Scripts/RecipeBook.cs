@@ -37,6 +37,7 @@ public class Recipe
     public string name;
     public Texture texture;
     public Ingredient[] recipeIngredientsList;
+    public Sprite spriteForPopup;
 
     /// <summary>
     /// Checks if name of ingredient exists in list of ingredients for recipe

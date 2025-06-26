@@ -22,6 +22,11 @@ public class CustomerGenerator : MonoBehaviour
     public static CustomerGenerator instance;
     GameObject customerContainer;
 
+    public GameObject speechbubblePrefab;
+    public Sprite speechBubbleSprite;
+    public Sprite thoughtBubbleSprite;
+    public Sprite waitingSprite;
+    public Sprite satisfiedSprite;
     private void Awake()
     {
         if (instance == null) instance = this;
