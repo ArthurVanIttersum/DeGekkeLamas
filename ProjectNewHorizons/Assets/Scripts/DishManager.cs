@@ -65,6 +65,6 @@ public class DishManager : MonoBehaviour
         Destroy(customer);
         CG.SpawnNewCustomer();
         dishesDone++;
-        if (dishesDone >= dishesRequired) WinGame();
+        if (dishesDone == dishesRequired) WinGame();
     }
 }

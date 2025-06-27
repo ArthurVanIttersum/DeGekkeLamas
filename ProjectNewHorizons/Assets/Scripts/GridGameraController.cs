@@ -4,7 +4,9 @@ using UnityEngine;
 public class GridGameraController : MonoBehaviour
 {
     public MatchGridSystem gridManager;
-    
+    public float sizeOffset = 1.5f;
+    public float heightOffset = 1;
+
     public void SetCameraPositionAndScale()
     {
         Vector3 OffsetByHand = new Vector3(-0.5f, -0.5f, -1);
@@ -12,7 +14,7 @@ public class GridGameraController : MonoBehaviour
         Vector2 size2D = (Vector2)gridsize;
         Vector3 size3D = new Vector3(size2D.x, size2D.y, 0);
         Vector3 Offset = size3D / 2;
-        transform.position = gridManager.spawnPosition + Offset + OffsetByHand + Vector3.up;
-        gameObject.GetComponent<Camera>().orthographicSize = (float)gridsize.y / 2 + 2;
+        transform.position = gridManager.spawnPosition + Offset + OffsetByHand + heightOffset * Vector3.up;
+        gameObject.GetComponent<Camera>().orthographicSize = (float)gridsize.y / 2 + sizeOffset;
     }
 }
