@@ -12692,7 +12692,7 @@ MonoBehaviour:
   customerQue: 
   customerAntiQue: 
   customerCount: 5
-  spawnRangeX: {x: 1.9, y: 2.1}
+  spawnRangeX: {x: 2, y: 2}
   spawnRangeY: {x: 2, y: 2}
   spawnRangeZ: {x: -6, y: 6}
 --- !u!4 &1516901589

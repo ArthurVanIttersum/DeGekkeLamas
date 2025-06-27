@@ -14,9 +14,10 @@ public class CustomerGenerator : MonoBehaviour
     //this way i can pick a random customer from the anti que.
     public int customerCount = 5;
     [Header("Spawn position")]
-    public Vector2 spawnRangeX;
-    public Vector2 spawnRangeY;
-    public Vector2 spawnRangeZ;
+    public Vector2Int spawnRangeX;
+    public Vector2Int spawnRangeY;
+    public Vector2Int spawnRangeZ;
+    private List<int> possiblePositions;
     
     private GameObject newCustomer;
     public static CustomerGenerator instance;
@@ -25,6 +26,11 @@ public class CustomerGenerator : MonoBehaviour
     private void Awake()
     {
         if (instance == null) instance = this;
+        possiblePositions = new();
+        for(int i = 0; i < customerCount; i++)
+        {
+            possiblePositions.Add(i);
+        }
     }
     private void OnValidate()
     {
@@ -37,11 +43,18 @@ public class CustomerGenerator : MonoBehaviour
     public void SpawnNewCustomer()
     {
         int randomCustomer = Random.Range(0, customerAntiQue.Count);
+
+        int spawnIndex = Random.Range(0, possiblePositions.Count);
+        int spawnPos = possiblePositions[spawnIndex];
+        //print($"0, {possiblePositions.Count}, Index = {spawnIndex}, spawnPos = {spawnPos}");
+
         Vector3 spawnPosition = new(
-            Random.Range(spawnRangeX.x, spawnRangeX.y),
-            Random.Range(spawnRangeY.x, spawnRangeY.y),
-            Random.Range(spawnRangeZ.x, spawnRangeZ.y)
+            MathTools.Remap(0, customerCount, spawnRangeX.x, spawnRangeX.y, spawnPos),
+            MathTools.Remap(0, customerCount, spawnRangeY.x, spawnRangeY.y, spawnPos),
+            MathTools.Remap(0, customerCount, spawnRangeZ.x, spawnRangeZ.y, spawnPos)
             );
+        possiblePositions.RemoveAt(spawnIndex);
+
         GameObject toSpawn = customerPrefabs[customerAntiQue[randomCustomer]];
         newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation, customerContainer.transform);
         newCustomer.name = $"customer number {customerAntiQue[randomCustomer]}";

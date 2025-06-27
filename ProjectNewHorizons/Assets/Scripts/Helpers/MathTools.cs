@@ -26,5 +26,13 @@ public static class MathTools
         }
         return total;
     }
+    /// <summary>
+    /// Remaps a certain range into anither one
+    /// </summary>
+    public static float Remap(float oldRangeX, float oldRangeY, float newRangeX, float newRangeY, float value)
+    {
+        value = Mathf.InverseLerp(oldRangeX, oldRangeY, value);
+        return Mathf.Lerp(newRangeX, newRangeY, value);
+    }
 
 }
