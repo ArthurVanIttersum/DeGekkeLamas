@@ -1,3 +1,5 @@
+
+using System.Collections;
 using System.Collections.Generic;
 
 using System.Linq;
@@ -24,10 +26,21 @@ public class MatchingDetection : MonoBehaviour
 
     private List<Ingredient> foundIngredientTypes = new();
     private int removedBlocks = 0;
+
+    private bool swipingAnimationPlaying = false;
+
+    private int numberOfCoroutinesRunning = 0;//for animations
+    public float timeBeforeSwitchingBack = 0.5f;//before blocks switch back
+    public float timeWhileBlocksVisible = 0.75f;//time that the blocks can be visible as being 3 in a row
+    public float timeBeforeBlocksStartFalling = 0.25f;//time before the blocks start falling
+    public float timeBetweenBlocksFalling = 0.15f;//time between blocks faling one space
+
     void LateUpdate()
     {
         if (!GridActivator.isPlayingMatch3) return;
 
+        if (swipingAnimationPlaying) return;//so the player doesn't interact with the grid as it's moving.
+        
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -61,7 +74,8 @@ public class MatchingDetection : MonoBehaviour
 
             if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
             {
-                SwipeDetected();
+                swipingAnimationPlaying = true;
+                StartCoroutine(SwipeDetected());
                 return;
             }
         }
@@ -71,7 +85,9 @@ public class MatchingDetection : MonoBehaviour
     /// this is the main method. here you see all the steps in the algorithm. 
     /// each step might use helper methods, but it will always return to this methed before moving on to another major step
     /// </summary>
-    private void SwipeDetected()
+    /// public IEnumerator SetPopupToSpeachAndBack()
+    
+    private IEnumerator SwipeDetected()
     {
         Vector2Int swipeDirection = CalculateSwipeDirection();
         Vector2Int swipeStartPosition = GridStartPos;
@@ -79,11 +95,14 @@ public class MatchingDetection : MonoBehaviour
 
         if (TestIfOutOfBounds(swipeStartPosition))
         {
-            return;
+            swipingAnimationPlaying = false;
+            yield break;
+            
         }
         if (TestIfOutOfBounds(swipeDestination))
         {
-            return;
+            swipingAnimationPlaying = false;
+            yield break;
         }
         SwitchBlocks(swipeStartPosition, swipeDestination);
         allPositionsToCheck.Add(swipeStartPosition);
@@ -92,7 +111,9 @@ public class MatchingDetection : MonoBehaviour
         {
             SwitchBlocks(swipeStartPosition, swipeDestination);
             allPositionsToCheck.Clear();
-            return;
+            yield return new WaitForSeconds(timeBeforeSwitchingBack);//time before the blocks switch back
+            swipingAnimationPlaying = false;
+            yield break;
         }
         for (int i = 0; i < 10; i++)//10 is a limiter, so that if it keeps looping it won't loop forever breaking the game.
         {
@@ -100,22 +121,25 @@ public class MatchingDetection : MonoBehaviour
             {
                 allPositionsToCheck.Clear();
                 FinalizeIngredients();
-                return;
+                swipingAnimationPlaying = false;
+                yield break;
             }
             CollectDataOfAllPositions();
             
             Vector2Int[] toReplace = allBlocksToBeReplaced.ToArray();
             CalculateIngredients(toReplace);
             columnsOfBlocksToBeReplaced = allBlocksToBeReplaced.GroupBy(point => point.x).ToDictionary(group => group.Key, group => group.ToList());
-
-            
+            yield return new WaitForSeconds(timeWhileBlocksVisible);//time that the blocks can be visible as being 3 in a row
+            HideBlocks(toReplace);
+            yield return new WaitForSeconds(timeBeforeBlocksStartFalling);//time before the blocks start falling
             for (int j = 0; j < toReplace.Length; j++)
             {
                 Ingredient ingredientFound = SampleGrid(toReplace[j]);
                 GameObject theCubeObject = ingredientFound.cubeForDisplay.gameObject;
                 theObjectsThatGotMovedUp.Add(theCubeObject);
             }
-            MoveEverythingUp();
+            yield return StartCoroutine(MoveEverythingUp());
+            
             for (int j = 0; j < theObjectsThatGotMovedUp.Count; j++)
             {
                 Vector2 position = theObjectsThatGotMovedUp[j].GetComponent<GridPosition>().index;
@@ -350,18 +374,21 @@ public class MatchingDetection : MonoBehaviour
         Destroy(blockToReplace);
     }
 
-    private void MoveEverythingUp()
+    private IEnumerator MoveEverythingUp()
     {
+        numberOfCoroutinesRunning = 0;
         for (int i = 0; i < grid.gridDimensions.y; i++)//for every column
         {
             if (columnsOfBlocksToBeReplaced.TryGetValue(i, out List<Vector2Int> columnList))
             {
-                MoveColumnUp(columnList, i);
+                numberOfCoroutinesRunning++;
+                StartCoroutine(MoveColumnUp(columnList, i));
             }
         }
+        yield return new WaitUntil(() => numberOfCoroutinesRunning == 0);
     }
 
-    private void MoveColumnUp(List<Vector2Int> blocksInColumn, int column)
+    private IEnumerator MoveColumnUp(List<Vector2Int> blocksInColumn, int column)
     {
         int numberOfBlocks = blocksInColumn.Count;
         for (int i = 0; i < numberOfBlocks; i++)
@@ -369,7 +396,9 @@ public class MatchingDetection : MonoBehaviour
             Vector2Int highest = FindHighestInColumn(column, blocksInColumn.ToArray());
             MoveOneBlockAllTheWayUp(highest);
             blocksInColumn.Remove(highest);
+            yield return new WaitForSeconds(timeBetweenBlocksFalling);//time between blocks faling one space
         }
+        numberOfCoroutinesRunning--;
     }
 
     private void MoveOneBlockAllTheWayUp(Vector2Int gridPosition)
@@ -449,4 +478,13 @@ public class MatchingDetection : MonoBehaviour
         removedBlocks = 0;
         foundIngredientTypes.Clear();
     }
+
+    private void HideBlocks(Vector2Int[] blocksToHide)
+    {
+        for (int i = 0; i < blocksToHide.Length; i++)
+        {
+            SampleGrid(blocksToHide[i]).cubeForDisplay.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
 }
