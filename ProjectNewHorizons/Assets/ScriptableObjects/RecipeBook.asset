@@ -33,6 +33,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
   - name: Burger
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -66,6 +67,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 22
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Burrito
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -99,6 +101,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: a8580203932c9804e87c308be7734fd8, type: 3}
   - name: Coffee
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -117,6 +120,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Fish cookies
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -135,6 +139,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 0
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Fries
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -148,6 +153,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 3
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   - name: Grilled fish
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -161,6 +167,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 2
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Ice cream
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -174,6 +181,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 4c103719fcbac9d4fb22c7ee027aa9db, type: 3}
   - name: Ice tea
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -192,6 +200,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 12
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Indian curry
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -220,6 +229,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 15
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Katsa curry
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -248,6 +258,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Lasagna
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -276,6 +287,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 3
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   - name: Milkshake
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -294,6 +306,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Pancakes
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -317,6 +330,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 0
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   - name: Pasta puttanesca
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -345,6 +359,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Pizza
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -368,6 +383,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Ramen
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -386,6 +402,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 10
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Rib eye steak
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -419,6 +436,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 22
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: a96a678e813535c4c966d954496b12ca, type: 3}
   - name: Risotto
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -437,6 +455,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
   - name: Salad
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -455,6 +474,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 22
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 4c103719fcbac9d4fb22c7ee027aa9db, type: 3}
   - name: Sashimi
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -473,6 +493,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 0}
   - name: Spaghetti
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -496,6 +517,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 2
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Spare ribs
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -514,6 +536,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 3a9e8f95df07d044b9d76bf8090d2ca6, type: 3}
   - name: Sushi
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -527,6 +550,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Tacos
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -550,6 +574,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Vegetarian spaghetti
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -573,6 +598,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Yemeni chicken
     texture: {fileID: 0}
     recipeIngredientsList:
@@ -596,3 +622,4 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 18
       cubeForDisplay: {fileID: 0}
+    spriteForPopup: {fileID: 21300000, guid: a8580203932c9804e87c308be7734fd8, type: 3}

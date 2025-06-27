@@ -12695,6 +12695,11 @@ MonoBehaviour:
   spawnRangeX: {x: 2, y: 2}
   spawnRangeY: {x: 2, y: 2}
   spawnRangeZ: {x: -6, y: 6}
+  speechbubblePrefab: {fileID: 3469843407695785503, guid: 3404e3476018a9d4ab32b4027d0581ce, type: 3}
+  speechBubbleSprite: {fileID: 21300000, guid: 2134c75003a6a894f9e5114d9676aca1, type: 3}
+  thoughtBubbleSprite: {fileID: 21300000, guid: 3f370a06517b51c478c31024f4cea5cd, type: 3}
+  waitingSprite: {fileID: 21300000, guid: fbead02cd1e862e4bbab821050f19f90, type: 3}
+  satisfiedSprite: {fileID: 21300000, guid: d8b08922e9c2bda458f92172bf934adc, type: 3}
 --- !u!4 &1516901589
 Transform:
   m_ObjectHideFlags: 0
@@ -13664,6 +13669,7 @@ MonoBehaviour:
         material: {fileID: 0}
         index: 5
         cubeForDisplay: {fileID: 0}
+      spriteForPopup: {fileID: 0}
     currentIngredients: []
     amountOfCorrectIngredients: 0
     amountOfInCorrectIngredients: 0
@@ -13882,6 +13888,7 @@ MonoBehaviour:
       name: 
       texture: {fileID: 0}
       recipeIngredientsList: []
+      spriteForPopup: {fileID: 0}
     currentIngredients: []
     amountOfCorrectIngredients: 0
     amountOfInCorrectIngredients: 0
@@ -13921,6 +13928,7 @@ MonoBehaviour:
       name: 
       texture: {fileID: 0}
       recipeIngredientsList: []
+      spriteForPopup: {fileID: 0}
     currentIngredients: []
     amountOfCorrectIngredients: 0
     amountOfInCorrectIngredients: 0
