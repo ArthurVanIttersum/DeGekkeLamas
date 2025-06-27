@@ -11,6 +11,7 @@ public class Customer : MonoBehaviour
     bool walkingAway = false;
     public float walkingTime;
     [HideInInspector] public int index;
+    [HideInInspector] public int positionIndex;
     private GameObject popup;
 
     private void Start()
@@ -24,6 +25,7 @@ public class Customer : MonoBehaviour
         walkingAway = true;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.satisfiedSprite;
         yield return new WaitForSeconds(walkingTime);
+        CustomerGenerator.instance.possiblePositions.Add(positionIndex);
         DishManager.instance.DespawnAndRespawnCustomer();
     }
     public IEnumerator WalkIntoSceneAnimation()

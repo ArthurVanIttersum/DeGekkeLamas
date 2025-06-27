@@ -17,7 +17,7 @@ public class CustomerGenerator : MonoBehaviour
     public Vector2Int spawnRangeX;
     public Vector2Int spawnRangeY;
     public Vector2Int spawnRangeZ;
-    private List<int> possiblePositions;
+    [HideInInspector] public List<int> possiblePositions;
     
     private GameObject newCustomer;
     public static CustomerGenerator instance;
@@ -64,7 +64,7 @@ public class CustomerGenerator : MonoBehaviour
         newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation, customerContainer.transform);
         newCustomer.name = $"customer number {customerAntiQue[randomCustomer]}";
 
-        GiveCustomerOrder(customerAntiQue[randomCustomer]);
+        GiveCustomerOrder(customerAntiQue[randomCustomer], spawnPos);
         customerQue.Add(customerAntiQue[randomCustomer]);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
 
@@ -73,7 +73,7 @@ public class CustomerGenerator : MonoBehaviour
     /// <summary>
     /// Assign generated customer an order
     /// </summary>
-    public void GiveCustomerOrder(int index)
+    public void GiveCustomerOrder(int index, int posIndex)
     {
         //print(newCustomer);
         Order newlyGeneratedOrder = book.GenerateRandomOrder();
@@ -81,6 +81,7 @@ public class CustomerGenerator : MonoBehaviour
         Customer c = newCustomer.GetOrAddComponent<Customer>();
         c.thisCustomersOrder = newlyGeneratedOrder;
         c.index = index;
+        c.positionIndex = posIndex;
         c.walkingAwayDirectionAndSpeed = new Vector3 (0.1f, 0, 0);
         c.walkingTime = 2f;
     }
