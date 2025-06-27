@@ -7,11 +7,16 @@ public class PlayerController : MonoBehaviour
 {
     NavMeshAgent agent;
     public MatchGridSystem matchGridSystem;
+    public float interactDistance = 6;
 
     /// <summary>
     /// Use this variable to lock player moment and interactions when in match3 minigame
     /// </summary>
     [HideInInspector] public bool movementLocked;
+    private void OnValidate()
+    {
+        DebugExtension.DebugWireSphere(this.transform.position, Color.red, interactDistance, 5);
+    }
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -29,7 +34,8 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 // Interact instead of setting destination if interactions
-                if (info.collider.gameObject.CompareTag("Interactible") && Vector3.Distance(transform.position, info.transform.position) < 5)
+                if (info.collider.gameObject.CompareTag("Interactible") 
+                    && Vector3.Distance(transform.position, info.transform.position) < interactDistance)
                 {
 
                     // Get order from customer

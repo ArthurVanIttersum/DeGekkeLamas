@@ -36,14 +36,14 @@ public class Customer : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             transform.position -= walkingAwayDirectionAndSpeed;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         popup = CreatePopUp();
         yield return new();
         
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (walkingAway)
         {
