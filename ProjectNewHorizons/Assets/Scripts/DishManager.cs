@@ -6,7 +6,7 @@ public class DishManager : MonoBehaviour
     MatchGridSystem grid;
     public static DishManager instance;
     public int dishesRequired = 20;
-    int dishesDone;
+    [HideInInspector] public int dishesDone;
     [HideInInspector] public Dish currentDish;
     GameObject customer;
     int customerIndex;
@@ -51,7 +51,7 @@ public class DishManager : MonoBehaviour
         customer.GetComponent<Customer>().thisCustomersOrder.orderComplete = true;//assuming only one order per customer
     }
 
-    void WinGame()
+    public void WinGame()
     {
         onGameWon.Invoke();
         print("You won!");
@@ -65,6 +65,5 @@ public class DishManager : MonoBehaviour
         Destroy(customer);
         CG.SpawnNewCustomer();
         dishesDone++;
-        if (dishesDone == dishesRequired) WinGame();
     }
 }

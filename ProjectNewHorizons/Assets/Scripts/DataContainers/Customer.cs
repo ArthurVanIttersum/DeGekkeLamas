@@ -27,6 +27,7 @@ public class Customer : MonoBehaviour
         MatchGridSystem.instance.ingredientList.text = string.Empty;
         yield return new WaitForSeconds(walkingTime);
         CustomerGenerator.instance.possiblePositions.Add(positionIndex);
+        if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         DishManager.instance.DespawnAndRespawnCustomer(this.gameObject, index);
     }
     public IEnumerator WalkIntoSceneAnimation()
