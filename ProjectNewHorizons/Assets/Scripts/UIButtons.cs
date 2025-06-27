@@ -14,5 +14,7 @@ public class UIButtons : MonoBehaviour
     public void MainMenuReturn()
     {
         SceneManager.LoadScene("Start Menu Scene");
+        GridActivator.isPlayingMatch3 = default;
+        GridActivator.dishActive = default;
     }
 }
