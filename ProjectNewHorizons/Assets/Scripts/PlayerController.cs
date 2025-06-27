@@ -31,17 +31,15 @@ public class PlayerController : MonoBehaviour
             // Raycast from camera position to mouse pos
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction);
-            if (Physics.Raycast(ray, out RaycastHit info))
+            if (Physics.Raycast(ray, out RaycastHit info, 100, ~0, QueryTriggerInteraction.Ignore))
             {
                 // Interact instead of setting destination if interactions
                 if (info.collider.gameObject.CompareTag("Interactible") 
                     && Vector3.Distance(transform.position, info.transform.position) < interactDistance)
                 {
-
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
-
                         if (customer.thisCustomersOrder.orderComplete)
                         {
                             print("startWalkingAway Animation Script");
@@ -54,7 +52,6 @@ public class PlayerController : MonoBehaviour
                             DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
                             Debug.Log("Received order from customer");
                         }
-
                     }
                     // Open oven for match3 minigame
                     else if (info.collider.gameObject.TryGetComponent(out GridActivator activator))
@@ -68,11 +65,21 @@ public class PlayerController : MonoBehaviour
                         print("Clicked on grid UI generator");
                         renderer.GenerateUI();
                     }
-
-
                 }
                 else agent.SetDestination(info.point);
             }
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+        if (movementLocked || GridActivator.isPlayingMatch3) return;
+
+        print($"Player collided with {other.name}");
+        // Open oven for match3 minigame
+        if (other.gameObject.TryGetComponent(out GridActivator activator))
+        {
+            activator.ToggleGame();
+            print("Clicked on grid activator");
         }
     }
 }
