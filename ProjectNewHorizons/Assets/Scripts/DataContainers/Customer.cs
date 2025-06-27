@@ -24,9 +24,10 @@ public class Customer : MonoBehaviour
     {
         walkingAway = true;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.satisfiedSprite;
+        MatchGridSystem.instance.ingredientList.text = string.Empty;
         yield return new WaitForSeconds(walkingTime);
         CustomerGenerator.instance.possiblePositions.Add(positionIndex);
-        DishManager.instance.DespawnAndRespawnCustomer();
+        DishManager.instance.DespawnAndRespawnCustomer(this.gameObject, index);
     }
     public IEnumerator WalkIntoSceneAnimation()
     {

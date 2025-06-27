@@ -12,7 +12,6 @@ public class GridActivator : MonoBehaviour
     {
         if (dishActive)
         {
-            isPlayingMatch3 = !isPlayingMatch3;
             MatchGridSystem.instance.ToggleUI();
         }
     }

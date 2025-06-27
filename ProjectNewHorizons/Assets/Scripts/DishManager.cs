@@ -47,7 +47,6 @@ public class DishManager : MonoBehaviour
 
         SM.IncreaseScore(SM.scoreDishComplete);
         GridActivator.dishActive = false;
-        GridActivator.isPlayingMatch3 = false;
         grid.ToggleUI();
         customer.GetComponent<Customer>().thisCustomersOrder.orderComplete = true;//assuming only one order per customer
     }
@@ -58,15 +57,14 @@ public class DishManager : MonoBehaviour
         print("You won!");
     }
 
-    public void DespawnAndRespawnCustomer()
+    public void DespawnAndRespawnCustomer(GameObject customer, int index)
     {
         CustomerGenerator CG = CustomerGenerator.instance;
-        CG.customerAntiQue.Add(customerIndex);
-        CG.customerQue.Remove(customerIndex);
+        CG.customerAntiQue.Add(index);
+        CG.customerQue.Remove(index);
         Destroy(customer);
         CG.SpawnNewCustomer();
         dishesDone++;
-        MatchGridSystem.instance.ingredientList.text = string.Empty;
         if (dishesDone >= dishesRequired) WinGame();
     }
 }

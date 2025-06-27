@@ -421,6 +421,7 @@ public class MatchGridSystem : MonoBehaviour
 
     public void ToggleUI()
     {
+        GridActivator.isPlayingMatch3 = !GridActivator.isPlayingMatch3;
         gridObject.SetActive(GridActivator.isPlayingMatch3);
     }
 
