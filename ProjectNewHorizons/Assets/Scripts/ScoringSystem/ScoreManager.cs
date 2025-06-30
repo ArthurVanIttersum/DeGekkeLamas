@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    [SerializeField] float score;
+    float score;
     float trueScore;
     private float cachedScore;
     public Slider scoreSlider;
@@ -66,6 +66,12 @@ public class ScoreManager : MonoBehaviour
         }
         if (score - cachedScore >= maxScore && !boostActive) OnScoreFull();
         if (scoreDisplay != null) scoreDisplay.text = Mathf.RoundToInt(trueScore).ToString();
+
+        if (trueScore > PlayerPrefs.GetInt("Highscore"))
+        {
+            PlayerPrefs.SetInt("Highscore", (int)trueScore);
+            HighscoreDisplay.UpdateHighscoretext();
+        }
     }
 
     void OnScoreFull()
