@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class DishManager : MonoBehaviour
     MatchGridSystem grid;
     public static DishManager instance;
     public int dishesRequired = 20;
+    public TMP_Text dishText;
     [HideInInspector] public int dishesDone;
     [HideInInspector] public Dish currentDish;
     GameObject customer;
@@ -15,6 +17,7 @@ public class DishManager : MonoBehaviour
     {
         grid = GetComponent<MatchGridSystem>();
         if (instance == null) instance = this;
+        UpdateDishText();
     }
     public void SetDish(Dish dish, (GameObject, int) customer)
     {
@@ -65,5 +68,10 @@ public class DishManager : MonoBehaviour
         CG.customerQue.Remove(index);
         Destroy(customer);
         CG.SpawnNewCustomer();
+    }
+    public void UpdateDishText()
+    {
+        dishText.text = dishesDone > dishesRequired ?
+            $"Dishes done: {dishesDone}" : $"Dishes done: {dishesDone} / {dishesRequired}";
     }
 }

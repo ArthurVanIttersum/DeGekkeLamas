@@ -53,6 +53,7 @@ public class ScoreManager : MonoBehaviour
         scoreSlider.maxValue = maxScore;
         score = startScore;
         scoreSlider.value = score - cachedScore;
+        if (scoreDisplay != null) scoreDisplay.text = $"Score: {Mathf.RoundToInt(trueScore)}";
     }
 
     public void IncreaseScore(float ptsToAdd)
@@ -65,7 +66,7 @@ public class ScoreManager : MonoBehaviour
             //scoreSlider.value = score - cachedScore;
         }
         if (score - cachedScore >= maxScore && !boostActive) OnScoreFull();
-        if (scoreDisplay != null) scoreDisplay.text = Mathf.RoundToInt(trueScore).ToString();
+        if (scoreDisplay != null) scoreDisplay.text = $"Score: { Mathf.RoundToInt(trueScore)}";
 
         if (trueScore > PlayerPrefs.GetInt("Highscore"))
         {

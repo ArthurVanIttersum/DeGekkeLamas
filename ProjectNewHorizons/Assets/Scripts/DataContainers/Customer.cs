@@ -23,6 +23,8 @@ public class Customer : MonoBehaviour
     public IEnumerator WalkingAwayAnimation()
     {
         DishManager.instance.dishesDone++;
+        DishManager.instance.UpdateDishText();
+
         if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         walkingAway = true;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.satisfiedSprite;
