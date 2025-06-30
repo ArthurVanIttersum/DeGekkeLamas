@@ -418,10 +418,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7292658011167094339, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7563402340667795216, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: m_Name
       value: Restaurant_Environment_V3
       objectReference: {fileID: 0}
+    - target: {fileID: 9049104195809453773, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
