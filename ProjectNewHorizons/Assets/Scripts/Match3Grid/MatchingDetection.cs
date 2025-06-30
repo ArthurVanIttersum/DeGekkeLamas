@@ -215,8 +215,8 @@ public class MatchingDetection : MonoBehaviour
         Vector2 indexData1 = gameobject1.GetComponent<GridPosition>().index;
         Vector2 indexData2 = gameobject2.GetComponent<GridPosition>().index;
 
-        Vector3 pos31 = gameobject1.GetComponent<GridPosition>().destinationPosition;
-        Vector3 pos32 = gameobject2.GetComponent<GridPosition>().destinationPosition;
+        Vector3 pos31 = GetWorldPosOfBlock(gridPos1);
+        Vector3 pos32 = GetWorldPosOfBlock(gridPos2);
 
         //switching ingredients
         grid.currentGrid[gridPos1.y, gridPos1.x] = ingredient2;
@@ -367,7 +367,7 @@ public class MatchingDetection : MonoBehaviour
     {
         Ingredient toReplace = SampleGrid(gridPosition);
         GameObject blockToReplace = toReplace.cubeForDisplay.gameObject;
-        Vector3 replacePosition = blockToReplace.transform.position;
+        Vector3 replacePosition = GetWorldPosOfBlock(gridPosition);
         Ingredient ingredientToSpawn = grid.ingredientTypes.First();//first one by default
         for (int i = 0; i < grid.ingredientTypes.Length; i++)
         {
@@ -421,7 +421,10 @@ public class MatchingDetection : MonoBehaviour
             Vector2Int highest = FindHighestInColumn(column, blocksInColumn.ToArray());
             MoveOneBlockAllTheWayUp(highest);
             blocksInColumn.Remove(highest);
-            yield return new WaitForSeconds(timeBetweenBlocksFalling);//time between blocks faling one space
+            if (!TestIfOutOfBounds(highest + Vector2Int.up))
+            {
+                yield return new WaitForSeconds(timeBetweenBlocksFalling);//time between blocks falling one space
+            }
         }
         numberOfCoroutinesRunning--;
     }
@@ -520,6 +523,11 @@ public class MatchingDetection : MonoBehaviour
             yield return null;
         }
         toAnimate.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    private Vector3 GetWorldPosOfBlock(Vector2Int gridPos)
+    {
+        return SampleGrid(gridPos).cubeForDisplay.GetComponent<GridPosition>().destinationPosition;
     }
 
 }
