@@ -431,7 +431,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 556805509137347630, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 8480746364953158718, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 695803381807880946, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 8834644349643072252, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 9010905143566529784, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 3764919369397664488, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 7921856709460118338, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 4694496763307786514, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 6579008988738507579, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 1207247311616074165, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 3399617625037365526, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 9148762124380873271, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 968783043240493150, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 7538420516221832860, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 1803032708154195658, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+    - {fileID: 7328218791013632122, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
