@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class MathTools
@@ -33,6 +34,27 @@ public static class MathTools
     {
         value = Mathf.InverseLerp(oldRangeX, oldRangeY, value);
         return Mathf.Lerp(newRangeX, newRangeY, value);
+    }
+
+    /// <summary>
+    /// Returns a list of every child of this gameobject, also gives children of children
+    /// </summary>
+    public static List<GameObject> GetAllChildren(GameObject origin)
+    {
+        List<GameObject> found = new();
+
+        for (int i = 0; i < origin.transform.childCount ; i++)
+        {
+            GameObject child = origin.transform.GetChild(i).gameObject;
+            found.Add(child);
+
+            foreach(GameObject deepChild in GetAllChildren(child))
+            {
+                found.Add(deepChild);
+            }
+        }
+
+        return found;
     }
 
 }

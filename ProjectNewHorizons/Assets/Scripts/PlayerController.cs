@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
+                        StationHighlighter.instance.RemoveHighlight();
                         if (customer.thisCustomersOrder.orderComplete)
                         {
                             print("startWalkingAway Animation Script");

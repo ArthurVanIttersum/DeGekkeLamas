@@ -23,6 +23,7 @@ public class DishManager : MonoBehaviour
         grid.SetDish(dish, dish.dishType.recipeIngredientsList.Length + MatchGridSystem.instance.extraIngredients);
         currentDish = dish;
         GridActivator.dishActive = true;
+        StationHighlighter.instance.Highlight(dish.dishType.dishType);
     }
 
     public void CollectIngredient(Ingredient ingredient)
@@ -43,7 +44,7 @@ public class DishManager : MonoBehaviour
     {
         print("Completed dish!");
         ScoreManager SM = ScoreManager.instance;
-        
+        StationHighlighter.instance.RemoveHighlight();
 
         SM.IncreaseScore(SM.scoreDishComplete);
         GridActivator.dishActive = false;
