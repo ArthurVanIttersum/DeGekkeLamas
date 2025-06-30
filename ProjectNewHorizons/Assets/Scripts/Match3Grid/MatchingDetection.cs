@@ -104,12 +104,12 @@ public class MatchingDetection : MonoBehaviour
             swipingAnimationPlaying = false;
             yield break;
         }
-        SwitchBlocks(swipeStartPosition, swipeDestination);
+        yield return StartCoroutine(SwitchBlocks(swipeStartPosition, swipeDestination));
         allPositionsToCheck.Add(swipeStartPosition);
         allPositionsToCheck.Add(swipeDestination);
         if (!CheckAllPositions())
         {
-            SwitchBlocks(swipeStartPosition, swipeDestination);
+            yield return StartCoroutine(SwitchBlocks(swipeStartPosition, swipeDestination));
             allPositionsToCheck.Clear();
             yield return new WaitForSeconds(timeBeforeSwitchingBack);//time before the blocks switch back
             swipingAnimationPlaying = false;
@@ -203,31 +203,44 @@ public class MatchingDetection : MonoBehaviour
         return false;
     }
 
-    public void SwitchBlocks(Vector2Int gridPos1, Vector2Int gridPos2)
+    public IEnumerator SwitchBlocks(Vector2Int gridPos1, Vector2Int gridPos2)
     {
+        //collectingData
+        Ingredient ingredient1 = SampleGrid(gridPos1);
+        Ingredient ingredient2 = SampleGrid(gridPos2);
+
+        GameObject gameobject1 = ingredient1.cubeForDisplay;
+        GameObject gameobject2 = ingredient2.cubeForDisplay;
+
+        Vector2 indexData1 = gameobject1.GetComponent<GridPosition>().index;
+        Vector2 indexData2 = gameobject2.GetComponent<GridPosition>().index;
+
+        Vector3 pos31 = gameobject1.GetComponent<GridPosition>().destinationPosition;
+        Vector3 pos32 = gameobject2.GetComponent<GridPosition>().destinationPosition;
+
         //switching ingredients
-        Ingredient selected = SampleGrid(gridPos1);
-        Ingredient sideEffect = SampleGrid(gridPos2);
-
-        grid.currentGrid[gridPos1.y, gridPos1.x] = sideEffect;
-        grid.currentGrid[gridPos2.y, gridPos2.x] = selected;
-
-        //switching positions
-        GameObject selectedObject = selected.cubeForDisplay;
-        GameObject sideEffectObject = sideEffect.cubeForDisplay;
-
-        Vector3 selectedPos3 = selectedObject.transform.position;
-        Vector3 sideEffectPos3 = sideEffectObject.transform.position;
-
-        selectedObject.transform.position = sideEffectPos3;
-        sideEffectObject.transform.position = selectedPos3;
+        grid.currentGrid[gridPos1.y, gridPos1.x] = ingredient2;
+        grid.currentGrid[gridPos2.y, gridPos2.x] = ingredient1;
 
         //switching indexes
-        Vector2 selectedIndexData = selectedObject.GetComponent<GridPosition>().index;
-        Vector2 SideEffectIndexData = sideEffectObject.GetComponent<GridPosition>().index;
+        gameobject1.GetComponent<GridPosition>().index = indexData2;
+        gameobject2.GetComponent<GridPosition>().index = indexData1;
 
-        selectedObject.GetComponent<GridPosition>().index = SideEffectIndexData;
-        sideEffectObject.GetComponent<GridPosition>().index = selectedIndexData;
+        //switching positions
+        gameobject1.GetComponent<GridPosition>().destinationPosition = pos32;
+        gameobject2.GetComponent<GridPosition>().destinationPosition = pos31;
+
+        Vector3 difference1 = pos32 - pos31;
+        Vector3 difference2 = pos31 - pos32;
+
+        for (int i = 0; i < 4; i++)
+        {
+            yield return null;
+            gameobject1.transform.position += difference1 / 4;
+            gameobject2.transform.position += difference2 / 4;
+        }
+
+
     }
 
     public bool TestMatch3AtPosition(Vector2Int testPosition)
@@ -346,10 +359,11 @@ public class MatchingDetection : MonoBehaviour
             }
         }
         int randomOption = Random.Range(0,posibleIngredients.Count);
-        ReplaceBlockTo(gridPosition, posibleIngredients[randomOption]);
+        GameObject newSpawnedBlock = ReplaceBlockTo(gridPosition, posibleIngredients[randomOption]);
+        StartCoroutine(AnimateSpawned(newSpawnedBlock));
     }
 
-    public void ReplaceBlockTo(Vector2Int gridPosition, Ingredient changeTo)
+    public GameObject ReplaceBlockTo(Vector2Int gridPosition, Ingredient changeTo)
     {
         Ingredient toReplace = SampleGrid(gridPosition);
         GameObject blockToReplace = toReplace.cubeForDisplay.gameObject;
@@ -369,9 +383,20 @@ public class MatchingDetection : MonoBehaviour
         spawned.sharedMaterial = grid.currentGrid[gridPosition.y, gridPosition.x].material;
         spawned.gameObject.name = $"{gridPosition.x}, {gridPosition.y}, type = {grid.currentGrid[gridPosition.y, gridPosition.x].index}";
         spawned.gameObject.GetOrAddComponent<GridPosition>().index = new(gridPosition.x, gridPosition.y);
+        spawned.gameObject.GetOrAddComponent<GridPosition>().destinationPosition = replacePosition;
         grid.currentGrid[gridPosition.y, gridPosition.x].cubeForDisplay = spawned.gameObject;
         
         Destroy(blockToReplace);
+        return spawned.gameObject;
+    }
+
+    private IEnumerator AnimateSpawned(GameObject toAnimate)
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            toAnimate.transform.localScale = Vector3.one * ((float)i / 4);
+            yield return null;
+        }
     }
 
     private IEnumerator MoveEverythingUp()
@@ -412,7 +437,7 @@ public class MatchingDetection : MonoBehaviour
             }
             else
             {
-                SwitchBlocks(gridPosition, gridPosition + Vector2Int.up);
+                StartCoroutine(SwitchBlocks(gridPosition, gridPosition + Vector2Int.up));
             }
             gridPosition.y++;
         }
@@ -483,8 +508,18 @@ public class MatchingDetection : MonoBehaviour
     {
         for (int i = 0; i < blocksToHide.Length; i++)
         {
-            SampleGrid(blocksToHide[i]).cubeForDisplay.gameObject.GetComponent<MeshRenderer>().enabled = false;
+            StartCoroutine(ShrinkBlock(SampleGrid(blocksToHide[i]).cubeForDisplay.gameObject));
         }
+    }
+
+    private IEnumerator ShrinkBlock(GameObject toAnimate)
+    {
+        for (int i = 4; i > 0; i--)
+        {
+            toAnimate.transform.localScale = Vector3.one * ((float)i / 4);
+            yield return null;
+        }
+        toAnimate.GetComponent<MeshRenderer>().enabled = false;
     }
 
 }
