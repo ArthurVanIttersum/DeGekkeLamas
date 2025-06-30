@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &40073255
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -301,6 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &73467750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -424,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &124152286
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -547,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &133579811
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -791,6 +795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &212366504
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -914,6 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &219742754
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1037,6 +1043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &220768651
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1160,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &240946748
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1283,6 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &241350882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1406,6 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &244528661
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1529,6 +1539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &268110537
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1652,6 +1663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &302314936
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1810,6 +1822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &384934725
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2070,6 +2083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &397064186
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2193,6 +2207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &397294255
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2316,6 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &514331595
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2439,6 +2455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &514499567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2562,6 +2579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &557423801
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2685,6 +2703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &565583439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2808,6 +2827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &576490542
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2931,6 +2951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &586359083
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3054,6 +3075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &622513263
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3177,6 +3199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &639334493
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3300,6 +3323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &640185717
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3423,6 +3447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &641270089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3546,6 +3571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &642678693
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3669,6 +3695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &655171402
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3797,6 +3824,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &684868252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3920,6 +3948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &716320208
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4043,6 +4072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &733675221
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4166,6 +4196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &744359829
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4289,6 +4320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &762117383
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4412,6 +4444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &802639636
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4585,6 +4618,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &852070088
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4708,6 +4742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &853708029
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4831,6 +4866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &863437110
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4954,6 +4990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &868815713
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5077,6 +5114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &884193339
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5200,6 +5238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &890205061
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5323,6 +5362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &896011735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5446,6 +5486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &908098312
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5569,6 +5610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &943520594
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5692,6 +5734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &950446817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5815,6 +5858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &953557865
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5938,6 +5982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &992138676
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6061,6 +6106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &994521312
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6184,6 +6230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &994724941
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6307,6 +6354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1004444226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6430,6 +6478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1023861025
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6553,6 +6602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1024071404
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6676,6 +6726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1027890501
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6848,6 +6899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1039480435
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6971,6 +7023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1075275073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7094,6 +7147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1076474273
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7217,6 +7271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1078282630
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7340,6 +7395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1092227575
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7542,6 +7598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1095857724
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7818,6 +7875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1115543323
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7941,6 +7999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1124761235
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8064,6 +8123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1128588128
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8187,6 +8247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1165002026
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8346,6 +8407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1174360439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8469,6 +8531,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1175872392
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8592,6 +8655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1176508348
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8715,6 +8779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1186643553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8838,6 +8903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1206849405
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8961,6 +9027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1214532555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9084,6 +9151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1217032195
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9207,6 +9275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1222098199
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9330,6 +9399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1237984641
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9453,6 +9523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1242741951
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9576,6 +9647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1245724596
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9699,6 +9771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1271782838
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9822,6 +9895,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1297852427
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9945,6 +10019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1309323042
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10068,6 +10143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1327016105
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10191,6 +10267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1335244036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10470,6 +10547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1442828453
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10593,6 +10671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1467295058
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10710,6 +10789,7 @@ MonoBehaviour:
   customerQue: 
   customerAntiQue: 
   customerCount: 5
+  possibleSpots: 5
   spawnRangeX: {x: 2, y: 2}
   spawnRangeY: {x: 2, y: 2}
   spawnRangeZ: {x: -6, y: 6}
@@ -10782,6 +10862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1532533813
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10905,6 +10986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1539712302
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11028,6 +11110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1539942397
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11151,6 +11234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1546441682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11274,6 +11358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1554032043
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11397,6 +11482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1560918576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11520,6 +11606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 6}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1566180934
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11643,6 +11730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1571819978
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11766,6 +11854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1582186091
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11889,6 +11978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1601950997
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12012,6 +12102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1605522598
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12135,6 +12226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1609959753
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12258,6 +12350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1617499817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12441,6 +12534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1661759986
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12564,6 +12658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 1}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1666401330
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12687,6 +12782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1667303643
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12810,6 +12906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1684535862
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13358,6 +13455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1724945500
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13481,6 +13579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1744459317
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13668,6 +13767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1779715172
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13791,6 +13891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 0, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1790893337
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13914,6 +14015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1799800673
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14037,6 +14139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 3, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1808975869
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14160,6 +14263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1836309467
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14283,6 +14387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1839004872
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14406,6 +14511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1840622183
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14529,6 +14635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1840661937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14652,6 +14759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1849183032
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14775,6 +14883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1851961717
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14863,7 +14972,7 @@ GameObject:
   - component: {fileID: 1898457630}
   - component: {fileID: 1898457634}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: GridCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15042,6 +15151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 6, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1913828347
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15165,6 +15275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 9}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1919480854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15397,6 +15508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 1, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1966269450
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15520,6 +15632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 4, y: 5}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1967864578
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15643,6 +15756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 0}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1987608724
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15766,6 +15880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 9, y: 8}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1988305577
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15889,6 +16004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 3}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &1997994267
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16012,6 +16128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 5, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2002948453
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16135,6 +16252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 10}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2022793022
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16258,6 +16376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 8, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2025849903
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16381,6 +16500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 7, y: 7}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2026078677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16623,6 +16743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 2, y: 2}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2135053825
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16746,6 +16867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: {x: 10, y: 4}
+  destinationPosition: {x: 0, y: 0, z: 0}
 --- !u!64 &2140062714
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16870,6 +16992,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &631233131810194582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096201350466805237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &888162377729241409
 GameObject:
   m_ObjectHideFlags: 0
@@ -17378,6 +17530,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3515183283685859208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9074516498962813211}
+  - component: {fileID: 4194567422082663550}
+  - component: {fileID: 4257896114167766643}
+  - component: {fileID: 5842929645792686417}
+  m_Layer: 5
+  m_Name: PlayerSpriteRenderSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &3699325943603209433
 Transform:
   m_ObjectHideFlags: 0
@@ -17449,13 +17620,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6585048059957774410, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7666416445814984797, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2152547193063252710, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9074516498962813211}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7666416445814984797, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
       insertIndex: -1
@@ -17464,6 +17642,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1647495011}
   m_SourcePrefab: {fileID: 100100000, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
+--- !u!4 &3717433149038770593 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2152547193063252710, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
+  m_PrefabInstance: {fileID: 3717433149038770592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &3744189922948465342
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17517,6 +17700,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5230715285462268608}
   m_Mesh: {fileID: -7510735891847381342, guid: 11a6252f34282344e8c257359a560190, type: 3}
+--- !u!223 &4194567422082663550
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515183283685859208}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 396280458}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!23 &4229047272345267929
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17607,6 +17813,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4257896114167766643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515183283685859208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!1 &4452745862604125192
 GameObject:
   m_ObjectHideFlags: 0
@@ -17722,6 +17951,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!222 &5065535853513822395
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096201350466805237}
+  m_CullTransparentMesh: 1
+--- !u!1 &5096201350466805237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8762185828683768762}
+  - component: {fileID: 5065535853513822395}
+  - component: {fileID: 631233131810194582}
+  m_Layer: 5
+  m_Name: ThoughtBubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &5118389297401577059
 Transform:
   m_ObjectHideFlags: 0
@@ -17897,6 +18152,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5118389297401577059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5842929645792686417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515183283685859208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!4 &5890452831878775834
 Transform:
   m_ObjectHideFlags: 0
@@ -18335,6 +18607,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!224 &8762185828683768762
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096201350466805237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9074516498962813211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &8977708416598830977
 Transform:
   m_ObjectHideFlags: 0
@@ -18350,6 +18641,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5118389297401577059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &9074516498962813211
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515183283685859208}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8762185828683768762}
+  m_Father: {fileID: 3717433149038770593}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
