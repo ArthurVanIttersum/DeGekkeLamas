@@ -16,6 +16,7 @@ MonoBehaviour:
   randomDishCountRangeMax: 3
   allrecipes:
   - name: Boba
+    dishType: 2
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Milk
@@ -35,6 +36,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
   - name: Burger
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Beef
@@ -69,6 +71,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Burrito
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -103,6 +106,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: a8580203932c9804e87c308be7734fd8, type: 3}
   - name: Coffee
+    dishType: 2
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Coffee
@@ -122,6 +126,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Fish cookies
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Egg
@@ -141,6 +146,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Fries
+    dishType: 1
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Potato
@@ -155,6 +161,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   - name: Grilled fish
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Fish
@@ -169,6 +176,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Ice cream
+    dishType: 2
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Milk
@@ -183,6 +191,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 4c103719fcbac9d4fb22c7ee027aa9db, type: 3}
   - name: Ice tea
+    dishType: 2
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Water
@@ -202,6 +211,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Indian curry
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Curry
@@ -231,6 +241,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Katsa curry
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Curry
@@ -260,6 +271,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Lasagna
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -289,6 +301,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   - name: Milkshake
+    dishType: 2
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Ice
@@ -308,6 +321,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Pancakes
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Egg
@@ -332,6 +346,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   - name: Pasta puttanesca
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -361,6 +376,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Pizza
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -385,6 +401,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   - name: Ramen
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Egg
@@ -404,6 +421,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Rib eye steak
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Beef
@@ -438,6 +456,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: a96a678e813535c4c966d954496b12ca, type: 3}
   - name: Risotto
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Chicken
@@ -457,6 +476,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 005888ede18a58e4db8d069cfa3007cb, type: 3}
   - name: Salad
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Lettuce
@@ -476,6 +496,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 4c103719fcbac9d4fb22c7ee027aa9db, type: 3}
   - name: Sashimi
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Fish
@@ -495,6 +516,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 0}
   - name: Spaghetti
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -519,6 +541,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Spare ribs
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: BBQ
@@ -538,6 +561,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 3a9e8f95df07d044b9d76bf8090d2ca6, type: 3}
   - name: Sushi
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Fish
@@ -552,6 +576,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Tacos
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -576,6 +601,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   - name: Vegetarian spaghetti
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Flour
@@ -600,6 +626,7 @@ MonoBehaviour:
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
   - name: Yemeni chicken
+    dishType: 0
     texture: {fileID: 0}
     recipeIngredientsList:
     - name: Rice

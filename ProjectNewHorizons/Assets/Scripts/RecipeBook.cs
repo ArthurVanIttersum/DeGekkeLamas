@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-
+public enum DishType { Stove, Fryer, Bar };
 
 [CreateAssetMenu(fileName = "RecipeBook", menuName = "Scriptable Objects/RecipeBook")]
 public class RecipeBook : ScriptableObject
@@ -35,6 +35,7 @@ public class Recipe
 {
     [SerializeField]
     public string name;
+    public DishType dishType;
     public Texture texture;
     public Ingredient[] recipeIngredientsList;
     public Sprite spriteForPopup;

@@ -12,7 +12,8 @@ public class CustomerGenerator : MonoBehaviour
     public List <int> customerAntiQue = new();
     //when a customer is not in the que it's in the anti que.
     //this way i can pick a random customer from the anti que.
-    public int customerCount = 5;
+    public int customerCount = 3;
+    public int possibleSpots = 5;
     [Header("Spawn position")]
     public Vector2Int spawnRangeX;
     public Vector2Int spawnRangeY;
@@ -32,7 +33,7 @@ public class CustomerGenerator : MonoBehaviour
     {
         if (instance == null) instance = this;
         possiblePositions = new();
-        for(int i = 0; i < customerCount; i++)
+        for(int i = 0; i < possibleSpots; i++)
         {
             possiblePositions.Add(i);
         }
@@ -40,6 +41,7 @@ public class CustomerGenerator : MonoBehaviour
     private void OnValidate()
     {
         customerCount = Mathf.Min(customerCount, customerPrefabs.Count-1);
+        customerCount = Mathf.Clamp(customerCount, 0, possibleSpots);
     }
 
     /// <summary>
@@ -54,9 +56,9 @@ public class CustomerGenerator : MonoBehaviour
         //print($"0, {possiblePositions.Count}, Index = {spawnIndex}, spawnPos = {spawnPos}");
 
         Vector3 spawnPosition = new(
-            MathTools.Remap(0, customerCount, spawnRangeX.x, spawnRangeX.y, spawnPos),
-            MathTools.Remap(0, customerCount, spawnRangeY.x, spawnRangeY.y, spawnPos),
-            MathTools.Remap(0, customerCount, spawnRangeZ.x, spawnRangeZ.y, spawnPos)
+            MathTools.Remap(0, possibleSpots, spawnRangeX.x, spawnRangeX.y, spawnPos),
+            MathTools.Remap(0, possibleSpots, spawnRangeY.x, spawnRangeY.y, spawnPos),
+            MathTools.Remap(0, possibleSpots, spawnRangeZ.x, spawnRangeZ.y, spawnPos)
             );
         possiblePositions.RemoveAt(spawnIndex);
 
