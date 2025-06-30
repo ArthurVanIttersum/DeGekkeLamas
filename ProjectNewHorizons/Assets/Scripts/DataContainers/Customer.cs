@@ -44,6 +44,7 @@ public class Customer : MonoBehaviour
             yield return new WaitForFixedUpdate();
         }
         popup = CreatePopUp();
+        SetPopupToDefault();
         yield return new();
         
     }
@@ -61,19 +62,21 @@ public class Customer : MonoBehaviour
         CustomerGenerator CG = CustomerGenerator.instance;
         GameObject newPopup = Instantiate(CG.speechbubblePrefab, transform.position + Vector3.up, transform.rotation, transform);
         
-        newPopup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.thoughtBubbleSprite;
-        newPopup.transform.GetChild(1).GetComponent<Image>().sprite = thisCustomersOrder.dishes.First().dishType.spriteForPopup;
-
         return newPopup;
     }
 
     public IEnumerator SetPopupToSpeachAndBack()
     {
-        print("switch to speach");
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.speechBubbleSprite;
         yield return new WaitForSeconds(1);
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.thoughtBubbleSprite;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.waitingSprite;
-        print("switch back to thought");
     }
+
+    public void SetPopupToDefault()
+    {
+        popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.thoughtBubbleSprite;
+        popup.transform.GetChild(1).GetComponent<Image>().sprite = thisCustomersOrder.dishes.First().dishType.spriteForPopup;
+    }
+
 }
