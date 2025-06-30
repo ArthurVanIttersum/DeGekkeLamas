@@ -5,6 +5,7 @@ Shader "Custom/Outline"
         _Color("Color", Color) = (1,1,1,1)
         _Transparency("Transparency", Range(0, 1)) = 1
         _Emission("Emission", Float) = 0
+        _Radius("Highlight radius", Float) = 1
     }
     SubShader
     {
@@ -31,27 +32,28 @@ Shader "Custom/Outline"
             struct appdata
             {
                 float4 vertex : POSITION;
+				float4 normal : NORMAL;
                 float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+				float4 normal : NORMAL;
             };
 
             float4 _Color;
             float _Transparency;
             float _Emission;
+            float _Radius;
 
             v2f vert (appdata v)
             {
                 v2f o;
-                float4 newVertex = v.vertex * 1.1;
+                float4 newVertex = v.vertex + v.normal * _Radius;
                 o.vertex = UnityObjectToClipPos(newVertex);
                 o.uv = v.uv;
-                // UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
@@ -61,8 +63,6 @@ Shader "Custom/Outline"
                 fixed4 col = _Color;
                 col.w *= _Transparency;
                 col.xyz *= 1 + _Emission;
-                // apply fog
-                // UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
             }
             ENDCG
