@@ -54,7 +54,8 @@ public class PlayerController : MonoBehaviour
                         }
                     }
                     // Open oven for match3 minigame
-                    else if (info.collider.gameObject.TryGetComponent(out GridActivator activator))
+                    else if (info.collider.gameObject.TryGetComponent(out GridActivator activator) 
+                        && activator.stationType == DishManager.instance.currentDish.dishType.dishType)
                     {
                         activator.ToggleGame();
                         print("Clicked on grid activator");
@@ -76,7 +77,8 @@ public class PlayerController : MonoBehaviour
 
         print($"Player collided with {other.name}");
         // Open oven for match3 minigame
-        if (other.gameObject.TryGetComponent(out GridActivator activator))
+        if (other.gameObject.TryGetComponent(out GridActivator activator)
+            && activator.stationType == DishManager.instance.currentDish.dishType.dishType)
         {
             activator.ToggleGame();
             print("Clicked on grid activator");
