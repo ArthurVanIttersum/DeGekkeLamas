@@ -23,6 +23,6 @@ public class HighscoreDisplay : MonoBehaviour
 
     public static void UpdateHighscoretext()
     {
-        instance.highscoreText.text = PlayerPrefs.GetInt("Highscore").ToString();
+        instance.highscoreText.text = $"Highscore: {PlayerPrefs.GetInt("Highscore")}";
     }
 }

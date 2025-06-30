@@ -22,12 +22,13 @@ public class Customer : MonoBehaviour
 
     public IEnumerator WalkingAwayAnimation()
     {
+        DishManager.instance.dishesDone++;
+        if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         walkingAway = true;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.satisfiedSprite;
         MatchGridSystem.instance.ingredientList.text = string.Empty;
         yield return new WaitForSeconds(walkingTime);
         CustomerGenerator.instance.possiblePositions.Add(positionIndex);
-        if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         DishManager.instance.DespawnAndRespawnCustomer(this.gameObject, index);
     }
     public IEnumerator WalkIntoSceneAnimation()
