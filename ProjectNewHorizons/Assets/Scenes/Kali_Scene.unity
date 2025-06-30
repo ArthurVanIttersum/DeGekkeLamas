@@ -483,7 +483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &991923898
 RectTransform:
   m_ObjectHideFlags: 0
@@ -563,7 +563,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1174882862
 RectTransform:
   m_ObjectHideFlags: 0
@@ -820,9 +820,17 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 1081202321214604904, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1369738039533190249, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_Name
       value: 'Recipe Book '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2803519868144060767, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5333378055297920052, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_IsActive
@@ -859,6 +867,10 @@ PrefabInstance:
     - target: {fileID: 8720949370360094142, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066985757375978186, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

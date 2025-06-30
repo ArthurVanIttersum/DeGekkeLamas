@@ -112,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 955.3938, y: 626.1944}
+  m_AnchoredPosition: {x: 122, y: 90}
+  m_SizeDelta: {x: 774, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4353187828173078752
 CanvasRenderer:
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2134c75003a6a894f9e5114d9676aca1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6e7c4994048ed342a5cfb3f2c2bf1ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -710,8 +710,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -135.27795}
-  m_SizeDelta: {x: 253.035, y: 47.444}
+  m_AnchoredPosition: {x: 119, y: -217}
+  m_SizeDelta: {x: 162, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7678420221817501710
 CanvasRenderer:
@@ -874,7 +874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3a9e8f95df07d044b9d76bf8090d2ca6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -977,8 +977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 955.3938, y: 626.1944}
+  m_AnchoredPosition: {x: 122, y: 90}
+  m_SizeDelta: {x: 774, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2823629537142262097
 CanvasRenderer:
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2134c75003a6a894f9e5114d9676aca1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6e7c4994048ed342a5cfb3f2c2bf1ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1188,7 +1188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -7.3581696}
+  m_AnchoredPosition: {x: -102, y: -7.3581696}
   m_SizeDelta: {x: 75, y: 277.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7143114820670236566
@@ -1280,7 +1280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4142024610751167772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1638,8 +1638,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 225, y: 50}
-  m_SizeDelta: {x: 171.75, y: 261.75}
+  m_AnchoredPosition: {x: 177, y: 59}
+  m_SizeDelta: {x: 132.9077, y: 202.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2546341800720106914
 CanvasRenderer:
@@ -1984,7 +1984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -20}
+  m_AnchoredPosition: {x: -102, y: -20}
   m_SizeDelta: {x: 40, y: 210}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9105751917876593177
@@ -2265,7 +2265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2196971498168842274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2315,7 +2315,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2134c75003a6a894f9e5114d9676aca1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6e7c4994048ed342a5cfb3f2c2bf1ec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2373,8 +2373,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -135.27795}
-  m_SizeDelta: {x: 253.035, y: 47.444}
+  m_AnchoredPosition: {x: 119, y: -217}
+  m_SizeDelta: {x: 162, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2230771056700143321
 CanvasRenderer:
@@ -2676,8 +2676,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
-  m_SizeDelta: {x: 700, y: 500}
+  m_AnchoredPosition: {x: 14, y: -71}
+  m_SizeDelta: {x: 563.0942, y: 363.6849}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &351253604534047942
 CanvasRenderer:
@@ -2707,11 +2707,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Congratulations!!! Today was a success! Do you wish to continue playing?
-
-
-
-    /'
+  m_text: "Congratulations!!! \nToday was a success! Do you wish to continue playing?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
   m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
@@ -2738,13 +2734,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
-  m_fontSizeBase: 46
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2944,8 +2940,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: -135.27795}
-  m_SizeDelta: {x: 253.035, y: 47.444}
+  m_AnchoredPosition: {x: -100, y: -217}
+  m_SizeDelta: {x: 162, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6820000541173197981
 CanvasRenderer:
@@ -3424,8 +3420,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: -135.27795}
-  m_SizeDelta: {x: 253.035, y: 47.444}
+  m_AnchoredPosition: {x: -100, y: -217}
+  m_SizeDelta: {x: 160, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3866220935998345447
 CanvasRenderer:
@@ -3762,7 +3758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2}
+  m_AnchoredPosition: {x: 11, y: -65}
   m_SizeDelta: {x: 700, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8394590340953765652
@@ -3793,8 +3789,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Oh no! You couldn't satisfy all the customers! Do you want to try again?
-    \n\n\n/"
+  m_text: "Oh no! \nYou couldn't satisfy all the customers! \nDo you want to try
+    again? "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
   m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
@@ -3821,8 +3817,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 46
-  m_fontSizeBase: 46
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
