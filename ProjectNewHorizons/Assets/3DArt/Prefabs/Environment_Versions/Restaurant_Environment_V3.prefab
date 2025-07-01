@@ -4606,6 +4606,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1356344293257016871, guid: bc98749ea9d85044591bde8da4b70eb5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 286aa2f1d64544948aae234860eebcce, type: 2}
     - target: {fileID: 8047720843261660613, guid: bc98749ea9d85044591bde8da4b70eb5, type: 3}
       propertyPath: m_Name
       value: Closet (1)
@@ -6080,6 +6084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cooking_Table
       objectReference: {fileID: 0}
+    - target: {fileID: 3401965607600146600, guid: be8206b33293b084397c4f54c39499f9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 286aa2f1d64544948aae234860eebcce, type: 2}
     - target: {fileID: 5466445903153602260, guid: be8206b33293b084397c4f54c39499f9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.504905
@@ -12702,6 +12710,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 144449537883008785}
     m_Modifications:
+    - target: {fileID: 784138198160715760, guid: 464d9c208f1e272478dc84fdb2778a3c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 286aa2f1d64544948aae234860eebcce, type: 2}
     - target: {fileID: 1653333941175422842, guid: 464d9c208f1e272478dc84fdb2778a3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12742,6 +12754,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3358819979857170576, guid: 464d9c208f1e272478dc84fdb2778a3c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 286aa2f1d64544948aae234860eebcce, type: 2}
     - target: {fileID: 5349342775707111179, guid: 464d9c208f1e272478dc84fdb2778a3c, type: 3}
       propertyPath: m_Name
       value: Pantry
