@@ -5,9 +5,11 @@ using UnityEngine.UI;
 public class PlayerAnimations : MonoBehaviour
 {
     private NavMeshAgent agent;
-    public Sprite forward;
-    public Sprite walkLeft;
-    public Sprite walkRight;
+    public Sprite[] walkforward;
+    public Sprite[] walkbackward;
+    public Sprite[] walkLeft;
+    public Sprite[] walkRight;
+    public Sprite standStill;
     private Image theImage;
     private Quaternion rotation;
     private void Start()
@@ -15,30 +17,47 @@ public class PlayerAnimations : MonoBehaviour
         agent = GetComponentInParent<NavMeshAgent>();
         theImage = GetComponentInChildren<Image>();
         rotation = Camera.main.transform.rotation;
+        rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
     }
     // Update is called once per frame
     void Update()
     {
+        int frame = Mathf.FloorToInt(Time.time * 10) % 4;
         transform.rotation = rotation;
         Vector3 velocity = agent.velocity;
-        if (Mathf.Abs(velocity.z) > Mathf.Abs(velocity.x))
+        if (agent.velocity.magnitude > 0.1)
         {
-            if (velocity.z > 0)
+            if (Mathf.Abs(velocity.z) > Mathf.Abs(velocity.x))
             {
-                //right
-                theImage.sprite = walkRight;
+                if (velocity.z > 0)
+                {
+                    //right
+                    theImage.sprite = walkRight[frame];
+                }
+                else
+                {
+                    //left
+                    theImage.sprite = walkLeft[frame];
+                }
             }
             else
             {
-                //left
-                theImage.sprite = walkLeft;
+                if (velocity.x > 0)
+                {
+                    //forward
+                    theImage.sprite = walkforward[frame];
+                }
+                else
+                {
+                    //backward
+                    theImage.sprite = walkbackward[frame];
+                }
             }
         }
         else
         {
-            //forward
-            theImage.sprite = forward;
+            //staning still
+            theImage.sprite = standStill;
         }
-
     }
 }
