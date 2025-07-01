@@ -42,21 +42,19 @@ public class PlayerController : MonoBehaviour
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
-                        StationHighlighter.instance.RemoveHighlight();
-                        
-
+                        // Complete order
                         if (customer.thisCustomersOrder.orderComplete)
                         {
                             print("startWalkingAway Animation Script");
                             StartCoroutine(customer.WalkingAwayAnimation());
                             isServingCustomer = false;
                         }
-                        else
+                        else // take order
                         {
+                            // refuse if already has an order
                             if (!isServingCustomer)
                             {
-
-
+                                StationHighlighter.instance.RemoveHighlight();
                                 previousCustomer = customer;
                                 StartCoroutine(customer.SetPopupToSpeachAndBack());
                                 List<Dish> dishes = customer.thisCustomersOrder.dishes;

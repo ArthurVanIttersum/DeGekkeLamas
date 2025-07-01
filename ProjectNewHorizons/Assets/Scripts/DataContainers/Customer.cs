@@ -28,7 +28,12 @@ public class Customer : MonoBehaviour
         if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         walkingAway = true;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.satisfiedSprite;
-        MatchGridSystem.instance.ingredientList.text = string.Empty;
+        MatchGridSystem.instance.ingredientLisText.text = string.Empty;
+        for (int i = MatchGridSystem.instance.iconsSpawned.Count; i > 0; i--)
+        {
+            Destroy(MatchGridSystem.instance.iconsSpawned[i-1]);
+            MatchGridSystem.instance.iconsSpawned.RemoveAt(i-1);
+        }
         yield return new WaitForSeconds(walkingTime);
         CustomerGenerator.instance.possiblePositions.Add(positionIndex);
         DishManager.instance.DespawnAndRespawnCustomer(this.gameObject, index);

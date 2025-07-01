@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(MatchingDetection), typeof(ScreenResolutionManager), typeof(DishManager))]
 public class MatchGridSystem : MonoBehaviour
@@ -32,13 +33,16 @@ public class MatchGridSystem : MonoBehaviour
 
 
     [Header("Recipe stuff")]
-    public TMP_Text ingredientList;
+    public TMP_Text ingredientLisText;
     public Color recipeColor;
+    public RectTransform recipeIcon;
+    public Vector3 iconOffset;
 
     [Header("References")]
     public MeshRenderer gridQuad;
     public GridGameraController gridCameraController;
     public GameObject gridObject;
+    [HideInInspector] public List<GameObject> iconsSpawned = new();
     [SerializeField, HideInInspector] public Transform gridContainer;
     public static MatchGridSystem instance;
     private System.Random rand;
@@ -100,8 +104,26 @@ public class MatchGridSystem : MonoBehaviour
         this.GetComponent<MatchingDetection>().currentDish = dish;
 
         Generate();
-        if (ingredientList != null)
-            ingredientList.text = $"{StringTools.Color(dish.dishType.name, recipeColor)}\n {StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
+
+        // Text display of required list
+        if (ingredientLisText != null)
+            ingredientLisText.text = $"{StringTools.Color(dish.dishType.name, recipeColor)}\n " +
+                $"{StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
+
+        // Icons
+        float size = ingredientLisText.fontSize;
+        for (int i = 1; i <= dish.dishType.recipeIngredientsList.Length; i++)
+        {
+            RectTransform spawned = Instantiate(recipeIcon, ingredientLisText.transform);
+            float scale = spawned.root.lossyScale.x;
+
+            spawned.position += (new Vector3(0, size*2 * i, 0) + iconOffset) * scale;
+            spawned.sizeDelta = new(size, size);
+            spawned.GetComponent<RawImage>().texture = ingredientTypes
+                [Ingredient.FindByName(ingredientTypes, dish.dishType.recipeIngredientsList[
+                    dish.dishType.recipeIngredientsList.Length-i].name)].texture;
+            iconsSpawned.Add(spawned.gameObject);
+        }
     }
 
     /// <summary>
@@ -109,7 +131,7 @@ public class MatchGridSystem : MonoBehaviour
     /// </summary>
     public void CollectIngredient(Ingredient ingredient)
     {
-        ingredientList.text = StringTools.StrikeThrough(ingredientList.text, ingredient.name);
+        ingredientLisText.text = StringTools.StrikeThrough(ingredientLisText.text, ingredient.name);
         print($"Collected {ingredient.name}");
     }
 
