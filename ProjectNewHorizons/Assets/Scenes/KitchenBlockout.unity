@@ -10670,7 +10670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4dc6197f8c79d4fbc84e5ae9f368f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   scoreSlider: {fileID: 6157456032558074351}
   scoreDisplay: {fileID: 12227713}
   maxScore: 1000
@@ -10891,6 +10890,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442828450}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1463614435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1369738039533190249, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+  m_PrefabInstance: {fileID: 6880444884127889886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1463614440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1463614435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b060273a3492747a2af2ee8851fefb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pages: []
+  theImageRenderer: {fileID: 0}
+  currentPage: 0
 --- !u!1 &1467295055
 GameObject:
   m_ObjectHideFlags: 0
@@ -12699,6 +12718,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2803519868144060767, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
   m_PrefabInstance: {fileID: 6880444884127889886}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1620581812 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3964964428323197340, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+  m_PrefabInstance: {fileID: 6880444884127889886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1647495004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7666416445814984797, guid: 041b63015d8eaf24bad7fee68e7e3d58, type: 3}
@@ -13260,7 +13290,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1692662269}
   - component: {fileID: 1692662268}
-  - component: {fileID: 1692662267}
   - component: {fileID: 1692662270}
   - component: {fileID: 1692662271}
   - component: {fileID: 1692662272}
@@ -13272,80 +13301,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1692662267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692662266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76625d069c5a78d4db587e68cbd72086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dish:
-    dishType:
-      name: Banana
-      dishType: 0
-      texture: {fileID: 0}
-      recipeIngredientsList:
-      - name: Red
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 2
-        cubeForDisplay: {fileID: 0}
-      - name: Blue
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 0
-        cubeForDisplay: {fileID: 0}
-      - name: Green
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 1
-        cubeForDisplay: {fileID: 0}
-      - name: Green
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 1
-        cubeForDisplay: {fileID: 0}
-      - name: Green
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 1
-        cubeForDisplay: {fileID: 0}
-      - name: Green
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 1
-        cubeForDisplay: {fileID: 0}
-      - name: Green
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 1
-        cubeForDisplay: {fileID: 0}
-      - name: Jordy
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 5
-        cubeForDisplay: {fileID: 0}
-      - name: Jordy
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 5
-        cubeForDisplay: {fileID: 0}
-      - name: Jordy
-        texture: {fileID: 0}
-        material: {fileID: 0}
-        index: 5
-        cubeForDisplay: {fileID: 0}
-      spriteForPopup: {fileID: 0}
-    currentIngredients: []
-    amountOfCorrectIngredients: 0
-    amountOfInCorrectIngredients: 0
-    amountOfMissingIngredients: 0
-  total: 8
 --- !u!114 &1692662268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13359,7 +13314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientTypes:
-  - name: BBQ
+  - name: BBQ sauce
     texture: {fileID: 2800000, guid: 1f2a5c58c58781440a2c4824ec0c7c9d, type: 3}
     material: {fileID: 2100000, guid: 6132506aa89895c419f2a3d2f4acac6f, type: 2}
     index: 0
@@ -13571,11 +13526,14 @@ MonoBehaviour:
   autoResize: 1
   weightInfluence: 2
   baseSizeOffset: 2.5
-  ingredientList: {fileID: 52529003206896123}
+  ingredientLisText: {fileID: 52529003206896123}
   recipeColor: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 1}
+  recipeIcon: {fileID: 3015182911768705838, guid: f2365dc21c6d96648a99e09d3b6968f5, type: 3}
+  iconOffset: {x: 150, y: -150, z: 0}
   gridQuad: {fileID: 7715720319054458399, guid: 69c37fed1adbb72449b0e2ad26685dd1, type: 3}
   gridCameraController: {fileID: 1898457634}
   gridObject: {fileID: 2329447972760408434}
+  iconsSpawned: []
   gridContainer: {fileID: 1107512568}
 --- !u!4 &1692662269
 Transform:
@@ -13649,6 +13607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dishesRequired: 20
+  dishText: {fileID: 1841783643}
   dishesDone: 0
   currentDish:
     dishType:
@@ -14997,6 +14956,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1840661934}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1841783643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7308235670645460730, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+  m_PrefabInstance: {fileID: 6880444884127889886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1849183029
 GameObject:
   m_ObjectHideFlags: 0
@@ -18574,6 +18544,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 272611999839812002, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+    - target: {fileID: 272611999839812002, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+    - target: {fileID: 272611999839812002, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 589795518724489688, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -18654,10 +18636,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1388891852887091622, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+    - target: {fileID: 1388891852887091622, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+    - target: {fileID: 1388891852887091622, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3464074863328190580, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1692662268}
+    - target: {fileID: 3510346416720267991, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: highscoreText
+      value: 
+      objectReference: {fileID: 1620581812}
+    - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4611548774145647466, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081029329078412240, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5081029329078412240, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
     - target: {fileID: 5333378055297920052, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18673,7 +18687,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1369738039533190249, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1463614440}
   m_SourcePrefab: {fileID: 100100000, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
 --- !u!1 &6880444884127889888 stripped
 GameObject:
