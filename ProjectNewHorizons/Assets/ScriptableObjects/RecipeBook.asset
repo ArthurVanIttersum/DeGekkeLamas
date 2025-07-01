@@ -162,7 +162,7 @@ MonoBehaviour:
     spriteForPopup: {fileID: 21300000, guid: 957df91766c823444b56436e8816fb8a, type: 3}
   - name: Grilled fish
     dishType: 0
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: 93a0791f7c19f9c4c87ce085f0fa2c83, type: 3}
     recipeIngredientsList:
     - name: Fish
       texture: {fileID: 0}
@@ -174,7 +174,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 2
       cubeForDisplay: {fileID: 0}
-    spriteForPopup: {fileID: 21300000, guid: fdcfa07a4c0d3e947be81173c9bc0291, type: 3}
+    spriteForPopup: {fileID: 21300000, guid: 93a0791f7c19f9c4c87ce085f0fa2c83, type: 3}
   - name: Ice cream
     dishType: 2
     texture: {fileID: 2800000, guid: 0b688c2015c60bd42a8debbeb73820ff, type: 3}
@@ -212,7 +212,7 @@ MonoBehaviour:
     spriteForPopup: {fileID: 21300000, guid: d9e7fc7495b353946a09032af8df913c, type: 3}
   - name: Indian curry
     dishType: 0
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: 28b4ebbe8c437084ba0bdceb79ec0562, type: 3}
     recipeIngredientsList:
     - name: Curry
       texture: {fileID: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 16
       cubeForDisplay: {fileID: 0}
-    spriteForPopup: {fileID: 21300000, guid: 31cc0a5bbba7e854a95543743b9506ca, type: 3}
+    spriteForPopup: {fileID: 21300000, guid: 28b4ebbe8c437084ba0bdceb79ec0562, type: 3}
   - name: Katsa curry
     dishType: 0
     texture: {fileID: 2800000, guid: b3fe19c1437f54c42b861a4fe67d8e05, type: 3}
@@ -567,12 +567,12 @@ MonoBehaviour:
     - name: Fish
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 8
+      index: 10
       cubeForDisplay: {fileID: 0}
     - name: Rice
       texture: {fileID: 0}
       material: {fileID: 0}
-      index: 16
+      index: 18
       cubeForDisplay: {fileID: 0}
     spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
   - name: Tacos

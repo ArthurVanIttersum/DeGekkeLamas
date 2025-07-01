@@ -16,6 +16,7 @@ public class PlayerAnimations : MonoBehaviour
     {
         agent = GetComponentInParent<NavMeshAgent>();
         theImage = GetComponentInChildren<Image>();
+        theImage.transform.eulerAngles = Camera.main.transform.eulerAngles;
         rotation = Camera.main.transform.rotation;
         rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
     }

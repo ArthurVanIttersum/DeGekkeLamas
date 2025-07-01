@@ -66,8 +66,7 @@ public class Customer : MonoBehaviour
     {
         CustomerGenerator CG = CustomerGenerator.instance;
         Quaternion rotation = transform.rotation;
-        rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
-        GameObject newPopup = Instantiate(CG.speechbubblePrefab, transform.position + Vector3.up, rotation, transform);
+        GameObject newPopup = Instantiate(CG.speechbubblePrefab, transform.position + Vector3.up, transform.rotation, transform);
         
         return newPopup;
     }
