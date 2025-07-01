@@ -112,16 +112,16 @@ public class MatchGridSystem : MonoBehaviour
 
         // Icons
         float size = ingredientLisText.fontSize;
-        for (int i = 1; i <= dish.dishType.recipeIngredientsList.Length; i++)
+        for (int i = 0; i < dish.dishType.recipeIngredientsList.Length; i++)
         {
             RectTransform spawned = Instantiate(recipeIcon, ingredientLisText.transform);
             float scale = spawned.root.lossyScale.x;
 
-            spawned.position += (new Vector3(0, size*2 * i, 0) + iconOffset) * scale;
+            spawned.position += (new Vector3(size * 2 * -i, 0, 0) + iconOffset) * scale;
             spawned.sizeDelta = new(size, size);
             spawned.GetComponent<RawImage>().texture = ingredientTypes
                 [Ingredient.FindByName(ingredientTypes, dish.dishType.recipeIngredientsList[
-                    dish.dishType.recipeIngredientsList.Length-i].name)].texture;
+                    dish.dishType.recipeIngredientsList.Length-i-1].name)].texture;
             iconsSpawned.Add(spawned.gameObject);
         }
     }
