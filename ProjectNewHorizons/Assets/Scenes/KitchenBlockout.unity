@@ -11387,7 +11387,7 @@ MonoBehaviour:
   possiblePositions: 
   speechbubblePrefab: {fileID: 3469843407695785503, guid: 3404e3476018a9d4ab32b4027d0581ce, type: 3}
   speechBubbleSprite: {fileID: 21300000, guid: a2a82804867be814b99650f0740f165f, type: 3}
-  thoughtBubbleSprite: {fileID: 21300000, guid: 3f370a06517b51c478c31024f4cea5cd, type: 3}
+  thoughtBubbleSprite: {fileID: 21300000, guid: 4da9790c777cbac489d4d4dd0836c8a4, type: 3}
   waitingSprite: {fileID: 21300000, guid: fbead02cd1e862e4bbab821050f19f90, type: 3}
   satisfiedSprite: {fileID: 21300000, guid: d8b08922e9c2bda458f92172bf934adc, type: 3}
 --- !u!4 &1516901589
