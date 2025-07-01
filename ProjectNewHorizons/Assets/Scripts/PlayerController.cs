@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     public MatchGridSystem matchGridSystem;
     public float interactDistance = 6;
+    public bool isServingCustomer = false;
+    public Customer previousCustomer;
 
     /// <summary>
     /// Use this variable to lock player moment and interactions when in match3 minigame
@@ -40,18 +42,26 @@ public class PlayerController : MonoBehaviour
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
-                        StationHighlighter.instance.RemoveHighlight();
+                        // Complete order
                         if (customer.thisCustomersOrder.orderComplete)
                         {
                             print("startWalkingAway Animation Script");
                             StartCoroutine(customer.WalkingAwayAnimation());
+                            isServingCustomer = false;
                         }
-                        else
+                        else // take order
                         {
-                            StartCoroutine(customer.SetPopupToSpeachAndBack());
-                            List<Dish> dishes = customer.thisCustomersOrder.dishes;
-                            DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
-                            Debug.Log("Received order from customer");
+                            // refuse if already has an order
+                            if (!isServingCustomer)
+                            {
+                                StationHighlighter.instance.RemoveHighlight();
+                                previousCustomer = customer;
+                                StartCoroutine(customer.SetPopupToSpeachAndBack());
+                                List<Dish> dishes = customer.thisCustomersOrder.dishes;
+                                DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
+                                Debug.Log("Received order from customer");
+                                isServingCustomer = true;
+                            }
                         }
                     }
                     // Open oven for match3 minigame
