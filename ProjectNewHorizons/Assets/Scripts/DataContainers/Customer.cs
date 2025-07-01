@@ -65,7 +65,9 @@ public class Customer : MonoBehaviour
     public GameObject CreatePopUp()
     {
         CustomerGenerator CG = CustomerGenerator.instance;
-        GameObject newPopup = Instantiate(CG.speechbubblePrefab, transform.position + Vector3.up, transform.rotation, transform);
+        Quaternion rotation = transform.rotation;
+        rotation = Quaternion.Euler(0, rotation.eulerAngles.y, rotation.eulerAngles.z);
+        GameObject newPopup = Instantiate(CG.speechbubblePrefab, transform.position + Vector3.up, rotation, transform);
         
         return newPopup;
     }
@@ -73,7 +75,7 @@ public class Customer : MonoBehaviour
     public IEnumerator SetPopupToSpeachAndBack()
     {
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.speechBubbleSprite;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.thoughtBubbleSprite;
         popup.transform.GetChild(1).GetComponent<Image>().sprite = CustomerGenerator.instance.waitingSprite;
     }
