@@ -18815,6 +18815,10 @@ PrefabInstance:
       propertyPath: highscoreText
       value: 
       objectReference: {fileID: 1620581812}
+    - target: {fileID: 3964964428323197340, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4142024610751167772, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 20
@@ -18822,6 +18826,10 @@ PrefabInstance:
     - target: {fileID: 4611548774145647466, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773690361476535855, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5081029329078412240, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_Type
