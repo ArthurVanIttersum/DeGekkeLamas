@@ -10605,6 +10605,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6296699540305996570, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4664051740740484382, guid: 6fe6239db0f928441881b984e92779cd, type: 3}
     - target: {fileID: 7563402340667795216, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: m_Name
       value: Restaurant_Environment_V3
