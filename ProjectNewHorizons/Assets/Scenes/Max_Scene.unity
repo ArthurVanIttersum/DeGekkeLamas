@@ -430,6 +430,22 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 286aa2f1d64544948aae234860eebcce, type: 2}
+    - target: {fileID: 3991429336751197248, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Color.b
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991429336751197248, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9785366
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991429336751197248, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991429336751197248, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Intensity
+      value: 1.13
+      objectReference: {fileID: 0}
     - target: {fileID: 4067952565087229679, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
