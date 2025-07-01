@@ -11950,9 +11950,9 @@ MonoBehaviour:
   possiblePositions: 
   speechbubblePrefab: {fileID: 3469843407695785503, guid: 3404e3476018a9d4ab32b4027d0581ce, type: 3}
   speechBubbleSprite: {fileID: 21300000, guid: a2a82804867be814b99650f0740f165f, type: 3}
-  thoughtBubbleSprite: {fileID: 21300000, guid: 3f370a06517b51c478c31024f4cea5cd, type: 3}
-  waitingSprite: {fileID: 21300000, guid: fbead02cd1e862e4bbab821050f19f90, type: 3}
-  satisfiedSprite: {fileID: 21300000, guid: d8b08922e9c2bda458f92172bf934adc, type: 3}
+  thoughtBubbleSprite: {fileID: 21300000, guid: 4da9790c777cbac489d4d4dd0836c8a4, type: 3}
+  waitingSprite: {fileID: 21300000, guid: bd01e5fea28b8684ebe2a8c6d7466a16, type: 3}
+  satisfiedSprite: {fileID: 21300000, guid: c66bfb5f8f9da2c42a4b1281e8a09aa2, type: 3}
 --- !u!4 &1516901589
 Transform:
   m_ObjectHideFlags: 0
@@ -17846,6 +17846,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026078674}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2051949792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4185212211229291281, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+  m_PrefabInstance: {fileID: 6880444884127889886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ebb409884a07940b9fabc57dc4e579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2053822401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19718,19 +19729,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6880444884127889888}
+      objectReference: {fileID: 2051949792}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetActive
+      value: StartGame
       objectReference: {fileID: 0}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UIButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
