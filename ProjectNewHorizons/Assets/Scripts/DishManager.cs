@@ -68,7 +68,6 @@ public class DishManager : MonoBehaviour
         CG.customerQue.Remove(index);
         Destroy(customer);
         CG.SpawnNewCustomer();
-        dishesDone++;
     }
     public void UpdateDishText()
     {
