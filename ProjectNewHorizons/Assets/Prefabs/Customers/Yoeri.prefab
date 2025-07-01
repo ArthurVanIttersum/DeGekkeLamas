@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2038231781562577344}
   - component: {fileID: 5108101896040086989}
   m_Layer: 0
-  m_Name: Customer
+  m_Name: Yoeri
   m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1466292087244983359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.89, y: 0.4378783, z: 0.41245756}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52e4043c6a608f546ad525d7029deac6, type: 2}
+  - {fileID: 2100000, guid: 2775f6b15ab95304f941ebc11d607126, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

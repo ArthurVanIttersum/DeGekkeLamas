@@ -18,7 +18,7 @@ public class HighscoreDisplay : MonoBehaviour
             highscore = 0;
             PlayerPrefs.SetInt("Highscore", 0);
         }
-        highscoreText.text = highscore.ToString();
+        highscoreText.text = $"Highscore: {PlayerPrefs.GetInt("Highscore")}";
     }
 
     public static void UpdateHighscoretext()
