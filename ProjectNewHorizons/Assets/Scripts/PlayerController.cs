@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // Raycast from camera position to mouse pos
+            if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction);
             if (Physics.Raycast(ray, out RaycastHit info, 100, ~0, QueryTriggerInteraction.Ignore))
