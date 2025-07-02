@@ -71,12 +71,6 @@ public class PlayerController : MonoBehaviour
                         activator.ToggleGame();
                         print("Clicked on grid activator");
                     }
-                    // Old unused UI version of grid
-                    else if (info.collider.gameObject.TryGetComponent(out GridUIRenderer renderer))
-                    {
-                        print("Clicked on grid UI generator");
-                        renderer.GenerateUI();
-                    }
                 }
                 else if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     agent.SetDestination(info.point);
