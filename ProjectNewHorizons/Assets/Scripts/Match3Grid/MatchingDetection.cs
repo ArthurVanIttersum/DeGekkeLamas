@@ -26,7 +26,8 @@ public class MatchingDetection : MonoBehaviour
     private List<GameObject> theObjectsThatGotMovedUp = new();
 
     private List<Ingredient> foundIngredientTypes = new();
-    private int removedBlocks = 0;
+    private List<Ingredient> sentIngredientTypes = new();
+    
 
     private bool swipingAnimationPlaying = false;
 
@@ -499,6 +500,7 @@ public class MatchingDetection : MonoBehaviour
 
     private void CalculateIngredients(Vector2Int[] foundBlocks)
     {
+        int scoreToAdd = foundBlocks.Length;
         for (int i = 0; i < foundBlocks.Length; i++)
         {
             Ingredient theIngredientFromTheGrid = SampleGrid(foundBlocks[i]);
@@ -506,21 +508,23 @@ public class MatchingDetection : MonoBehaviour
             {
                 foundIngredientTypes.Add(theIngredientFromTheGrid);
             }
-            removedBlocks = foundBlocks.Length;
         }
+        for (int i = 0; i < foundIngredientTypes.Count; i++)
+        {
+            if (!Ingredient.ContainsIndex(sentIngredientTypes.ToArray(), foundIngredientTypes[i]))
+            {
+                currentDish.AddIngredient(foundIngredientTypes[i]);
+                sentIngredientTypes.Add(foundIngredientTypes[i]);
+                scoreToAdd -= 3;
+            }
+        }
+        ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * scoreToAdd);
     }
 
     private void FinalizeIngredients()
     {
-        
-        for (int i = 0; i < foundIngredientTypes.Count; i++)
-        {
-            currentDish.AddIngredient(foundIngredientTypes[i]);
-        }
-        int ExtraScoreToAdd = removedBlocks - 3;
-        
-        ScoreManager.instance.IncreaseScore(ScoreManager.instance.scoreIngredientCorrect * ExtraScoreToAdd);
-        removedBlocks = 0;
+        DishManager.instance.TestFinished();
+        sentIngredientTypes.Clear();
         foundIngredientTypes.Clear();
     }
 
