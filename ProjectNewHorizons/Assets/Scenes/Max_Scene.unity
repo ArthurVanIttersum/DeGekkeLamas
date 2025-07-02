@@ -378,6 +378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1077775795771528107, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.39
+      objectReference: {fileID: 0}
     - target: {fileID: 1719379318297498864, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -450,6 +454,14 @@ PrefabInstance:
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4958035554610783764, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Name
+      value: Roof
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958035554610783764, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7292658011167094339, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -457,6 +469,18 @@ PrefabInstance:
     - target: {fileID: 7563402340667795216, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: m_Name
       value: Restaurant_Environment_V3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542202887530897845, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542202887530897845, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_CastShadows
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8542202887530897845, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9049104195809453773, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
       propertyPath: sharedProfile
