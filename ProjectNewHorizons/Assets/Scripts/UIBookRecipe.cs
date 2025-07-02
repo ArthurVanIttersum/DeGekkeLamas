@@ -16,8 +16,8 @@ public class UIBookRecipe : MonoBehaviour
     public RecipePageData[] pages;
     public Image theDishImageRenderer;
     public Image[] theIngredientImageRenderers;
-    public TextMeshPro theNameText;
-    public TextMeshPro theDescriptionText;
+    public TMP_Text theNameText;
+    public TMP_Text theDescriptionText;
     public int currentPage = 0;
     
     public void TurnPageRight()
@@ -46,5 +46,10 @@ public class UIBookRecipe : MonoBehaviour
         }
         theNameText.text = pages[currentPage].name;
         theDescriptionText.text = pages[currentPage].description;
+    }
+
+    private void Start()
+    {
+        SetPage();
     }
 }
