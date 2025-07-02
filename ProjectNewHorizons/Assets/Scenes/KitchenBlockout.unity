@@ -15411,7 +15411,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   timeBeforeSwitchingBack: 0.5
-  timeWhileBlocksVisible: 0.75
+  timeWhileBlocksVisible: 0.5
   timeBeforeBlocksStartFalling: 0.25
   timeBetweenBlocksFalling: 0.15
 --- !u!114 &1692662271
