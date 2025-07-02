@@ -29,7 +29,8 @@ public class MatchingDetection : MonoBehaviour
     private List<Ingredient> sentIngredientTypes = new();
     
 
-    private bool swipingAnimationPlaying = false;
+    public static bool swipingAnimationPlaying = false;
+    public static bool isPaused;
 
     public UnityEvent onMatchMade;
 
@@ -46,6 +47,8 @@ public class MatchingDetection : MonoBehaviour
         if (!GridActivator.isPlayingMatch3) return;
 
         if (swipingAnimationPlaying) return;//so the player doesn't interact with the grid as it's moving.
+
+        if (isPaused) return;
         
         if (Input.GetMouseButtonDown(0))
         {
