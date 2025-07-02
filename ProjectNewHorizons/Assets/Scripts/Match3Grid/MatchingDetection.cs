@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MatchingDetection : MonoBehaviour
 {
@@ -29,6 +30,9 @@ public class MatchingDetection : MonoBehaviour
 
     private bool swipingAnimationPlaying = false;
 
+    public UnityEvent onMatchMade;
+
+    [Header("Time durations")]
     private int numberOfCoroutinesRunning = 0;//for animations
     public float timeBeforeSwitchingBack = 0.5f;//before blocks switch back
     public float timeWhileBlocksVisible = 0.75f;//time that the blocks can be visible as being 3 in a row
@@ -506,6 +510,7 @@ public class MatchingDetection : MonoBehaviour
 
     private void FinalizeIngredients()
     {
+        onMatchMade.Invoke();
         for (int i = 0; i < foundIngredientTypes.Count; i++)
         {
             currentDish.AddIngredient(foundIngredientTypes[i]);

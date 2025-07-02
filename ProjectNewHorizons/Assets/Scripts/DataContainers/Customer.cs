@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class Customer : MonoBehaviour
     {
         DishManager.instance.dishesDone++;
         DishManager.instance.UpdateDishText();
+        CustomerGenerator.instance.onOrderGiven.Invoke();
 
         if (DishManager.instance.dishesDone == DishManager.instance.dishesRequired) DishManager.instance.WinGame();
         walkingAway = true;
@@ -73,6 +75,7 @@ public class Customer : MonoBehaviour
 
     public IEnumerator SetPopupToSpeachAndBack()
     {
+        CustomerGenerator.instance.onOrderTaken.Invoke();
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.speechBubbleSprite;
         yield return new WaitForSeconds(5);
         popup.transform.GetChild(0).GetComponent<Image>().sprite = CustomerGenerator.instance.thoughtBubbleSprite;

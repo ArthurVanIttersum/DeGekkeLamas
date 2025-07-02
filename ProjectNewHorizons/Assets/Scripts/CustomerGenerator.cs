@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.Events;
 
 public class CustomerGenerator : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class CustomerGenerator : MonoBehaviour
     public static CustomerGenerator instance;
     GameObject customerContainer;
 
+    [Header("Events")]
+    public UnityEvent onOrderTaken;
+    public UnityEvent onOrderGiven;
+
+    [Header("Speechbubbe stuff")]
     public GameObject speechbubblePrefab;
     public Sprite speechBubbleSprite;
     public Sprite thoughtBubbleSprite;
