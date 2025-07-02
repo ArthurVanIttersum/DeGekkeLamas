@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIBook : MonoBehaviour
 {
@@ -13,8 +14,8 @@ public class UIBook : MonoBehaviour
     }
     public PageData[] pages;
     public Image theImageRenderer;
-    public Text theNameText;
-    public Text theDescriptionText;
+    public TextMeshPro theNameText;
+    public TextMeshPro theDescriptionText;
     public int currentPage = 0;
     
     public void TurnPageRight()
