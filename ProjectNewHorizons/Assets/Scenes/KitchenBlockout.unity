@@ -5862,22 +5862,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802639633}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &833813497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 333421904731660458}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1631e29de0809b49b4b4830d10edfe8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  matchGridSystem: {fileID: 1692662268}
-  gridParent: {fileID: 0}
-  borderFraction: 0.1
-  image: {fileID: 4190572031446819368, guid: a8d1cd04639c21c4e861a3e770249214, type: 3}
 --- !u!65 &833813498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19445,7 +19429,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3420032898552804507}
   - component: {fileID: 833813498}
-  - component: {fileID: 833813497}
   - component: {fileID: 833813502}
   - component: {fileID: 3420032898552804508}
   m_Layer: 0
