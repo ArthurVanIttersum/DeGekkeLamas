@@ -12,7 +12,7 @@ public class MatchingDetection : MonoBehaviour
     public Dish currentDish;
     public Camera mainCamera; // Assign the main camera
     public MatchGridSystem grid;
-    private Vector2Int GridStartPos;
+    private Vector2Int gridStartPos = Vector2Int.left;
     private Vector3 startScreenPos;
     private Vector3 endScreenPos;
     private bool swiping = false;
@@ -38,6 +38,7 @@ public class MatchingDetection : MonoBehaviour
     public float timeWhileBlocksVisible = 0.75f;//time that the blocks can be visible as being 3 in a row
     public float timeBeforeBlocksStartFalling = 0.25f;//time before the blocks start falling
     public float timeBetweenBlocksFalling = 0.15f;//time between blocks faling one space
+    
 
     void LateUpdate()
     {
@@ -50,19 +51,19 @@ public class MatchingDetection : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.red, 50f);
-            //Debug.Log(Input.mousePosition);
+            
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 if (info.transform.TryGetComponent(out GridPosition gridPosition))
                 {
                     Vector2 gridData = gridPosition.index;
 
-                    GridStartPos.x = (int)gridData.x;
-                    GridStartPos.y = (int)gridData.y;
+                    gridStartPos.x = (int)gridData.x;
+                    gridStartPos.y = (int)gridData.y;
                     startScreenPos = Input.mousePosition;
+                    swiping = true;
                 }
             }
-            swiping = true;
         }
         else if (swiping && Input.GetMouseButtonUp(0))
         {
@@ -71,16 +72,25 @@ public class MatchingDetection : MonoBehaviour
             if (Physics.Raycast(ray, out _))
             {
                 endScreenPos = Input.mousePosition;
-            }
-            swiping = false;
 
-            swipeDifference = endScreenPos - startScreenPos;
+                swiping = false;
 
-            if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
-            {
-                swipingAnimationPlaying = true;
-                StartCoroutine(SwipeDetected());
-                return;
+                swipeDifference = endScreenPos - startScreenPos;
+
+                if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
+                {
+                    startScreenPos = Vector3.left;
+                    endScreenPos = Vector3.left;
+                    swipingAnimationPlaying = true;
+                    StartCoroutine(SwipeDetected());
+                    return;
+                }
+                else
+                {
+                    gridStartPos = Vector2Int.left;
+                    startScreenPos = Vector3.left;
+                    endScreenPos = Vector3.left;
+                }
             }
         }
     }
@@ -94,7 +104,8 @@ public class MatchingDetection : MonoBehaviour
     private IEnumerator SwipeDetected()
     {
         Vector2Int swipeDirection = CalculateSwipeDirection();
-        Vector2Int swipeStartPosition = GridStartPos;
+        Vector2Int swipeStartPosition = gridStartPos;
+        gridStartPos = Vector2Int.left;
         Vector2Int swipeDestination = swipeStartPosition + swipeDirection;
 
         if (TestIfOutOfBounds(swipeStartPosition))
@@ -135,6 +146,7 @@ public class MatchingDetection : MonoBehaviour
             columnsOfBlocksToBeReplaced = allBlocksToBeReplaced.GroupBy(point => point.x).ToDictionary(group => group.Key, group => group.ToList());
             yield return new WaitForSeconds(timeWhileBlocksVisible);//time that the blocks can be visible as being 3 in a row
             HideBlocks(toReplace);
+            onMatchMade.Invoke();
             yield return new WaitForSeconds(timeBeforeBlocksStartFalling);//time before the blocks start falling
             for (int j = 0; j < toReplace.Length; j++)
             {
@@ -500,7 +512,7 @@ public class MatchingDetection : MonoBehaviour
 
     private void FinalizeIngredients()
     {
-        onMatchMade.Invoke();
+        
         for (int i = 0; i < foundIngredientTypes.Count; i++)
         {
             currentDish.AddIngredient(foundIngredientTypes[i]);
