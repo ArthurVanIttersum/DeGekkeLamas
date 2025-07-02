@@ -42,6 +42,7 @@ public class MatchGridSystem : MonoBehaviour
     public MeshRenderer gridQuad;
     public GridGameraController gridCameraController;
     public GameObject gridObject;
+    public GameObject gridReturnButton;
     [HideInInspector] public List<GameObject> iconsSpawned = new();
     [SerializeField, HideInInspector] public Transform gridContainer;
     public static MatchGridSystem instance;
@@ -450,6 +451,7 @@ public class MatchGridSystem : MonoBehaviour
     {
         GridActivator.isPlayingMatch3 = !GridActivator.isPlayingMatch3;
         gridObject.SetActive(GridActivator.isPlayingMatch3);
+        gridReturnButton.SetActive(GridActivator.isPlayingMatch3);
     }
 
     /// <summary>

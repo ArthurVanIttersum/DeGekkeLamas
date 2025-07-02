@@ -481,12 +481,12 @@ GameObject:
   - component: {fileID: 108305152}
   - component: {fileID: 108305151}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GridReturnButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108305150
 RectTransform:
   m_ObjectHideFlags: 0
@@ -496,15 +496,15 @@ RectTransform:
   m_GameObject: {fileID: 108305149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.803147, y: 2.803147, z: 2.803147}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1857671537}
-  m_Father: {fileID: 435653433}
+  m_Father: {fileID: 2051949793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 85, y: 20}
+  m_AnchoredPosition: {x: 238.2675, y: 56.062973}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108305151
@@ -2660,8 +2660,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 108305150}
+  m_Children: []
   m_Father: {fileID: 8273429564156899145}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -10837,7 +10836,8 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -4664051740740484382, guid: 90f0dde7fee095f4bbc7cdcae74550fc, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6836200087627816470, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6028275084834794749, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
     - {fileID: 7292658011167094339, guid: 941702904e0d0d5419743dff66d7df22, type: 3}
@@ -13647,6 +13647,7 @@ MonoBehaviour:
   gridQuad: {fileID: 7715720319054458399, guid: 69c37fed1adbb72449b0e2ad26685dd1, type: 3}
   gridCameraController: {fileID: 1898457634}
   gridObject: {fileID: 435653430}
+  gridReturnButton: {fileID: 108305149}
   iconsSpawned: []
   gridContainer: {fileID: 1107512568}
 --- !u!4 &1692662269
@@ -17087,6 +17088,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026078674}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!224 &2051949793 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 589795518724489688, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+  m_PrefabInstance: {fileID: 6880444884127889886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108669360
 GameObject:
   m_ObjectHideFlags: 0
@@ -17564,7 +17570,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &4677731381643271552
 MonoBehaviour:
@@ -17687,7 +17693,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 589795518724489688, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 108305150}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
 --- !u!1 &6880444884127889888 stripped
