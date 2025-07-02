@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: dbf213621aa684e458812b1232360659
 ModelImporter:
-  serializedVersion: 22102
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -9,8 +9,23 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: 10 - Default
     second: {fileID: 2100000, guid: e0f7961861aa5ae4a97805f16f8306b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat1
+    second: {fileID: 2100000, guid: 52e4043c6a608f546ad525d7029deac6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat2
+    second: {fileID: 2100000, guid: 52e4043c6a608f546ad525d7029deac6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat3
+    second: {fileID: 2100000, guid: 52e4043c6a608f546ad525d7029deac6, type: 2}
   materials:
-    materialImportMode: 0
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -21,8 +36,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -45,6 +58,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -106,6 +120,7 @@ ModelImporter:
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
