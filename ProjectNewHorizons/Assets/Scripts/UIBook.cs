@@ -17,7 +17,7 @@ public class UIBook : MonoBehaviour
     
     public void TurnPageRight()
     {
-        if (currentPage != pages.Length)
+        if (currentPage != pages.Length - 1)
         {
             currentPage++;
             SetPage();
