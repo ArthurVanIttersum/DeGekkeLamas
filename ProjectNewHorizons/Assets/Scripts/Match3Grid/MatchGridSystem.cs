@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using TMPro;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 [RequireComponent(typeof(MatchingDetection), typeof(ScreenResolutionManager), typeof(DishManager))]
 public class MatchGridSystem : MonoBehaviour
@@ -34,6 +34,7 @@ public class MatchGridSystem : MonoBehaviour
 
     [Header("Recipe stuff")]
     public TMP_Text ingredientLisText;
+    public Slider recipeSlider;
     public Color recipeColor;
     public RectTransform recipeIcon;
     public Vector3 iconOffset;
@@ -50,6 +51,8 @@ public class MatchGridSystem : MonoBehaviour
 
     private void OnValidate()
     {
+        recipeSlider.value = Mathf.Max(recipeSlider.value, 0.5f);
+
         for (int i = 0; i < ingredientTypes.Length; i++) ingredientTypes[i].index = i;
         for(int i = 0;i < requiredIngredients.Length; i++)
         {
@@ -112,14 +115,14 @@ public class MatchGridSystem : MonoBehaviour
                 $"{StringTools.IngredientArrayToString(dish.dishType.recipeIngredientsList)}";
 
         // Icons
-        Bounds textSize = ingredientLisText.mesh.bounds;
-        print(textSize.size.y);
+        int textHeight = Regex.Matches(ingredientLisText.text, "\n").Count;
+        recipeSlider.value = Mathf.Max(.5f, textHeight/10f + .1f);
+
         float size = ingredientLisText.fontSize;
         for (int i = 0; i < dish.dishType.recipeIngredientsList.Length; i++)
         {
             int index = i;
             if (dish.dishType.name.Length > 12) index++;
-            //ingredientLisText.bounds
 
             RectTransform spawned = Instantiate(recipeIcon, ingredientLisText.transform);
             float scale = spawned.root.lossyScale.x;
@@ -128,6 +131,7 @@ public class MatchGridSystem : MonoBehaviour
             spawned.GetComponent<RawImage>().texture = ingredientTypes
                 [Ingredient.FindByName(ingredientTypes, dish.dishType.recipeIngredientsList[i].name)].texture;
             iconsSpawned.Add(spawned.gameObject);
+            // Increase length of TODO list
         }
     }
 

@@ -95,4 +95,10 @@ public class PlayerController : MonoBehaviour
             print("Clicked on grid activator");
         }
     }
+
+    public void ToggleInteraction()
+    {
+        movementLocked = !movementLocked;
+        MatchingDetection.isPaused = !MatchingDetection.isPaused;
+    }
 }
