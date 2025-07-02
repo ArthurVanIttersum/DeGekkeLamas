@@ -11,10 +11,10 @@ public class MatchingDetection : MonoBehaviour
     public Dish currentDish;
     public Camera mainCamera; // Assign the main camera
     public MatchGridSystem grid;
-    private Vector2Int GridStartPos;
+    private Vector2Int gridStartPos = Vector2Int.left;
     private Vector3 startScreenPos;
     private Vector3 endScreenPos;
-    private bool swiping = false;
+    public bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down };
 
     private Vector3 swipeDifference;
@@ -46,19 +46,19 @@ public class MatchingDetection : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
 
             Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.red, 50f);
-            //Debug.Log(Input.mousePosition);
+            
             if (Physics.Raycast(ray, out RaycastHit info))
             {
                 if (info.transform.TryGetComponent(out GridPosition gridPosition))
                 {
                     Vector2 gridData = gridPosition.index;
 
-                    GridStartPos.x = (int)gridData.x;
-                    GridStartPos.y = (int)gridData.y;
+                    gridStartPos.x = (int)gridData.x;
+                    gridStartPos.y = (int)gridData.y;
                     startScreenPos = Input.mousePosition;
+                    swiping = true;
                 }
             }
-            swiping = true;
         }
         else if (swiping && Input.GetMouseButtonUp(0))
         {
@@ -67,16 +67,25 @@ public class MatchingDetection : MonoBehaviour
             if (Physics.Raycast(ray, out _))
             {
                 endScreenPos = Input.mousePosition;
-            }
-            swiping = false;
 
-            swipeDifference = endScreenPos - startScreenPos;
+                swiping = false;
 
-            if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
-            {
-                swipingAnimationPlaying = true;
-                StartCoroutine(SwipeDetected());
-                return;
+                swipeDifference = endScreenPos - startScreenPos;
+
+                if (swipeDifference.magnitude > 0.1f) // Threshold to ensure it's a valid swipe
+                {
+                    startScreenPos = Vector3.left;
+                    endScreenPos = Vector3.left;
+                    swipingAnimationPlaying = true;
+                    StartCoroutine(SwipeDetected());
+                    return;
+                }
+                else
+                {
+                    gridStartPos = Vector2Int.left;
+                    startScreenPos = Vector3.left;
+                    endScreenPos = Vector3.left;
+                }
             }
         }
     }
@@ -90,7 +99,8 @@ public class MatchingDetection : MonoBehaviour
     private IEnumerator SwipeDetected()
     {
         Vector2Int swipeDirection = CalculateSwipeDirection();
-        Vector2Int swipeStartPosition = GridStartPos;
+        Vector2Int swipeStartPosition = gridStartPos;
+        gridStartPos = Vector2Int.left;
         Vector2Int swipeDestination = swipeStartPosition + swipeDirection;
 
         if (TestIfOutOfBounds(swipeStartPosition))
