@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIBook : MonoBehaviour
 {
+    [Serializable]
     public struct PageData
     {
         public Sprite customerSprite;
