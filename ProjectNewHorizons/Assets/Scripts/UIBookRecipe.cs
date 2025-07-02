@@ -47,4 +47,9 @@ public class UIBookRecipe : MonoBehaviour
         theNameText.text = pages[currentPage].name;
         theDescriptionText.text = pages[currentPage].description;
     }
+
+    private void Start()
+    {
+        SetPage();
+    }
 }
