@@ -34,6 +34,11 @@ public class DishManager : MonoBehaviour
         grid.CollectIngredient(ingredient);
         //currentDish.AddIngredient(ingredient);//match
 
+        
+    }
+
+    public void TestFinished()
+    {
         if (currentDish.dishType.recipeIngredientsList.Length == currentDish.currentIngredients.Count)
         {
             CompleteDish();
