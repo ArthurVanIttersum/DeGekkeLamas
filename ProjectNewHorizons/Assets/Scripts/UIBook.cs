@@ -14,8 +14,8 @@ public class UIBook : MonoBehaviour
     }
     public PageData[] pages;
     public Image theImageRenderer;
-    public TextMeshPro theNameText;
-    public TextMeshPro theDescriptionText;
+    public TMP_Text theNameText;
+    public TMP_Text theDescriptionText;
     public int currentPage = 0;
     
     public void TurnPageRight()
