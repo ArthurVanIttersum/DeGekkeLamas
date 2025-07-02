@@ -347,7 +347,7 @@ MonoBehaviour:
     spriteForPopup: {fileID: 21300000, guid: b516b2e3c8bfc154aad9d87bb0f5490f, type: 3}
   - name: Pasta puttanesca
     dishType: 0
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: 2073d50adcecfdd43bc2b291bc0b3eac, type: 3}
     recipeIngredientsList:
     - name: Flour
       texture: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 23
       cubeForDisplay: {fileID: 0}
-    spriteForPopup: {fileID: 21300000, guid: 323e5bef853abc84ab448d574a9d5594, type: 3}
+    spriteForPopup: {fileID: 21300000, guid: 2073d50adcecfdd43bc2b291bc0b3eac, type: 3}
   - name: Pizza
     dishType: 0
     texture: {fileID: 2800000, guid: 6a941bcdf3c893b45bc3e1a3a8ae1f87, type: 3}
@@ -627,7 +627,7 @@ MonoBehaviour:
     spriteForPopup: {fileID: 21300000, guid: 18a88c43fe4840843891dc5c44117ef2, type: 3}
   - name: Yemeni chicken
     dishType: 0
-    texture: {fileID: 0}
+    texture: {fileID: 2800000, guid: 5b87d27831338eb45af9c8b25d73f05f, type: 3}
     recipeIngredientsList:
     - name: Rice
       texture: {fileID: 0}
@@ -649,4 +649,4 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 19
       cubeForDisplay: {fileID: 0}
-    spriteForPopup: {fileID: 21300000, guid: a8580203932c9804e87c308be7734fd8, type: 3}
+    spriteForPopup: {fileID: 21300000, guid: 5b87d27831338eb45af9c8b25d73f05f, type: 3}
