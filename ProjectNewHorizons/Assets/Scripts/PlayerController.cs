@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
                         renderer.GenerateUI();
                     }
                 }
-                else if (UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                else if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     agent.SetDestination(info.point);
             }
         }
