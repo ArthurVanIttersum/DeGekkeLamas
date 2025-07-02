@@ -3,19 +3,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIBook : MonoBehaviour
+public class UIBookRecipe : MonoBehaviour
 {
     [Serializable]
-    public struct PageData
+    public struct RecipePageData
     {
-        public Sprite customerSprite;
+        public Sprite dishSprite;
+        public Sprite[] ingredientsSprites;
         public string name;
         public string description;
     }
-    public PageData[] pages;
-    public Image theImageRenderer;
-    public TMP_Text theNameText;
-    public TMP_Text theDescriptionText;
+    public RecipePageData[] pages;
+    public Image theDishImageRenderer;
+    public Image[] theIngredientImageRenderers;
+    public TextMeshPro theNameText;
+    public TextMeshPro theDescriptionText;
     public int currentPage = 0;
     
     public void TurnPageRight()
@@ -37,7 +39,11 @@ public class UIBook : MonoBehaviour
 
     private void SetPage()
     {
-        theImageRenderer.sprite = pages[currentPage].customerSprite;
+        theDishImageRenderer.sprite = pages[currentPage].dishSprite;
+        for (int i = 0; i < pages[currentPage].ingredientsSprites.Length; i++)
+        {
+            theIngredientImageRenderers[i].sprite = pages[currentPage].ingredientsSprites[i];
+        }
         theNameText.text = pages[currentPage].name;
         theDescriptionText.text = pages[currentPage].description;
     }
