@@ -10,7 +10,7 @@ public class UIBook : MonoBehaviour
     {
         public Sprite customerSprite;
         public string name;
-        public string description;
+        [TextArea] public string description;
     }
     public PageData[] pages;
     public Image theImageRenderer;
