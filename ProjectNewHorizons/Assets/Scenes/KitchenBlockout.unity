@@ -11053,7 +11053,7 @@ MonoBehaviour:
   possibleSpots: 5
   spawnRangeX: {x: 2, y: 2}
   spawnRangeY: {x: 2, y: 2}
-  spawnRangeZ: {x: -4, y: 8}
+  spawnRangeZ: {x: -4, y: 6}
   possiblePositions: 
   speechbubblePrefab: {fileID: 3469843407695785503, guid: 3404e3476018a9d4ab32b4027d0581ce, type: 3}
   speechBubbleSprite: {fileID: 21300000, guid: a2a82804867be814b99650f0740f165f, type: 3}
@@ -13437,7 +13437,7 @@ MonoBehaviour:
   ingredientLisText: {fileID: 52529003206896123}
   recipeColor: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 1}
   recipeIcon: {fileID: 3015182911768705838, guid: f2365dc21c6d96648a99e09d3b6968f5, type: 3}
-  iconOffset: {x: 120, y: 30, z: 0}
+  iconOffset: {x: 75, y: 80, z: 0}
   gridQuad: {fileID: 7715720319054458399, guid: 69c37fed1adbb72449b0e2ad26685dd1, type: 3}
   gridCameraController: {fileID: 1898457634}
   gridObject: {fileID: 2329447972760408434}
@@ -17273,10 +17273,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1619837561790277987, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3292218523024165278, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 404dd11d382db174999cff1c30def76f, type: 3}
     - target: {fileID: 3464074863328190580, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1692662268}
+    - target: {fileID: 4611548774145647466, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773690361476535855, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773690361476535855, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5417187915391705681, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6504589188080551737, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_Name
       value: UI
