@@ -15,7 +15,7 @@ public class MatchingDetection : MonoBehaviour
     private Vector2Int gridStartPos = Vector2Int.left;
     private Vector3 startScreenPos;
     private Vector3 endScreenPos;
-    public bool swiping = false;
+    private bool swiping = false;
     private Vector2Int[] alldirections = { Vector2Int.left, Vector2Int.right, Vector2Int.up, Vector2Int.down };
 
     private Vector3 swipeDifference;
@@ -38,6 +38,7 @@ public class MatchingDetection : MonoBehaviour
     public float timeWhileBlocksVisible = 0.75f;//time that the blocks can be visible as being 3 in a row
     public float timeBeforeBlocksStartFalling = 0.25f;//time before the blocks start falling
     public float timeBetweenBlocksFalling = 0.15f;//time between blocks faling one space
+    
 
     void LateUpdate()
     {
@@ -145,6 +146,7 @@ public class MatchingDetection : MonoBehaviour
             columnsOfBlocksToBeReplaced = allBlocksToBeReplaced.GroupBy(point => point.x).ToDictionary(group => group.Key, group => group.ToList());
             yield return new WaitForSeconds(timeWhileBlocksVisible);//time that the blocks can be visible as being 3 in a row
             HideBlocks(toReplace);
+            onMatchMade.Invoke();
             yield return new WaitForSeconds(timeBeforeBlocksStartFalling);//time before the blocks start falling
             for (int j = 0; j < toReplace.Length; j++)
             {
@@ -510,7 +512,7 @@ public class MatchingDetection : MonoBehaviour
 
     private void FinalizeIngredients()
     {
-        onMatchMade.Invoke();
+        
         for (int i = 0; i < foundIngredientTypes.Count; i++)
         {
             currentDish.AddIngredient(foundIngredientTypes[i]);
