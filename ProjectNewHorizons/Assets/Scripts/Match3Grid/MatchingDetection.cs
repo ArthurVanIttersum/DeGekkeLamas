@@ -29,7 +29,7 @@ public class MatchingDetection : MonoBehaviour
     private List<Ingredient> sentIngredientTypes = new();
     
 
-    public static bool swipingAnimationPlaying = false;
+    bool swipingAnimationPlaying = false;
     public static bool isPaused;
 
     public UnityEvent onMatchMade;

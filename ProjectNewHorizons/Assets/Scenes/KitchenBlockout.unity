@@ -934,34 +934,68 @@ MonoBehaviour:
   pages:
   - customerSprite: {fileID: -1918284966, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
     name: Ruben
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
-  - customerSprite: {fileID: 0}
-    name: 
-    description: 
+    description: "- Likes Indian Curry \n- THE DIY guy\n- Swears he could synthesize
+      your breathing into a song"
+  - customerSprite: {fileID: -1499950786, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Serena
+    description: '- Likes Katsu Curry
+
+      - Tries her best to help procrastinators
+      finish the year
+
+      - 40 hour unskippable lore side quest received '
+  - customerSprite: {fileID: -660949779, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Joeri
+    description: '- Likes a good Rib-eye with fries
+
+      - Live Joeri reaction
+      -_-
+
+      - Epic gym goer '
+  - customerSprite: {fileID: -2034681857, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Yiwei
+    description: '- Likes Sashimi
+
+      - Enjoyer of strategy of the real time variation
+
+      -
+      "Now I will turn myself into an anime girl."'
+  - customerSprite: {fileID: 496106562, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Kacper
+    description: "- Likes Spare Ribs \n- Previously on: singing legend\n- Currently
+      on: 3d artist legend"
+  - customerSprite: {fileID: -1432869499, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Kaspar
+    description: '- Likes Yemeni Chicken
+
+      - Lighting connoisseur
+
+      - Great
+      swimming spot recommendations'
+  - customerSprite: {fileID: 279174675, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Bram
+    description: '- Likes Burritos
+
+      - A shy but big heart
+
+      - New Beethoven
+      in the making? '
+  - customerSprite: {fileID: 426452232, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Mark (you know which one)
+    description: "- Likes Lasagna \n- Biggest troll on planet Earth\n- Unironically
+      trying to revive dabbing"
+  - customerSprite: {fileID: 970322576, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Max
+    description: "- Likes Veggie Spaghetti\n- The one true Dungeon Master \n- Dislikes
+      blender defenders"
+  - customerSprite: {fileID: 1321888935, guid: ed04255962cda7540ab40710dfe74d20, type: 3}
+    name: Boris
+    description: '- Likes Pasta Puttanesca
+
+      - "Bedtime for the kids means Switch
+      time for me"
+
+      - Good ol'' Macromedia Flash days'
   theImageRenderer: {fileID: 696867139}
   theNameText: {fileID: 597317617}
   theDescriptionText: {fileID: 1925858612}
@@ -4457,7 +4491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ragh
+  m_text: Ruben
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4491,8 +4525,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -17917,7 +17951,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -243}
-  m_SizeDelta: {x: 360, y: 250}
+  m_SizeDelta: {x: 390, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1925858612
 MonoBehaviour:
@@ -17939,7 +17973,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ragh
+  m_text: "- Likes food dish thing deal\n- cool story bro but show me your arcweave\n-
+    hwirbennqweiqweqnwvqwkdfqvnewdkqcnveb \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17966,15 +18001,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50.6
-  m_fontSizeBase: 50.6
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
