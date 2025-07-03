@@ -20050,6 +20050,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 260833090}
+    - target: {fileID: 3618672370107117448, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: defaultEmptySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 897cb07926edc5043ba5b2e76d9c2f2a, type: 3}
     - target: {fileID: 4100956849536167358, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
