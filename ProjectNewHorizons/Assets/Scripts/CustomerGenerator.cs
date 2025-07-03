@@ -84,6 +84,7 @@ public class CustomerGenerator : MonoBehaviour
                 newCustomer.transform.rotation, newCustomer.transform).GetComponent<MeshRenderer>();
             highlight.material = this.highlight;
             highlight.transform.localScale = Vector3.one;
+            highlight.transform.localPosition -= new Vector3(0,0,.01f);
             highlight.material.SetTexture("_Map", newCustomer.GetComponent<MeshRenderer>().material.mainTexture);
             Destroy(highlight.GetComponent<Collider>());
             highlights.Add(highlight);
