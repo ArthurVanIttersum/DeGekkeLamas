@@ -2,7 +2,7 @@ Shader "Custom/TextureBounce"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "white" {}
+        [MainTexture] _MainTex ("Texture", 2D) = "white" {}
         _Speed("Speed", Float) = 2
         _Intensity("Intensity", Float) = .1
     }
