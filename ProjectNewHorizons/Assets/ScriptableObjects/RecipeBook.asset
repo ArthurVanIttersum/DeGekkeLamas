@@ -614,7 +614,7 @@ MonoBehaviour:
       material: {fileID: 0}
       index: 7
       cubeForDisplay: {fileID: 0}
-    - name: Butter
+    - name: Garlic
       texture: {fileID: 0}
       material: {fileID: 0}
       index: 2
