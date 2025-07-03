@@ -8,9 +8,9 @@ public class UIBookRecipe : MonoBehaviour
     [Serializable]
     public struct RecipePageData
     {
+        public string name;
         public Sprite dishSprite;
         public Sprite[] ingredientsSprites;
-        public string name;
         public string description;
     }
     public RecipePageData[] pages;
