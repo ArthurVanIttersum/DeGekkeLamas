@@ -19,7 +19,8 @@ public class UIBookRecipe : MonoBehaviour
     public TMP_Text theNameText;
     public TMP_Text theDescriptionText;
     public int currentPage = 0;
-    
+    public Sprite defaultEmptySprite;
+
     public void TurnPageRight()
     {
         if (currentPage != pages.Length - 1)
@@ -40,9 +41,19 @@ public class UIBookRecipe : MonoBehaviour
     private void SetPage()
     {
         theDishImageRenderer.sprite = pages[currentPage].dishSprite;
-        for (int i = 0; i < pages[currentPage].ingredientsSprites.Length; i++)
+        Sprite ingredientSprite;
+        for (int i = 0; i < theIngredientImageRenderers.Length; i++)
         {
-            theIngredientImageRenderers[i].sprite = pages[currentPage].ingredientsSprites[i];
+            if (i >= pages[currentPage].ingredientsSprites.Length)
+            {
+                ingredientSprite = defaultEmptySprite;
+            }
+            else
+            {
+                ingredientSprite = pages[currentPage].ingredientsSprites[i];
+            }
+            theIngredientImageRenderers[i].sprite = ingredientSprite;
+            
         }
         theNameText.text = pages[currentPage].name;
         theDescriptionText.text = pages[currentPage].description;
