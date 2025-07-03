@@ -6,6 +6,10 @@ using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using System.Text;
+using static UnityEngine.UI.Image;
+using UnityEngine.Timeline;
+
 
 [RequireComponent(typeof(MatchingDetection), typeof(ScreenResolutionManager), typeof(DishManager))]
 public class MatchGridSystem : MonoBehaviour
@@ -48,6 +52,8 @@ public class MatchGridSystem : MonoBehaviour
     [SerializeField, HideInInspector] public Transform gridContainer;
     public static MatchGridSystem instance;
     private System.Random rand;
+    public Texture checkMark;
+    private List<RectTransform> checks = new();
 
     private void OnValidate()
     {
@@ -142,6 +148,15 @@ public class MatchGridSystem : MonoBehaviour
     {
         ingredientLisText.text = StringTools.StrikeThrough(ingredientLisText.text, ingredient.name);
         print($"Collected {ingredient.name}");
+
+
+        float size = ingredientLisText.fontSize;
+        int index = Ingredient.FindIndex(requiredIngredients, ingredient.index);
+        RectTransform spawned = Instantiate(iconsSpawned[index].GetComponent<RectTransform>(), iconsSpawned[index].GetComponent<RectTransform>());
+        spawned.position = iconsSpawned[index].transform.position + Vector3.right * ingredient.name.Length * 35;
+        spawned.sizeDelta = new(size, size);
+        spawned.GetComponent<RawImage>().texture = checkMark;
+        checks.Add(spawned);
     }
 
     /// <summary>
