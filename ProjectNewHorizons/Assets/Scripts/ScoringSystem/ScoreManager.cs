@@ -108,6 +108,7 @@ public class ScoreManager : MonoBehaviour
     {
         print("You fucking suck");
         onGameLost.Invoke();
+        MatchingDetection.isPaused = true;
     }
 
     private void Update()
