@@ -1541,14 +1541,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pages:
-  - dishSprite: {fileID: 21300000, guid: e675a43b4d7e1e3469a7d7fe072f0dd8, type: 3}
+  - name: Boba
+    dishSprite: {fileID: 21300000, guid: e675a43b4d7e1e3469a7d7fe072f0dd8, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
     - {fileID: 21300000, guid: f183f30a339df2f41b4361da9c7d4aa9, type: 3}
     - {fileID: 21300000, guid: 52d7721271000ce49b6c445a18f44ead, type: 3}
-    name: Boba
     description: Who doesn't know what Boba is?
-  - dishSprite: {fileID: 21300000, guid: 7616c9db3900c0c4ca54f638e8fecda5, type: 3}
+  - name: Burrito
+    dishSprite: {fileID: 21300000, guid: 7616c9db3900c0c4ca54f638e8fecda5, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
     - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
@@ -1556,36 +1557,36 @@ MonoBehaviour:
     - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
     - {fileID: 21300000, guid: 4357dce076b72214381ec54a80c04d98, type: 3}
     - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
-    name: Burrito
     description: A classic from Mexico!
-  - dishSprite: {fileID: 21300000, guid: c382ac30b47eaa04c836b3616edfd3ae, type: 3}
+  - name: Coffee
+    dishSprite: {fileID: 21300000, guid: c382ac30b47eaa04c836b3616edfd3ae, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: eefc1e19ffdef5c43bccb1b114ee4575, type: 3}
     - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
     - {fileID: 21300000, guid: b9448a11bea59bd49a440d4b691b832b, type: 3}
-    name: Coffee
     description: CMGT students favourite meal
-  - dishSprite: {fileID: 21300000, guid: 5d34db2fe42ce7b4080abf30eea56124, type: 3}
+  - name: Fish Cookies
+    dishSprite: {fileID: 21300000, guid: 5d34db2fe42ce7b4080abf30eea56124, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
     - {fileID: 21300000, guid: d46a061bdec993b43abcf8e6ccefb82a, type: 3}
     - {fileID: 21300000, guid: 7835fd5e615ac4d4d91da71a95ef6922, type: 3}
-    name: Fish Cookies
     description: CMGT regulars' favourite meal
-  - dishSprite: {fileID: 21300000, guid: 957df91766c823444b56436e8816fb8a, type: 3}
+  - name: Fries
+    dishSprite: {fileID: 21300000, guid: 957df91766c823444b56436e8816fb8a, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: b9eb6ea51376edf40b9c240e11496f32, type: 3}
     - {fileID: 21300000, guid: a219f8e42d041464cb20ddc274180c66, type: 3}
-    name: Fries
     description: Nothing beats good ol fries! (This should'be just been potatoes
       man)
-  - dishSprite: {fileID: 21300000, guid: 93a0791f7c19f9c4c87ce085f0fa2c83, type: 3}
+  - name: Grilled Fish
+    dishSprite: {fileID: 21300000, guid: 93a0791f7c19f9c4c87ce085f0fa2c83, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 0543007cc01bc7a45a54633216e4a178, type: 3}
     - {fileID: 21300000, guid: fae225884659c1b48abed2205f63d50c, type: 3}
-    name: Grilled Fish
     description: You should've expected this to be here
-  - dishSprite: {fileID: 21300000, guid: e26135096d1fd1446bb7fda6a6da4a13, type: 3}
+  - name: Hamburgah
+    dishSprite: {fileID: 21300000, guid: e26135096d1fd1446bb7fda6a6da4a13, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
     - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
@@ -1593,29 +1594,28 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
     - {fileID: 21300000, guid: a219f8e42d041464cb20ddc274180c66, type: 3}
     - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
-    name: Hamburgah
     description: Technically a cheeseburger
-  - dishSprite: {fileID: 21300000, guid: 0b688c2015c60bd42a8debbeb73820ff, type: 3}
+  - name: Aisucreamu
+    dishSprite: {fileID: 21300000, guid: 0b688c2015c60bd42a8debbeb73820ff, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: f183f30a339df2f41b4361da9c7d4aa9, type: 3}
     - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
-    name: Aisucreamu
     description: Bing chilling!
-  - dishSprite: {fileID: 21300000, guid: d9e7fc7495b353946a09032af8df913c, type: 3}
+  - name: Ice(d) tea
+    dishSprite: {fileID: 21300000, guid: d9e7fc7495b353946a09032af8df913c, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: b9448a11bea59bd49a440d4b691b832b, type: 3}
     - {fileID: 21300000, guid: 3a971af302a9ff84e911eb7b4207935b, type: 3}
     - {fileID: 21300000, guid: f183f30a339df2f41b4361da9c7d4aa9, type: 3}
-    name: Ice(d) tea
     description: Good to cool off, especially in this weather
-  - dishSprite: {fileID: 21300000, guid: 28b4ebbe8c437084ba0bdceb79ec0562, type: 3}
+  - name: Indian Curry
+    dishSprite: {fileID: 21300000, guid: 28b4ebbe8c437084ba0bdceb79ec0562, type: 3}
     ingredientsSprites:
     - {fileID: 21300000, guid: 4fe6601e946361545addfe337661ad5f, type: 3}
     - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
     - {fileID: 21300000, guid: 49250bc02ca7c27498266ba3e3fb5dc8, type: 3}
     - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
     - {fileID: 21300000, guid: 4862e2f8136c1b24f88ca03a5b831945, type: 3}
-    name: Indian Curry
     description: Very good example of soul food
   theDishImageRenderer: {fileID: 7165892500977937184}
   theIngredientImageRenderers:
@@ -1628,6 +1628,7 @@ MonoBehaviour:
   theNameText: {fileID: 2199483842517552404}
   theDescriptionText: {fileID: 1334162230384728113}
   currentPage: 0
+  defaultEmptySprite: {fileID: 0}
 --- !u!1 &2446220051941875052
 GameObject:
   m_ObjectHideFlags: 0
@@ -8658,7 +8659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: -0, y: 89}
   m_SizeDelta: {x: 56.3571, y: 18.4732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3204621259287079915
