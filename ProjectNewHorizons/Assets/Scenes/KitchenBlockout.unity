@@ -15962,6 +15962,7 @@ MonoBehaviour:
   gridReturnButton: {fileID: 108305149}
   iconsSpawned: []
   gridContainer: {fileID: 1107512568}
+  checkMark: {fileID: 2800000, guid: 739de2222e981d045bea156026dcfc93, type: 3}
 --- !u!4 &1692662269
 Transform:
   m_ObjectHideFlags: 0
