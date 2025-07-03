@@ -462,6 +462,144 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &844942263523159341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4699160972539007040}
+  - component: {fileID: 2006855971552097484}
+  - component: {fileID: 7226639628660318637}
+  m_Layer: 5
+  m_Name: Dishes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4699160972539007040
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844942263523159341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7511693661066354655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -374, y: 349}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2006855971552097484
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844942263523159341}
+  m_CullTransparentMesh: 1
+--- !u!114 &7226639628660318637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844942263523159341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Dish
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+  m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281874488
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 46
+  m_fontSizeBase: 46
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1081202321214604904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,8 +1138,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 260, y: 91}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 280, y: 20}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3998575198866527093
 CanvasRenderer:
@@ -1471,6 +1609,8 @@ RectTransform:
   - {fileID: 7591095951101603436}
   - {fileID: 2007203977854974944}
   - {fileID: 3069694996660955303}
+  - {fileID: 4699160972539007040}
+  - {fileID: 2204722210442180380}
   m_Father: {fileID: 589795518724489688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1547,7 +1687,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
     - {fileID: 21300000, guid: f183f30a339df2f41b4361da9c7d4aa9, type: 3}
     - {fileID: 21300000, guid: 52d7721271000ce49b6c445a18f44ead, type: 3}
-    description: Who doesn't know what Boba is?
+    description: 'If you love having balls in your mouth '
   - name: Burrito
     dishSprite: {fileID: 21300000, guid: 7616c9db3900c0c4ca54f638e8fecda5, type: 3}
     ingredientsSprites:
@@ -1617,6 +1757,131 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
     - {fileID: 21300000, guid: 4862e2f8136c1b24f88ca03a5b831945, type: 3}
     description: Very good example of soul food
+  - name: Katsu Curry
+    dishSprite: {fileID: 21300000, guid: b3fe19c1437f54c42b861a4fe67d8e05, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 4fe6601e946361545addfe337661ad5f, type: 3}
+    - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
+    - {fileID: 21300000, guid: 49250bc02ca7c27498266ba3e3fb5dc8, type: 3}
+    - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
+    - {fileID: 21300000, guid: b9eb6ea51376edf40b9c240e11496f32, type: 3}
+    description: Katsu curry? More like "Cat"su curry.
+  - name: Lasagna
+    dishSprite: {fileID: 21300000, guid: 78fb452ddb7d5b743a7a09f00bc7fb27, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: a219f8e42d041464cb20ddc274180c66, type: 3}
+    - {fileID: 21300000, guid: 4862e2f8136c1b24f88ca03a5b831945, type: 3}
+    description: It's spaghetti, but you know...square
+  - name: 'Pancakes '
+    dishSprite: {fileID: 21300000, guid: b516b2e3c8bfc154aad9d87bb0f5490f, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: d46a061bdec993b43abcf8e6ccefb82a, type: 3}
+    - {fileID: 21300000, guid: 7835fd5e615ac4d4d91da71a95ef6922, type: 3}
+    - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
+    description: Who cares if waffles or pancakes are better, just enjoy the sugary
+      goodness.
+  - name: Pasta Puttanesca
+    dishSprite: {fileID: 21300000, guid: 2073d50adcecfdd43bc2b291bc0b3eac, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    - {fileID: 21300000, guid: 4ee2bd55a5db16f42b018def286f1f79, type: 3}
+    - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
+    - {fileID: 21300000, guid: 4862e2f8136c1b24f88ca03a5b831945, type: 3}
+    description: Uh, uh, its uh spaghetti, but Puttanesca...yeah
+  - name: Pizza
+    dishSprite: {fileID: 21300000, guid: 6a941bcdf3c893b45bc3e1a3a8ae1f87, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    - {fileID: 21300000, guid: 49250bc02ca7c27498266ba3e3fb5dc8, type: 3}
+    - {fileID: 21300000, guid: a219f8e42d041464cb20ddc274180c66, type: 3}
+    description: The classic Italian frisbee
+  - name: Ramen
+    dishSprite: {fileID: 21300000, guid: 5df4b51d3127b9c408ddae4096a1ccc2, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: 0543007cc01bc7a45a54633216e4a178, type: 3}
+    - {fileID: 21300000, guid: 7835fd5e615ac4d4d91da71a95ef6922, type: 3}
+    description: Itadakimasu! Nihon kara chokusetsu
+  - name: Risotto
+    dishSprite: {fileID: 21300000, guid: 693ab74cf9670e7428c34ac73db55fb7, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 42e6a3df86169ab4fb6007b13048e41c, type: 3}
+    - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
+    - {fileID: 21300000, guid: 49250bc02ca7c27498266ba3e3fb5dc8, type: 3}
+    description: 'It''s rice, but WITH things '
+  - name: Salad
+    dishSprite: {fileID: 21300000, guid: c5ad95421bba9cc49b6b1747b32fd496, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 4357dce076b72214381ec54a80c04d98, type: 3}
+    - {fileID: 21300000, guid: 01a8bfc15076a744b9e568a7408cda58, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    description: The heribivore classic
+  - name: Sashimi
+    dishSprite: {fileID: 21300000, guid: 1f467fcc2540f4e4d820daa1099e9a02, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 0543007cc01bc7a45a54633216e4a178, type: 3}
+    - {fileID: 21300000, guid: 4357dce076b72214381ec54a80c04d98, type: 3}
+    - {fileID: 21300000, guid: 88cc45f7c4257e24190ac1a5e318bb28, type: 3}
+    description: Honto? Mata Nihon?
+  - name: 'Spaghetti '
+    dishSprite: {fileID: 21300000, guid: f70b66e200eccf143b4b0c0886638279, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    - {fileID: 21300000, guid: fae225884659c1b48abed2205f63d50c, type: 3}
+    description: The spaghetti for those who DON't really hate plants.
+  - name: 'Spare Ribs '
+    dishSprite: {fileID: 21300000, guid: f402763f5802c4e4580c18b2bff4acf7, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
+    - {fileID: 21300000, guid: b9eb6ea51376edf40b9c240e11496f32, type: 3}
+    - {fileID: 21300000, guid: 4086bfb0644e743499c51cabed5ffa71, type: 3}
+    description: Staple in the BBQ scene
+  - name: Sushi
+    dishSprite: {fileID: 21300000, guid: 5926587397a218646afc779c5a152451, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 0543007cc01bc7a45a54633216e4a178, type: 3}
+    - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
+    description: 'Majide? Mata? '
+  - name: Tacos
+    dishSprite: {fileID: 21300000, guid: ddd55e4d920b1f840b7e6fd0ffa4dc99, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: a92d69450642e254b991d09b35cf3e8a, type: 3}
+    - {fileID: 21300000, guid: a219f8e42d041464cb20ddc274180c66, type: 3}
+    - {fileID: 21300000, guid: 4357dce076b72214381ec54a80c04d98, type: 3}
+    description: Named after the teacher, or is he named after them? I hate the chicken
+      vs the egg dilemma...
+  - name: Veggie Ghettie
+    dishSprite: {fileID: 21300000, guid: 18a88c43fe4840843891dc5c44117ef2, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 7c46479432926004b96bfb345a969de0, type: 3}
+    - {fileID: 21300000, guid: 01a8bfc15076a744b9e568a7408cda58, type: 3}
+    - {fileID: 21300000, guid: b9a2459ef25056a419988263f66f5909, type: 3}
+    - {fileID: 21300000, guid: 4862e2f8136c1b24f88ca03a5b831945, type: 3}
+    description: The spaghetti for those who REALLY hate plants.
+  - name: Yemeni Chimcken
+    dishSprite: {fileID: 21300000, guid: 5b87d27831338eb45af9c8b25d73f05f, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 4ee2bd55a5db16f42b018def286f1f79, type: 3}
+    - {fileID: 21300000, guid: 6857d64518b9d46448158241dbb8ae00, type: 3}
+    - {fileID: 21300000, guid: 49250bc02ca7c27498266ba3e3fb5dc8, type: 3}
+    - {fileID: 21300000, guid: 85f0c10b82c42f841876723b52d72dde, type: 3}
+    description: Spices are key here!
+  - name: Milkshake
+    dishSprite: {fileID: 21300000, guid: 0048e77d176739643a51dcf9349d325c, type: 3}
+    ingredientsSprites:
+    - {fileID: 21300000, guid: 053c32b7d3be16c4c963bd57fb791ded, type: 3}
+    - {fileID: 21300000, guid: f183f30a339df2f41b4361da9c7d4aa9, type: 3}
+    - {fileID: 21300000, guid: 6dbce9ee3004f6a428c23645bdb49410, type: 3}
+    description: I like my milk shook.
   theDishImageRenderer: {fileID: 7165892500977937184}
   theIngredientImageRenderers:
   - {fileID: 2450082816160291750}
@@ -1628,7 +1893,7 @@ MonoBehaviour:
   theNameText: {fileID: 2199483842517552404}
   theDescriptionText: {fileID: 1334162230384728113}
   currentPage: 0
-  defaultEmptySprite: {fileID: 0}
+  defaultEmptySprite: {fileID: 21300000, guid: 897cb07926edc5043ba5b2e76d9c2f2a, type: 3}
 --- !u!1 &2446220051941875052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,8 +3209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104, y: 88}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 120, y: 20}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8958969790058870621
 CanvasRenderer:
@@ -4674,8 +4939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 432, y: 89}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 440, y: 20}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1197260778429703369
 CanvasRenderer:
@@ -4785,8 +5050,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 263, y: 271}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 280, y: 200}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &252976397006651563
 CanvasRenderer:
@@ -5481,7 +5746,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: 'Quit
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
   m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
@@ -5615,14 +5882,14 @@ RectTransform:
   m_GameObject: {fileID: 6407496396881967598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.92929, y: 0.92929, z: 0.92929}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7511693661066354655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -374, y: 152}
+  m_AnchoredPosition: {x: -374, y: 93}
   m_SizeDelta: {x: 496.1115, y: 496.1115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1213383336259053450
@@ -6259,8 +6526,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -374, y: -267}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: -374, y: -279.91098}
+  m_SizeDelta: {x: 550, y: 174.178}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5317966419230460475
 CanvasRenderer:
@@ -6494,6 +6761,144 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &7477532303515979171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2204722210442180380}
+  - component: {fileID: 2170708862253729600}
+  - component: {fileID: 5681171227384014064}
+  m_Layer: 5
+  m_Name: Dishes (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2204722210442180380
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477532303515979171}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7511693661066354655}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 374, y: 349}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2170708862253729600
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477532303515979171}
+  m_CullTransparentMesh: 1
+--- !u!114 &5681171227384014064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477532303515979171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Dish
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+  m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281874488
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 46
+  m_fontSizeBase: 46
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7564887905094745553
 GameObject:
   m_ObjectHideFlags: 0
@@ -6559,7 +6964,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: 'Back
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
   m_sharedMaterial: {fileID: 2698702744298398550, guid: bcbbdf193e2020249885a170dec59db2, type: 2}
@@ -6643,7 +7050,7 @@ GameObject:
   - component: {fileID: 3365973978827475658}
   - component: {fileID: 2052431222308028931}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Back button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7744,8 +8151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 271}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 120, y: 200}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7374296101093845013
 CanvasRenderer:
@@ -8260,7 +8667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 90, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8642965304846836629
@@ -8508,8 +8915,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 428, y: 273}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 440, y: 200}
+  m_SizeDelta: {x: 125, y: 125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8596951002863905965
 CanvasRenderer:
@@ -8951,7 +9358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -374, y: -130}
+  m_AnchoredPosition: {x: -374, y: -168}
   m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2387179517985431012
