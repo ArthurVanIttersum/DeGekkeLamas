@@ -20010,6 +20010,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2282195286097629327, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2602024543651289285, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -20022,6 +20026,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 29603114}
+    - target: {fileID: 3064033772551034715, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_text
+      value: 'Back
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103370118250448171, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_text
+      value: 'Quit
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3154869547435007281, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -20066,6 +20082,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 260833090}
+    - target: {fileID: 5333378055297920052, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5794821174593638124, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -20102,6 +20122,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 260833090}
+    - target: {fileID: 7586900488491008374, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
+      propertyPath: m_Name
+      value: Back button
+      objectReference: {fileID: 0}
     - target: {fileID: 8252348406259963754, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
