@@ -36,43 +36,51 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit info, 100, ~0, QueryTriggerInteraction.Ignore))
             {
                 // Interact instead of setting destination if interactions
-                if (info.collider.gameObject.CompareTag("Interactible") 
-                    && Vector3.Distance(transform.position, info.transform.position) < interactDistance)
+                if (info.collider.gameObject.CompareTag("Interactible") )
                 {
                     // Get order from customer
                     if (info.collider.gameObject.TryGetComponent(out Customer customer))
                     {
-                        // Complete order
-                        if (customer.thisCustomersOrder.orderComplete)
+                        agent.SetDestination(info.point);
+                        if (Vector3.Distance(transform.position, info.transform.position) < interactDistance)
                         {
-                            print("startWalkingAway Animation Script");
-                            StartCoroutine(customer.WalkingAwayAnimation());
-                            isServingCustomer = false;
-                        }
-                        else // take order
-                        {
-                            // refuse if already has an order
-                            if (!isServingCustomer)
+                            // Complete order
+                            if (customer.thisCustomersOrder.orderComplete)
                             {
-                                StationHighlighter.instance.RemoveHighlight();
-                                previousCustomer = customer;
-                                StartCoroutine(customer.SetPopupToSpeachAndBack());
-                                List<Dish> dishes = customer.thisCustomersOrder.dishes;
-                                DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
-                                Debug.Log("Received order from customer");
-                                isServingCustomer = true;
+                                print("startWalkingAway Animation Script");
+                                StartCoroutine(customer.WalkingAwayAnimation());
+                                isServingCustomer = false;
+                            }
+                            else // take order
+                            {
+                                // refuse if already has an order
+                                if (!isServingCustomer)
+                                {
+                                    CustomerGenerator.firstOrderReceived = true;
+                                    CustomerGenerator.instance.RemoveHighLights();
+                                    StationHighlighter.instance.RemoveHighlight();
+                                    previousCustomer = customer;
+                                    StartCoroutine(customer.SetPopupToSpeachAndBack());
+                                    List<Dish> dishes = customer.thisCustomersOrder.dishes;
+                                    DishManager.instance.SetDish(dishes[0], (info.collider.gameObject, customer.index));
+                                    Debug.Log("Received order from customer");
+                                    isServingCustomer = true;
+                                }
                             }
                         }
                     }
-                    // Open oven for match3 minigame
-                    else if (info.collider.gameObject.TryGetComponent(out GridActivator activator) 
-                        && activator.stationType == DishManager.instance.currentDish.dishType.dishType)
+                    if (Vector3.Distance(transform.position, info.transform.position) < interactDistance)
                     {
-                        activator.ToggleGame();
-                        print("Clicked on grid activator");
+                    // Open oven for match3 minigame
+                    if (info.collider.gameObject.TryGetComponent(out GridActivator activator)
+                        && activator.stationType == DishManager.instance.currentDish.dishType.dishType)
+                        {
+                            activator.ToggleGame();
+                            print("Clicked on grid activator");
+                        }
                     }
                 }
-                else if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     agent.SetDestination(info.point);
             }
         }

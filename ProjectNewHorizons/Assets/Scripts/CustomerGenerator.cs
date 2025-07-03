@@ -35,6 +35,11 @@ public class CustomerGenerator : MonoBehaviour
     public Sprite thoughtBubbleSprite;
     public Sprite waitingSprite;
     public Sprite satisfiedSprite;
+
+    public Material highlight;
+    List<MeshRenderer> highlights = new();
+
+    public static bool firstOrderReceived;
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -72,10 +77,31 @@ public class CustomerGenerator : MonoBehaviour
         newCustomer = Instantiate(toSpawn, spawnPosition, toSpawn.transform.rotation, customerContainer.transform);
         newCustomer.name = $"customer number {customerAntiQue[randomCustomer]}";
 
+        if (!firstOrderReceived)
+        {
+            // Highlight if no order taken before
+            MeshRenderer highlight = Instantiate(newCustomer, newCustomer.transform.position, 
+                newCustomer.transform.rotation, newCustomer.transform).GetComponent<MeshRenderer>();
+            highlight.material = this.highlight;
+            highlight.transform.localScale = Vector3.one;
+            highlight.material.SetTexture("_Map", newCustomer.GetComponent<MeshRenderer>().material.mainTexture);
+            Destroy(highlight.GetComponent<Collider>());
+            highlights.Add(highlight);
+        }
+
         GiveCustomerOrder(customerAntiQue[randomCustomer], spawnPos);
         customerQue.Add(customerAntiQue[randomCustomer]);
         customerAntiQue.Remove(customerAntiQue[randomCustomer]);
 
+    }
+
+    public void RemoveHighLights()
+    {
+        for (int i = highlights.Count-1; i >= 0; i--)
+        {
+            Destroy(highlights[i]);
+            highlights.RemoveAt(i);
+        }
     }
 
     /// <summary>

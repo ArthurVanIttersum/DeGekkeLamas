@@ -3,9 +3,11 @@ Shader "Custom/Outline"
     Properties
     {
         _Color("Color", Color) = (1,1,1,1)
+        _Map("Mask map", 2D) = "white" {}
         _Transparency("Transparency", Range(0, 1)) = 1
         _Emission("Emission", Float) = 0
         _Radius("Highlight radius", Float) = 1
+        [Toggle] _Blinking("Does blink", Float) = 0
     }
     SubShader
     {
@@ -44,9 +46,11 @@ Shader "Custom/Outline"
             };
 
             float4 _Color;
+            sampler2D _Map;
             float _Transparency;
             float _Emission;
             float _Radius;
+            bool _Blinking;
 
             v2f vert (appdata v)
             {
@@ -59,10 +63,13 @@ Shader "Custom/Outline"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // sample the texture
+                if (tex2D(_Map, i.uv).a == 0) return float4(0,0,0,0);
                 fixed4 col = _Color;
                 col.w *= _Transparency;
                 col.xyz *= 1 + _Emission;
+
+                if (_Blinking) col.w *= round( fmod(_Time.y, 1) );
+                
                 return col;
             }
             ENDCG
