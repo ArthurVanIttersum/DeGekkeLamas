@@ -2236,7 +2236,7 @@ MonoBehaviour:
   stats:
     moveSpeedX: 0
     moveSpeedY: 0
-    moveSpeedZ: -30
+    moveSpeedZ: -15
     moveRangeX: 0
     moveRangeY: 0
     moveRangeZ: 0
@@ -4353,7 +4353,7 @@ MonoBehaviour:
   stats:
     moveSpeedX: 0
     moveSpeedY: 0
-    moveSpeedZ: 30
+    moveSpeedZ: 15
     moveRangeX: 0
     moveRangeY: 0
     moveRangeZ: 0
@@ -20084,7 +20084,7 @@ PrefabInstance:
       objectReference: {fileID: 260833090}
     - target: {fileID: 5333378055297920052, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5794821174593638124, guid: 933a7a36cf791cb40a1d545552f15d26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

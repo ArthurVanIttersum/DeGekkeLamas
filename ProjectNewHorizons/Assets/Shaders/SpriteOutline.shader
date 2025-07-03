@@ -40,6 +40,7 @@ Shader "Custom/SpriteOutline"
             };
 
             sampler2D _MainTex;
+            float4 _MainTex_TexelSize;
             float4 _MainTex_ST;
             float4 _OutlineColor;
             float _Width;
@@ -56,14 +57,13 @@ Shader "Custom/SpriteOutline"
             {
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-
-                bool isBG = col != float4(0,0,0,0);
+                bool isBG = col.a != 0;
                 if (isBG)
                 {
-                    bool XPlus = tex2D(_MainTex, i.uv + float2(_Width, 0)) == float4(0,0,0,0);
-                    bool XMin = tex2D(_MainTex, i.uv + float2(-_Width, 0)) == float4(0,0,0,0);
-                    bool YPlus = tex2D(_MainTex, i.uv + float2(0, _Width)) == float4(0,0,0,0);
-                    bool YMin = tex2D(_MainTex, i.uv + float2(0, -_Width)) == float4(0,0,0,0);
+                    bool XPlus = tex2D(_MainTex, i.uv + float2(_Width, 0)).a == 0;
+                    bool XMin = tex2D(_MainTex, i.uv + float2(-_Width, 0)).a == 0;
+                    bool YPlus = tex2D(_MainTex, i.uv + float2(0, _Width.x)).a == 0;
+                    bool YMin = tex2D(_MainTex, i.uv + float2(0, -_Width.x)).a == 0;
                     if (XPlus || XMin || YPlus || YMin) return _OutlineColor;
                 }
 
