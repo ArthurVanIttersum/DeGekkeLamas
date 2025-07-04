@@ -526,6 +526,7 @@ public class MatchingDetection : MonoBehaviour
 
     private void FinalizeIngredients()
     {
+        grid.CheckStillSoluble();
         DishManager.instance.TestFinished();
         sentIngredientTypes.Clear();
         foundIngredientTypes.Clear();
