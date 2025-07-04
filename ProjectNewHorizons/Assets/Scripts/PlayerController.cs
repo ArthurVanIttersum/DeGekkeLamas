@@ -47,9 +47,13 @@ public class PlayerController : MonoBehaviour
                             // Complete order
                             if (customer.thisCustomersOrder.orderComplete)
                             {
-                                print("startWalkingAway Animation Script");
-                                StartCoroutine(customer.WalkingAwayAnimation());
-                                isServingCustomer = false;
+                                if (!customer.isWalkingAway)
+                                {
+                                    customer.isWalkingAway = true;
+                                    print("startWalkingAway Animation Script");
+                                    StartCoroutine(customer.WalkingAwayAnimation());
+                                    isServingCustomer = false;
+                                }
                             }
                             else // take order
                             {

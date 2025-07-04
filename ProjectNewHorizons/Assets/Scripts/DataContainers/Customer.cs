@@ -14,6 +14,7 @@ public class Customer : MonoBehaviour
     [HideInInspector] public int index;
     [HideInInspector] public int positionIndex;
     private GameObject popup;
+    [HideInInspector] public bool isWalkingAway = false;
 
     private void Start()
     {
