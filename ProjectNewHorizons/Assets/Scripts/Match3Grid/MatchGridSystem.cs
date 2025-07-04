@@ -141,12 +141,73 @@ public class MatchGridSystem : MonoBehaviour
         }
     }
 
+    public void CheckStillSoluble()
+    {
+        if (CheckPossibleMove()) print("Still possible moves available");
+        else
+        {
+            print("No possible moves, regenerated grid");
+            Generate();
+        }
+    }
+
+    bool CheckPossibleMove()
+    {
+        int height = currentGrid.GetLength(0);
+        int length = currentGrid.GetLength(1);
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < length; x++)
+            {
+                // Possible connections in middle
+                int[] valueQTYs = new int[ingredientTypes.Length];
+
+                if (y > 0) valueQTYs[currentGrid[y - 1, x].index]++;
+                if (y < height - 1) valueQTYs[currentGrid[y + 1, x].index]++;
+                if (x > 0) valueQTYs[currentGrid[y, x - 1].index]++;
+                if (x < length - 1) valueQTYs[currentGrid[y, x + 1].index]++;
+
+                if (Mathf.Max(valueQTYs) >= 3) // 3 neighbours means possible connection
+                {
+                    DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, Color.magenta, .25f, 10);
+                    return true;
+                }
+
+                // Possible connections from side
+                if (Neighbours2InARow(x, y, out int axis, out int value))
+                {
+                    if (axis != 0 && x > 0 && currentGrid[y, x - 1].index == value) // xMin
+                    {
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
+                        return true;
+                    }
+                    if (axis != 1 && x < length - 2 && currentGrid[y, x + 1].index == value) // xPlus
+                    {
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
+                        return true;
+                    }
+                    if (axis != 2 && y > 0 && currentGrid[y - 1, x].index == value) // yMin
+                    {
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
+                        return true;
+                    }
+                    if (axis != 3 && y < height - 2 && currentGrid[y + 1, x].index == value) // yPlus
+                    {
+                        DebugExtension.DebugWireSphere(new Vector3(x, y, -1) + spawnPosition, ingredientTypes[value].material.color, .25f, 10);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     /// <summary>
     /// Collects an ingredient, crossing out its text display
     /// </summary>
     public void CollectIngredient(Ingredient ingredient)
     {
-        ingredientLisText.text = StringTools.StrikeThrough(ingredientLisText.text, ingredient.name);
+        ingredientLisText.text = StringTools.StrikeThrough($"\n{ingredientLisText.text}", ingredient.name);
         print($"Collected {ingredient.name}");
 
 
