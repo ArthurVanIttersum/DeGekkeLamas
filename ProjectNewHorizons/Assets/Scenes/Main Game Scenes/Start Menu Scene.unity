@@ -3313,7 +3313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Addiotnally you have a score counter a satisfaction bar and a dish counter.
+  m_text: 'Additionally you have a score counter a satisfaction bar and a dish counter.
 
 
 '
