@@ -207,7 +207,7 @@ public class MatchGridSystem : MonoBehaviour
     /// </summary>
     public void CollectIngredient(Ingredient ingredient)
     {
-        ingredientLisText.text = StringTools.StrikeThrough($"\n{ingredientLisText.text}", ingredient.name);
+        ingredientLisText.text = StringTools.StrikeThrough(ingredientLisText.text, $"\n {ingredient.name}");
         print($"Collected {ingredient.name}");
 
 
