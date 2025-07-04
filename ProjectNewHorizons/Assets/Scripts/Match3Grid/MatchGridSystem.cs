@@ -153,7 +153,7 @@ public class MatchGridSystem : MonoBehaviour
         float size = ingredientLisText.fontSize;
         int index = Ingredient.FindIndex(requiredIngredients, ingredient.index);
         RectTransform spawned = Instantiate(iconsSpawned[index].GetComponent<RectTransform>(), iconsSpawned[index].GetComponent<RectTransform>());
-        spawned.position = iconsSpawned[index].transform.position + Vector3.right * ingredient.name.Length * 35;
+        spawned.position = iconsSpawned[index].transform.position + Vector3.left * 50;
         spawned.sizeDelta = new(size, size);
         spawned.GetComponent<RawImage>().texture = checkMark;
         checks.Add(spawned);
