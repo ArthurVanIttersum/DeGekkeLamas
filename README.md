@@ -1,8 +1,8 @@
 # Cat Media and Gourmet Technologies
 
 [Itch.io page ->](https://degekkelamas.itch.io/catmediaandgourmettechnologies)\
-[Arthurs portfolio page](https://arthurvanittersum.github.io/Projects/CatMediaAndGourmetTechnologies.html)\
-[Kars' portfolio page](https://degekkelamas.github.io/Projects/CatMediaAndGourmetTechnologies)
+[Arthurs portfolio page ->](https://arthurvanittersum.github.io/Projects/CatMediaAndGourmetTechnologies.html)\
+[Kars' portfolio page ->](https://degekkelamas.github.io/Projects/CatMediaAndGourmetTechnologies)
 
 This project was made for a group proiect, Project New Horizons, where the goal was to make a game that can be run on mobile.
 
